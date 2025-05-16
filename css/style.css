@@ -14,10 +14,12 @@ header {
 }
 
 /* Logo a la izquierda */
-header .logo {
-  font-size: 28px;
+header .logo a {
+  font-size: 32px;
   font-weight: bold;
-  cursor: default;
+  text-decoration: none;
+  letter-spacing: 2px;
+  color: black;
 }
 
 /* Contenedor del nav */
