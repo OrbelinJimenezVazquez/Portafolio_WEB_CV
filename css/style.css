@@ -1,63 +1,62 @@
+/* Estilos generales para el body */
 body {
   font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
+  margin: 0; /* Elimina el margen por defecto */
+  padding: 0; /* Elimina el padding por defecto */
   background-color: #f4f4f4;
-  width: 100%;
-  height: 100%;
-  overflow-x: hidden; /* Evita el scroll horizontal */
+  width: 100%; /* Asegura que el body ocupe el 100% del ancho */
 }
 
+/* Estilo para el header */
 header {
-  position: sticky;
-  top: 0;
-  left: 0;
-  width: 100%;
+  position: sticky; /* Hace que el header se quede fijo al hacer scroll */
+  top: 0; /* Se pega al top cuando haga scroll */
+  left: 0; /* Alineación al lado izquierdo */
+  width: 100%; /* Asegura que ocupe todo el ancho */
   background-color: white;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  z-index: 1000;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+  z-index: 1000; /* Asegura que el header quede encima del contenido */
   color: black;
-  padding: 15px 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  padding: 15px 40px; /* Espaciado interno */
+  display: flex; /* Usamos flexbox para distribuir los elementos */
+  justify-content: space-between; /* Espacio entre logo y menú */
+  align-items: center; /* Alinea los elementos en el centro verticalmente */
 }
 
-/* Logo a la izquierda */
+/* Estilo para el logo */
 header .logo a {
   font-size: 32px;
   font-weight: bold;
   text-decoration: none;
   letter-spacing: 2px;
   color: black;
-  transition: color 0.3s, transform 0.3s;
-}
-header .logo a:hover {
-  color: #4caf50; /* Cambia el color al pasar el mouse */
-  transform: scale(1.1); /* Efecto de aumento */
+  transition: color 0.3s, transform 0.3s; /* Transición para color y tamaño */
 }
 
-/* Contenedor del nav */
+header .logo a:hover {
+  color: #4caf50; /* Cambio de color al pasar el mouse */
+  transform: scale(1.1); /* Hace que el logo se agrande un poco */
+}
+
 nav {
-  max-width: 1200px;
-  margin: 0 auto;
+  margin: 0 auto; /* Centra el nav */
   padding: 0;
   display: flex;
   align-items: center;
-  justify-content: flex-end; /* menus a la derecha */
+  justify-content: flex-end; /* Alinea el menú a la derecha */
   width: 100%;
 }
 
-/* Reset básico para ul */
+/* Estilo para la lista de navegación (ul) */
 nav ul {
-  list-style: none;
+  list-style: none; /* Elimina los puntos de la lista */
   margin: 0;
   padding: 0;
   display: flex;
   gap: 25px;
 }
 
-/* Estilos de los links */
+/* Estilo para los links en el menú */
 nav ul li a {
   font-weight: bold;
   color: rgb(47, 47, 47);
@@ -71,41 +70,52 @@ nav ul li a:hover {
   font-size: 20px;
 }
 
+/* Estilo para la sección main */
 main {
-  margin: 50px; /* Espacio para el header */
-  padding: 20px;
+  max-width: 100%;
+  margin: 50px; /* Espacio superior para el header */
+  padding: 20px; /* Espaciado interno */
 }
 
-footer {
-  background-color: #333;
-  color: white;
-  text-align: center;
-  padding: 20px;
-  position: relative;
-  bottom: 0;
-  width: 100%;
-}
-
-.ini {
-  padding: 20px;
-  margin: 20px auto;
-  max-width: 1600px;
-  align-items: center;
+/*Estilos para la sección de mi cv */
+.i_am {
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  margin: 0;
+  padding: 70px 100px 70px; /* Espacio superior e inferior */
+  background-color: white;
+  align-items: center; /* Alinea verticalmente al centro */
+  text-align: center; /* Centra el texto */
+  line-height: 1.5; /* Espaciado entre líneas */
 }
+
+.i_am img {
+  width: 300px; /* Ancho de la imagen */
+  height: auto; /* Mantiene la proporción de la imagen */
+  border-radius: 15px; /* Hace que la imagen sea circular */
+  margin-right: 50px; /* Espacio entre la imagen y el texto */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+  transition: transform 0.3s; /* Transición para el hover */
+}
+
+/* Estilos para los contenedores de las secciones */
+.ini,
 .puesto {
   padding: 20px;
   margin: 20px auto;
-  max-width: 1600px;
+  width: 100%;
   align-items: center;
   display: flex;
   flex-direction: column;
 }
+
+/* Estilo para el título en .puesto */
 .puesto h1 {
   font-size: 60px;
   font-weight: bold;
 }
+
+/* Estilo para el párrafo en .puesto */
 .puesto p {
   font-size: 20px;
 }
@@ -117,24 +127,35 @@ footer {
 }
 
 .social_icons ul {
-  display: flex; /* Alinea los elementos de la lista en fila */
+  display: flex;
   padding: 0;
   margin: 0;
-  list-style: none; /* Elimina los puntos de la lista */
+  list-style: none; /* Elimina los puntos de lista */
 }
 
 .social_icons ul li {
-  display: inline-block; /* Los íconos estarán en fila */
+  display: inline-block;
   margin: 0 10px; /* Espacio entre los íconos */
   padding: 0;
 }
 
 .social_icons a {
-  font-size: 30px; /* Tamaño de los íconos */
-  color: black; /* Color por defecto */
+  font-size: 30px;
+  color: black;
   transition: color 0.3s;
 }
 
 .social_icons a:hover {
-  color: #4caf50; /* Cambia color al pasar el mouse */
+  color: #4caf50; /* Cambio de color al pasar el mouse */
+}
+
+/* Estilos para el footer */
+footer {
+  background-color: #333;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
 }
