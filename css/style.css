@@ -1,28 +1,34 @@
-body {
-  background-color: aliceblue;
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 70px 20px 0 20px; /* espacio arriba para header fijo + laterales */
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: flex-start;
-  min-height: 100vh;
-}
-
-/* Estilos del header y nav */
 header {
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   width: 100%;
-  background-color: #4caf50;
+  background-color: white;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   z-index: 1000;
-  color: white;
+  color: black;
   padding: 15px 40px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo a la izquierda */
+header .logo {
+  font-size: 28px;
+  font-weight: bold;
+  cursor: default;
+}
+
+/* Contenedor del nav */
+nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end; /* menus a la derecha */
+  width: 100%;
 }
 
 /* Reset básico para ul */
@@ -34,53 +40,84 @@ nav ul {
   gap: 25px;
 }
 
-/* Contenedor del nav */
-nav {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0; /* ya el padding está en header */
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: white;
-}
-
-/* Logo */
-nav .logo {
-  font-size: 28px;
-  font-weight: bold;
-  cursor: default;
-}
-
-/* Menú de navegación */
+/* Estilos de los links */
 nav ul li a {
   font-weight: bold;
-  color: white;
+  color: rgb(47, 47, 47);
   text-decoration: none;
   font-size: 18px;
   transition: color 0.3s, font-size 0.3s;
-  
 }
 
 nav ul li a:hover {
-  color: #f1f1f1;
+  color: black;
   font-size: 20px;
 }
 
-/* Iconos sociales */
-.social-icons {
-  display: flex;
-  gap: 20px;
+main {
+  margin-top: 50px; /* Espacio para el header */
+  padding: 20px;
 }
 
-.social-icons a {
+footer {
+  background-color: #333;
   color: white;
-  font-size: 22px;
+  text-align: center;
+  padding: 20px;
+  position: relative;
+  bottom: 0;
+  width: 100%;
+}
+
+.ini {
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 1600px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+.puesto {
+  padding: 20px;
+  margin: 20px auto;
+  max-width: 1600px;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+.puesto h1 {
+  font-size: 60px;
+  font-weight: bold;
+}
+.puesto p {
+  font-size: 20px;
+}
+
+.social_icons {
+  display: flex;
+  justify-content: center; /* Centra los íconos horizontalmente */
+  gap: 20px; /* Espacio entre los íconos */
+}
+
+.social_icons ul {
+  display: flex; /* Alinea los elementos de la lista en fila */
+  padding: 0;
+  margin: 0;
+  list-style: none; /* Elimina los puntos de la lista */
+}
+
+.social_icons ul li {
+  display: inline-block; /* Los íconos estarán en fila */
+  margin: 0 10px; /* Espacio entre los íconos */
+  padding: 0;
+}
+
+.social_icons a {
+  font-size: 30px; /* Tamaño de los íconos */
+  color: black; /* Color por defecto */
   transition: color 0.3s;
 }
 
-.social-icons a:hover {
-  color: #f1f1f1;
-  font-size: 23px;
-  transition: color 0.3s, font-size 0.3s;
+.social_icons a:hover {
+  color: #4caf50; /* Cambia color al pasar el mouse */
 }
