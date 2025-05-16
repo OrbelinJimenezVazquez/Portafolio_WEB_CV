@@ -30,6 +30,11 @@ header .logo a {
   text-decoration: none;
   letter-spacing: 2px;
   color: black;
+  transition: color 0.3s, transform 0.3s;
+}
+header .logo a:hover {
+  color: #4caf50; /* Cambia el color al pasar el mouse */
+  transform: scale(1.1); /* Efecto de aumento */
 }
 
 /* Contenedor del nav */
