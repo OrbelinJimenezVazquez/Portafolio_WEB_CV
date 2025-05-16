@@ -2,17 +2,85 @@ body {
   background-color: aliceblue;
   font-family: Arial, sans-serif;
   margin: 0;
+  padding: 70px 20px 0 20px; /* espacio arriba para header fijo + laterales */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  min-height: 100vh;
+}
+
+/* Estilos del header y nav */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #4caf50;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+  color: white;
+  padding: 15px 40px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/* Reset básico para ul */
+nav ul {
+  list-style: none;
+  margin: 0;
   padding: 0;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  flex-direction: column;
+  gap: 25px;
 }
-header {
-  background-color: #4caf50;
+
+/* Contenedor del nav */
+nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0; /* ya el padding está en header */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   color: white;
-  padding: 10px 0;
-  text-align: center;
-  width: 100%;
+}
+
+/* Logo */
+nav .logo {
+  font-size: 28px;
+  font-weight: bold;
+  cursor: default;
+}
+
+/* Menú de navegación */
+nav ul li a {
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  transition: color 0.3s, font-size 0.3s;
+  
+}
+
+nav ul li a:hover {
+  color: #f1f1f1;
+  font-size: 20px;
+}
+
+/* Iconos sociales */
+.social-icons {
+  display: flex;
+  gap: 20px;
+}
+
+.social-icons a {
+  color: white;
+  font-size: 22px;
+  transition: color 0.3s;
+}
+
+.social-icons a:hover {
+  color: #f1f1f1;
+  font-size: 23px;
+  transition: color 0.3s, font-size 0.3s;
 }
