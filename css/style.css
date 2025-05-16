@@ -82,7 +82,7 @@ main {
   display: flex;
   justify-content: center;
   margin: 0;
-  padding: 70px 100px 70px; /* Espacio superior e inferior */
+  padding: 70px 200px 70px; /* Espacio superior e inferior */
   background-color: white;
   align-items: center; /* Alinea verticalmente al centro */
   text-align: center; /* Centra el texto */
@@ -95,7 +95,6 @@ main {
   border-radius: 15px; /* Hace que la imagen sea circular */
   margin-right: 50px; /* Espacio entre la imagen y el texto */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra sutil */
-  transition: transform 0.3s; /* Transición para el hover */
 }
 
 /* Estilos para los contenedores de las secciones */
