@@ -127,7 +127,7 @@
   _Ejemplo:_ `grid-template-columns: 100px 1fr 2fr;`
 
 - **grid-template-areas**: Define nombres de áreas para facilitar su uso.  
-  _Ejemplo:_
+   _Ejemplo:_
 
   `
 grid-template-areas:

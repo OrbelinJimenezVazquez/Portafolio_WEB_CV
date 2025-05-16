@@ -55,7 +55,7 @@ nav ul li a:hover {
 }
 
 main {
-  margin-top: 50px; /* Espacio para el header */
+  margin: 50px; /* Espacio para el header */
   padding: 20px;
 }
 
