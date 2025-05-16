@@ -9,3 +9,10 @@ body {
   height: 100vh;
   flex-direction: column;
 }
+header {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 0;
+  text-align: center;
+  width: 100%;
+}
