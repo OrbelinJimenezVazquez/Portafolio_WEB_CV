@@ -32,7 +32,8 @@ header {
 
 /* Estilo para el logo */
 header .logo a {
-  font-size: 45px;
+  padding-left: 60px;
+  font-size: 40px;
   font-weight: bold;
   text-decoration: none;
   letter-spacing: 2px;
@@ -86,6 +87,7 @@ main {
 
 /*Estilos para la sección de mi cv */
 .i_am {
+  font-family: "Montserrat", sans-serif;
   display: flex;
   justify-content: center;
   margin: 0;
@@ -102,6 +104,24 @@ main {
   border-radius: 15px; /* Hace que la imagen sea circular */
   margin-right: 50px; /* Espacio entre la imagen y el texto */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+}
+/* Estilo para la sección de "Hola, soy..." */
+.i_am_text .saludo p {
+  font-size: 50px;
+  font-weight: bold;
+  margin: 0;
+  color: #4caf50;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* Para la sección de tu nombre */
+.i_am_text .name p {
+  font-size: 30px;
+  margin: 0;
+  color: #4eb8f8;
 }
 
 /* Estilos para los contenedores de las secciones */
