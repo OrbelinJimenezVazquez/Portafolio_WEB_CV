@@ -58,6 +58,7 @@ header .logo a:hover {
 nav {
   margin: 0 auto; /* Centra el nav */
   padding: 0;
+  padding-right: 50px;
   display: flex;
   align-items: center;
   justify-content: flex-end; /* Alinea el menú a la derecha */
@@ -81,10 +82,13 @@ nav ul li a {
   font-size: 22px;
   transition: color 0.3s, font-size 0.3s;
 }
-
+/* Estilo para los links cuando están activos */
+nav ul li a.active {
+  color: #4caf50; /* Color para el enlace activo (resaltado) */
+  font-size: 24px; /* Puedes cambiar el tamaño si quieres que el enlace activo sea más grande */
+}
 nav ul li a:hover {
   color: #4eb8f8;
-  font-size: 21px;
 }
 
 /* Estilo para la sección main */
@@ -212,13 +216,13 @@ main {
   padding: 0;
 }
 
-.social_icons .btns {
-  font-size: 40px;
+.social_icons a {
+  font-size: 30px;
   color: black;
   transition: color 0.3s;
 }
 
-.social_icons .btns:hover {
+.social_icons a:hover {
   color: #4eb8f8; /* Cambio de color al pasar el mouse */
 }
 
@@ -239,6 +243,46 @@ main {
   background-color: #4e4ef8; /* Cambio de color al pasar el mouse */
   color: white;
   transform: scale(1.035); /* Hace que el botón se agrande un poco */
+}
+/*Estilos para la sección de experience */
+#experience {
+  margin: 0 88px;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centra el contenido */
+  box-sizing: border-box; /* Asegura que el padding no sobresalga */
+  padding: 0 24px; /* Espacio superior e inferior */
+  text-align: center; /* Centra el texto */
+  line-height: 1.5; /* Espaciado entre líneas */
+  background-color: white;
+  border-radius: 15px; /* Bordes redondeados */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+}
+#experience .text-cont {
+  margin: 0 64px;
+  width: 100%;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center; /* Centra el contenido */
+  display: flex;
+  padding: 0 24px; /* Espacio superior e inferior */
+  text-align: center; /* Centra el texto */
+  line-height: 1.5; /* Espaciado entre líneas */
+}
+#experience .text-cont h1 {
+  font-size: 46px;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+  width: max-content;
+  align-items: center;
+}
+#experience .line {
+  background-color: #4eb8f8;
+  margin: 0 568px 0;
+  border-radius: 15px;
+  width: 100px;
+  height: 5px;
 }
 /* Estilos para el footer */
 footer {
