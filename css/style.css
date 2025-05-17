@@ -39,20 +39,29 @@ header.with-shadow {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 /* Estilo para el logo */
-header .logo a {
+header .logo {
   padding-left: 60px;
-  font-size: 40px;
-  font-weight: bold;
   text-decoration: none;
-  letter-spacing: 2px;
-  color: black;
-  transition: color 0.3s, transform 0.3s; /* Transición para color y tamaño */
+}
+header .logo a {
+  text-decoration: none;
 }
 
-header .logo a:hover {
+header .logo p {
+  font-size: 40px;
+  margin: 0;
+  padding: 0;
+  letter-spacing: 2px;
+  color: black;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+}
+
+header .logo p:hover {
   color: #4eb8f8; /* Cambio de color al pasar el mouse */
   transform: scale(1.1); /* Hace que el logo se agrande un poco */
-  text-shadow: #4eb8f8 0 0 15px; /* Sombra de texto */
+  transition: all 0.2s ease-in-out; /* Transición suave para todos los cambios */
 }
 
 nav {
@@ -148,7 +157,7 @@ main {
 
 .welcome {
   justify-content: center;
-  margin: 20px;
+  margin: 20px 20px 74px 20px;
   padding: 0 100px;
   text-align: center;
 }
@@ -184,7 +193,7 @@ main {
 }
 
 /* Estilo para el título en .puesto */
-.contacto h1 {
+.contacto h2 {
   font-size: 60px;
   font-weight: bold;
   margin: 0;
@@ -247,25 +256,24 @@ main {
 /*Estilos para la sección de experience */
 #experience {
   margin: 0 88px;
+  padding: 24px 24px 45px; /* Espacio superior e inferior */
   display: flex;
   flex-direction: column;
   align-items: center; /* Centra el contenido */
   box-sizing: border-box; /* Asegura que el padding no sobresalga */
-  padding: 0 24px; /* Espacio superior e inferior */
-  text-align: center; /* Centra el texto */
-  line-height: 1.5; /* Espaciado entre líneas */
+  text-align: left; /* Centra el texto */
   background-color: white;
   border-radius: 15px; /* Bordes redondeados */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra sutil */
 }
 #experience .text-cont {
-  margin: 0 64px;
+  margin: 0 24px;
   width: 100%;
   align-items: center;
   flex-direction: column;
   justify-content: center; /* Centra el contenido */
   display: flex;
-  padding: 0 24px; /* Espacio superior e inferior */
+  padding: 24px; /* Espacio superior e inferior */
   text-align: center; /* Centra el texto */
   line-height: 1.5; /* Espaciado entre líneas */
 }
@@ -283,6 +291,50 @@ main {
   border-radius: 15px;
   width: 100px;
   height: 5px;
+}
+#experience .the_work {
+  margin: 30px 0;
+  padding: 0;
+  width: 100%;
+  display: flex;
+}
+
+#experience .work {
+  margin: 0 40px 0 40px;
+  padding: 24px;
+  width: 100%;
+  flex-direction: row;
+  box-shadow: #333 0 0 2px;
+  border-radius: 15px; /* Bordes redondeados */
+}
+#experience .work i {
+  margin: 5px;
+  padding: 0;
+}
+#experience .work h3 {
+  margin: 0;
+  padding: 0;
+}
+#experience .the_work .line_time {
+  margin: auto 40px;
+  padding: 0;
+  width: 5px;
+  height: 240px;
+  background-color: black;
+  border-radius: 15px;
+}
+#experience .work:hover {
+  transform: scale(1.01); /* Hace que el contenedor se agrande un poco */
+  transition: all 0.2s ease-in-out; /* Transición suave para todos los cambios */
+  box-shadow: #4eb8f8 0 0 5px; /* Sombra azul al pasar el mouse */
+}
+.mini_nav {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  justify-content: space-between;
+  text-decoration: none;
 }
 /* Estilos para el footer */
 footer {
