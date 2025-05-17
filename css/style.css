@@ -42,7 +42,7 @@ header .logo a {
 }
 
 header .logo a:hover {
-  color: #4caf50; /* Cambio de color al pasar el mouse */
+  color: #4eb8f8; /* Cambio de color al pasar el mouse */
   transform: scale(1.1); /* Hace que el logo se agrande un poco */
 }
 
@@ -105,23 +105,32 @@ main {
   margin-right: 50px; /* Espacio entre la imagen y el texto */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra sutil */
 }
-/* Estilo para la sección de "Hola, soy..." */
-.i_am_text .saludo p {
-  font-size: 50px;
-  font-weight: bold;
-  margin: 0;
-  color: #4caf50;
-  text-transform: uppercase;
-  letter-spacing: 3px;
-  text-align: center;
-  line-height: 1.5;
-}
-
-/* Para la sección de tu nombre */
-.i_am_text .name p {
+/* Estilo para el id "saludo" */
+.i_am #saludo {
   font-size: 30px;
   margin: 0;
+  letter-spacing: 2px;
+  padding-left: 15px;
+  text-align: left;
+}
+
+/* Estilo para el id "name" */
+.i_am #name {
+  font-size: 30px;
   color: #4eb8f8;
+  font-weight: bold;
+  margin: 0;
+  padding-left: 15px;
+  text-align: left;
+}
+
+/* Estilo para el id "description" */
+.i_am #description {
+  font-size: 18px;
+  color: #333;
+  line-height: 1.6;
+  margin-top: 25px;
+  text-align: left;
 }
 
 /* Estilos para los contenedores de las secciones */
