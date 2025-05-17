@@ -6,6 +6,7 @@ body {
   background-color: #f4f4f4;
   width: 100%; /* Asegura que el body ocupe el 100% del ancho */
 }
+
 /* Ajuste del contenedor main */
 main {
   max-width: 100%;
@@ -14,6 +15,7 @@ main {
   box-sizing: border-box; /* Asegura que el padding no sobresalga */
   overflow: hidden; /* Evita el scroll en el contenido principal */
 }
+
 /* Estilo para el header */
 header {
   position: sticky; /* Hace que el header se quede fijo al hacer scroll */
@@ -29,6 +31,7 @@ header {
   align-items: center; /* Alinea los elementos en el centro verticalmente */
   transition: box-shadow 0.25s ease-in-out; /* Transición suave para la sombra */
 }
+
 /* Sin box-shadow cuando está en la parte superior */
 header.no-shadow {
   box-shadow: none;
@@ -38,6 +41,7 @@ header.no-shadow {
 header.with-shadow {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
+
 /* Estilo para el logo */
 header .logo {
   padding-left: 60px;
@@ -91,11 +95,13 @@ nav ul li a {
   font-size: 22px;
   transition: color 0.3s, font-size 0.3s;
 }
+
 /* Estilo para los links cuando están activos */
 nav ul li a.active {
   color: #4caf50; /* Color para el enlace activo (resaltado) */
   font-size: 24px; /* Puedes cambiar el tamaño si quieres que el enlace activo sea más grande */
 }
+
 nav ul li a:hover {
   color: #4eb8f8;
 }
@@ -127,6 +133,7 @@ main {
   margin-right: 50px; /* Espacio entre la imagen y el texto */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra sutil */
 }
+
 /* Estilo para el id "saludo" */
 .i_am .saludo {
   font-size: 30px;
@@ -169,6 +176,7 @@ main {
   padding: 0;
   color: #4eb8f8;
 }
+
 .welcome p {
   font-size: 20px;
   margin: 0px;
@@ -176,11 +184,13 @@ main {
   line-height: 1.6;
   text-align: center;
 }
+
 .welcome .btn {
   display: flex;
   margin: 20px auto; /* Centra el botón */
   padding: 10px 20px; /* Espaciado interno */
 }
+
 /* Estilos para los contenedores de las secciones */
 .contacto {
   padding: 20px;
@@ -248,14 +258,20 @@ main {
   padding: 10px;
   margin: 0;
 }
+
 .btn:hover {
   background-color: #4e4ef8; /* Cambio de color al pasar el mouse */
   color: white;
   transform: scale(1.035); /* Hace que el botón se agrande un poco */
 }
+
 /*Estilos para la sección de experience */
-#experience {
-  margin: 0 88px;
+#experience,
+#skills,
+#proyectos,
+#edu,
+#lenguaje {
+  margin: 20px 88px;
   padding: 24px 24px 45px; /* Espacio superior e inferior */
   display: flex;
   flex-direction: column;
@@ -266,7 +282,8 @@ main {
   border-radius: 15px; /* Bordes redondeados */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra sutil */
 }
-#experience .text-cont {
+
+.text-cont {
   margin: 0 24px;
   width: 100%;
   align-items: center;
@@ -277,7 +294,8 @@ main {
   text-align: center; /* Centra el texto */
   line-height: 1.5; /* Espaciado entre líneas */
 }
-#experience .text-cont h1 {
+
+.text-cont h1 {
   font-size: 46px;
   font-weight: bold;
   margin: 0;
@@ -285,21 +303,25 @@ main {
   width: max-content;
   align-items: center;
 }
-#experience .line {
+
+.line {
   background-color: #4eb8f8;
   margin: 0 568px 0;
   border-radius: 15px;
   width: 100px;
   height: 5px;
 }
-#experience .the_work {
+
+.the_work,
+.the_school {
   margin: 30px 0;
   padding: 0;
   width: 100%;
   display: flex;
 }
 
-#experience .work {
+.work,
+.school {
   margin: 0 40px 0 40px;
   padding: 24px;
   width: 100%;
@@ -307,15 +329,20 @@ main {
   box-shadow: #333 0 0 2px;
   border-radius: 15px; /* Bordes redondeados */
 }
-#experience .work i {
+
+.work i {
   margin: 5px;
   padding: 0;
 }
-#experience .work h3 {
+
+.work h3,
+.school h3 {
   margin: 0;
   padding: 0;
 }
-#experience .the_work .line_time {
+
+.the_work .line_time,
+.the_school .line_time {
   margin: auto 40px;
   padding: 0;
   width: 5px;
@@ -323,19 +350,132 @@ main {
   background-color: black;
   border-radius: 15px;
 }
-#experience .work:hover {
+
+.work:hover,
+.school:hover {
   transform: scale(1.01); /* Hace que el contenedor se agrande un poco */
   transition: all 0.2s ease-in-out; /* Transición suave para todos los cambios */
   box-shadow: #4eb8f8 0 0 5px; /* Sombra azul al pasar el mouse */
 }
+
 .mini_nav {
   display: flex;
   justify-content: center;
-  margin: 0;
-  padding: 0;
+  margin: 5px 0;
+  padding: 5px 0;
   justify-content: space-between;
   text-decoration: none;
 }
+
+/* Estilo para seccion de skills*/
+.skill_3-3,
+.pro_3-3 {
+  margin: 10px;
+  padding: 0;
+  flex-direction: column * 3;
+  flex-wrap: wrap; /* Permite que los elementos se envuelvan */
+  justify-content: center;
+  display: flex;
+  gap: 20px; /* Espacio entre los elementos */
+}
+
+.skill,
+.proye {
+  margin: 0;
+  padding: 20px;
+  width: 25%;
+  box-shadow: #333 0 0 2px;
+  border-radius: 15px; /* Bordes redondeados */
+}
+
+.skill:hover,
+.proye:hover {
+  transform: scale(1.01); /* Hace que el contenedor se agrande un poco */
+  transition: all 0.2s ease-in-out; /* Transición suave para todos los cambios */
+  box-shadow: #4eb8f8 0 0 5px; /* Sombra azul al pasar el mouse */
+}
+
+.school h3,
+.school h2 {
+  font-weight: bold;
+  margin: 0;
+  padding-left: 10px;
+  align-self: center;
+}
+
+.school p {
+  margin: 0;
+  padding: 10px 10px 0 10px;
+  align-self: center;
+}
+
+.mini_nav h4,
+.date_school,
+.date_work {
+  margin: 0;
+  padding-right: 20px;
+  align-content: center;
+  font-size: 17px;
+}
+
+/*Estilo para la sección de idiomas */
+.idioma_2_2 {
+  padding: 30px;
+  margin: 0;
+  flex-direction: column * 2;
+  display: flex;
+  justify-content: center;
+  gap: 70px; /* Espacio entre los elementos */
+}
+
+.idioma {
+  margin: 20px;
+  padding: 15px 30px;
+  box-sizing: border-box; /* Asegura que el padding no sobresalga */
+  border-radius: 15px; /* Bordes redondeados */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+}
+
+.idioma:hover {
+  transform: scale(1.02); /* Hace que el contenedor se agrande un poco */
+  transition: all 0.2s ease-in-out; /* Transición suave para todos los cambios */
+}
+
+.idioma .percentage {
+  padding: 0;
+  margin: 5px;
+  flex-direction: column * 5;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Centra el contenido */
+  gap: 7px; /* Espacio entre los elementos */
+  text-align: center; /* Centra el texto */
+}
+
+.idioma .percentage .circle_b {
+  background-color: #4eb8f8;
+  border-radius: 50%;
+  width: 15px;
+  height: 15px;
+  display: flex;
+  border: 1px solid #333;
+}
+
+.idioma .percentage .circle_w {
+  border-color: #333;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  display: flex;
+  border: 1px solid #333;
+}
+
+.idioma p,
+.idioma h2 {
+  margin: 0;
+  padding: 0;
+}
+
 /* Estilos para el footer */
 footer {
   background-color: #333;
