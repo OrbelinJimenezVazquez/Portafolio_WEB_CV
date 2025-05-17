@@ -90,7 +90,7 @@ nav ul li a:hover {
 /* Estilo para la sección main */
 main {
   max-width: 100%;
-  margin: 50px; /* Espacio superior para el header */
+  margin-top: 50px; /* Espacio superior para el header */
   padding: 20px; /* Espaciado interno */
 }
 
@@ -142,11 +142,36 @@ main {
   text-align: left;
 }
 
+.welcome {
+  justify-content: center;
+  margin: 20px;
+  padding: 0 100px;
+  text-align: center;
+}
+
+.welcome h1 {
+  font-size: 60px;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+  color: #4eb8f8;
+}
+.welcome p {
+  font-size: 20px;
+  margin: 0px;
+  color: #333;
+  line-height: 1.6;
+  text-align: center;
+}
+.welcome .btn {
+  display: flex;
+  margin: 20px auto; /* Centra el botón */
+  padding: 10px 20px; /* Espaciado interno */
+}
 /* Estilos para los contenedores de las secciones */
-.ini,
-.puesto {
+.contacto {
   padding: 20px;
-  margin: 20px auto;
+  margin: 20px 0 20px;
   max-width: 100%;
   align-items: center;
   display: flex;
@@ -155,42 +180,45 @@ main {
 }
 
 /* Estilo para el título en .puesto */
-.puesto h1 {
+.contacto h1 {
   font-size: 60px;
   font-weight: bold;
+  margin: 0;
 }
 
 /* Estilo para el párrafo en .puesto */
-.puesto p {
+.contacto p {
   font-size: 20px;
+  margin: 0;
 }
 
-.puesto .social_icons {
+.social_icons {
+  padding: 20px;
   display: flex;
   justify-content: center; /* Centra los íconos horizontalmente */
   gap: 20px; /* Espacio entre los íconos */
 }
 
-.puesto .social_icons ul {
+.social_icons ul {
   display: flex;
   padding: 0;
   margin: 0;
   list-style: none; /* Elimina los puntos de lista */
 }
 
-.puesto .social_icons ul li {
+.social_icons ul li {
   display: inline-block;
   margin: 0 10px; /* Espacio entre los íconos */
   padding: 0;
 }
 
-.puesto .social_icons a {
-  font-size: 30px;
+.social_icons .btns {
+  font-size: 40px;
   color: black;
   transition: color 0.3s;
 }
 
-.puesto .social_icons a:hover {
+.social_icons .btns:hover {
   color: #4eb8f8; /* Cambio de color al pasar el mouse */
 }
 
