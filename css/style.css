@@ -481,7 +481,8 @@ footer {
   background-color: #333;
   color: white;
   text-align: center;
-  padding: 20px;
+  padding: 40px;
+  margin: 0;
   position: relative;
   bottom: 0;
   max-width: 100%;
