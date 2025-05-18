@@ -103,7 +103,7 @@ nav ul li a.active {
 }
 
 nav ul li a:hover {
-  color: #4eb8f8;
+  color: #7e7e7e;
 }
 
 /* Estilo para la sección main */
@@ -242,8 +242,10 @@ main {
   transition: color 0.3s;
 }
 
-.social_icons a:hover {
-  color: #4eb8f8; /* Cambio de color al pasar el mouse */
+.social_icons i:hover {
+  color: #4caf50; /* Cambio de color al pasar el mouse */
+  transform: scale(1.2); /* Hace que el ícono se agrande un poco */
+  transition: all 0.2s ease-in-out; /* Transición suave para todos los cambios */
 }
 
 .btn {
@@ -261,7 +263,7 @@ main {
 }
 
 .btn:hover {
-  background-color: #4e4ef8; /* Cambio de color al pasar el mouse */
+  background-color: #4caf50; /* Cambio de color al pasar el mouse */
   color: white;
   transform: scale(1.035); /* Hace que el botón se agrande un poco */
 }
