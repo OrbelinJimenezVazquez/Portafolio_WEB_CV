@@ -14,7 +14,6 @@ function updateActiveSection() {
   const sections = document.querySelectorAll("section[id]");
   const navLinks = document.querySelectorAll("nav ul li a");
   let scrollY = window.pageYOffset;
-
   let found = false;
 
   sections.forEach((current) => {
@@ -52,9 +51,12 @@ window.addEventListener("scroll", () => {
     ticking = true;
   }
 });
-
-// Estado inicial al cargar
 document.addEventListener("DOMContentLoaded", () => {
   checkScroll();
   updateActiveSection();
+
+  const btn = document.querySelector(".btn-container .btn");
+  if (btn) {
+    btn.addEventListener("mouseenter", explodeOnHover);
+  }
 });
