@@ -1,10 +1,42 @@
-/* Estilos generales para el body */
-body {
-  font-family: "Afacad Flux", sans-serif;
+/* Definir Variables Globales */
+:root {
+  --text-color: #272727; /* Color de texto (Negro) */
+  --text-decoration-color: #4eb8f8;
+  --text-light-color: #4a4949;
+  --background-color: white;
+  --light-color: #f4f4f4; /* Color de fondo claro */
+  --btn-color: #4caf50;
+  --shadow-color: #6b6b6b;
+  --font-family: "Afacad Flux", sans-serif; /* Fuente personalizada */
+  --transition-speed: 0.3s; /* Velocidad de las transiciones */
+}
+
+/* Estilos Generales */
+* {
   margin: 0; /* Elimina el margen por defecto */
   padding: 0; /* Elimina el padding por defecto */
-  background-color: #f4f4f4;
-  width: 100%; /* Asegura que el body ocupe el 100% del ancho */
+  box-sizing: border-box; /* Asegura que el tamaño de los elementos se calcule correctamente */
+}
+
+/* Configuración del HTML */
+html {
+  scroll-behavior: smooth; /* Desplazamiento suave */
+  font-size: 100%; /* Asegura un tamaño de fuente base */
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilo para el body */
+body {
+  font-family: var(--font-family); /* Usando la variable de fuente */
+  background-color: var(--light-color); /* Color de fondo usando la variable */
+  color: var(--text-color); /* Color de texto usando la variable (Negro) */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  font-size: 16px;
 }
 
 /* Ajuste del contenedor main */
@@ -22,9 +54,9 @@ header {
   top: 0; /* Se pega al top cuando haga scroll */
   left: 0; /* Alineación al lado izquierdo */
   max-width: 100%; /* Asegura que ocupe todo el ancho */
-  background-color: white;
+  background-color: transparent;
   z-index: 1000; /* Asegura que el header quede encima del contenido */
-  color: black;
+  color: var(--text-color);
   padding: 15px 40px; /* Espaciado interno */
   display: flex; /* Usamos flexbox para distribuir los elementos */
   justify-content: space-between; /* Espacio entre logo y menú */
@@ -39,7 +71,8 @@ header.no-shadow {
 
 /* Con box-shadow visible cuando se hace scroll */
 header.with-shadow {
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  background-color: var(--background-color);
+  box-shadow: 0 1px 5px var(--shadow-color); /* Sombra sutil */
 }
 
 /* Estilo para el logo */
@@ -53,24 +86,20 @@ header .logo a {
 
 header .logo p {
   font-size: 40px;
-  margin: 0;
-  padding: 0;
   letter-spacing: 2px;
-  color: black;
+  color: var(--text-color);
   font-weight: bold;
   text-align: center;
   text-decoration: none;
 }
 
 header .logo p:hover {
-  color: #4eb8f8; /* Cambio de color al pasar el mouse */
+  color: var(--text-decoration-color); /* Cambio de color al pasar el mouse */
   transform: scale(1.1); /* Hace que el logo se agrande un poco */
   transition: all 0.2s ease-in-out; /* Transición suave para todos los cambios */
 }
 
 nav {
-  margin: 0 auto; /* Centra el nav */
-  padding: 0;
   padding-right: 50px;
   display: flex;
   align-items: center;
@@ -82,7 +111,6 @@ nav {
 nav ul {
   list-style: none; /* Elimina los puntos de la lista */
   margin: 10px;
-  padding: 0;
   display: flex;
   gap: 25px;
 }
@@ -90,7 +118,7 @@ nav ul {
 /* Estilo para los links en el menú */
 nav ul li a {
   font-weight: bold;
-  color: rgb(47, 47, 47);
+  color: var(--text-color);
   text-decoration: none;
   font-size: 22px;
   transition: color 0.3s, font-size 0.3s;
@@ -98,12 +126,12 @@ nav ul li a {
 
 /* Estilo para los links cuando están activos */
 nav ul li a.active {
-  color: #4caf50; /* Color para el enlace activo (resaltado) */
+  color: var(--btn-color); /* Color para el enlace activo (resaltado) */
   font-size: 24px; /* Puedes cambiar el tamaño si quieres que el enlace activo sea más grande */
 }
 
 nav ul li a:hover {
-  color: #7e7e7e;
+  color: var(--btn-color);
 }
 
 /* Estilo para la sección main */
@@ -118,9 +146,8 @@ main {
   font-family: "Montserrat", sans-serif;
   display: flex;
   justify-content: center;
-  margin: 0;
   padding: 70px 200px 70px; /* Espacio superior e inferior */
-  background-color: white;
+  background-color: var(--background-color);
   align-items: center; /* Alinea verticalmente al centro */
   text-align: center; /* Centra el texto */
   line-height: 1.5; /* Espaciado entre líneas */
@@ -131,14 +158,13 @@ main {
   height: auto; /* Mantiene la proporción de la imagen */
   border-radius: 15px; /* Hace que la imagen sea circular */
   margin-right: 50px; /* Espacio entre la imagen y el texto */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+  box-shadow: 0 2px 5px var(--shadow-color); /* Sombra sutil */
   z-index: 10;
 }
 
 /* Estilo para el id "saludo" */
 .i_am .saludo {
   font-size: 30px;
-  margin: 0;
   letter-spacing: 2px;
   padding-left: 15px;
   text-align: left;
@@ -147,9 +173,8 @@ main {
 /* Estilo para el id "name" */
 .i_am .name {
   font-size: 30px;
-  color: #4eb8f8;
+  color: var(--text-decoration-color);
   font-weight: bold;
-  margin: 0;
   padding-left: 15px;
   text-align: left;
 }
@@ -157,7 +182,7 @@ main {
 /* Estilo para el id "description" */
 .i_am .description {
   font-size: 18px;
-  color: #333;
+  color: var(--text-light-color);
   line-height: 1.6;
   margin-top: 25px;
   text-align: left;
@@ -173,26 +198,20 @@ main {
 .welcome h1 {
   font-size: 60px;
   font-weight: bold;
-  margin: 0;
-  padding: 0;
-  color: #4eb8f8;
+  color: var(--text-decoration-color);
 }
 
 .welcome p {
   font-size: 20px;
-  margin: 0px;
-  color: #333;
+  color: var(--text-light-color);
   line-height: 1.6;
   text-align: center;
 }
 
 .welcome .btn {
-  display: flex;
-  margin: 20px auto; /* Centra el botón */
+  margin: 20px; /* Centra el botón */
   padding: 10px 20px; /* Espaciado interno */
-  width: 7%;
 }
-
 /* Estilos para los contenedores de las secciones */
 #contacto {
   padding: 50px;
@@ -208,13 +227,11 @@ main {
 #contacto h1 {
   font-size: 60px;
   font-weight: bold;
-  margin: 0;
 }
 
 /* Estilo para el párrafo en .puesto */
 #contacto p {
   font-size: 20px;
-  margin: 0;
   padding-top: 25px;
 }
 
@@ -227,52 +244,56 @@ main {
 
 .social_icons ul {
   display: flex;
-  padding: 0;
-  margin: 0;
   list-style: none; /* Elimina los puntos de lista */
 }
 
 .social_icons ul li {
   display: inline-block;
   margin: 0 10px; /* Espacio entre los íconos */
-  padding: 0;
+  z-index: 5;
 }
 
 .social_icons a {
   font-size: 30px;
-  color: black;
+  color: var(--text-color);
   transition: color 0.3s;
 }
 
 .social_icons i:hover {
-  color: #4caf50; /* Cambio de color al pasar el mouse */
+  color: var(--btn-color); /* Cambio de color al pasar el mouse */
   transform: scale(1.2); /* Hace que el ícono se agrande un poco */
   transition: all 0.2s ease-in-out; /* Transición suave para todos los cambios */
 }
 
 .btn-container {
   position: relative;
+  z-index: 5;
+}
+
+.btn-container .btn {
+  padding: 12px 24px;
 }
 
 .btn {
   display: inline-block;
-  background: #00c4ff;
-  color: white;
-  padding: 12px 24px;
+  background: var(--text-decoration-color);
+  color: var(--background-color);
   border-radius: 50px;
   text-decoration: none;
-  font-weight: 500;
-  font-size: 16px;
-  position: relative;
   overflow: hidden;
-  z-index: 1;
+  z-index: 5;
   transition: background 0.3s ease;
+  font-weight: bold;
 }
 
 .btn:hover {
-  background: #009ecc;
-  color: white;
-  transform: scale(1.035); /* Hace que el botón se agrande un poco */
+  background: var(--btn-color);
+  color: var(--background-color);
+  transform: scale(1.05);
+}
+
+.btn:active {
+  transform: scale(0.95);
 }
 
 /*Estilos para la sección de experience */
@@ -288,9 +309,16 @@ main {
   align-items: center; /* Centra el contenido */
   box-sizing: border-box; /* Asegura que el padding no sobresalga */
   text-align: left; /* Centra el texto */
-  background-color: white;
+  background-color: var(--background-color);
   border-radius: 15px; /* Bordes redondeados */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+  box-shadow: 2px 2px 5px var(--shadow-color); /* Sombra sutil */
+}
+
+.work li,
+.skill p,
+.school p,
+.idioma p {
+  color: var(--text-light-color);
 }
 
 .text-cont {
@@ -308,14 +336,12 @@ main {
 .text-cont h1 {
   font-size: 46px;
   font-weight: bold;
-  margin: 0;
-  padding: 0;
   width: max-content;
   align-items: center;
 }
 
 .line {
-  background-color: #4eb8f8;
+  background-color: var(--text-decoration-color);
   margin: 0 568px 0;
   border-radius: 15px;
   width: 100px;
@@ -325,7 +351,6 @@ main {
 .the_work,
 .the_school {
   margin: 30px 0;
-  padding: 0;
   width: 100%;
   display: flex;
 }
@@ -336,25 +361,21 @@ main {
   padding: 24px;
   width: 100%;
   flex-direction: row;
-  box-shadow: #333 0 0 2px;
+  box-shadow: var(--shadow-color) 0 0 2px;
   border-radius: 15px; /* Bordes redondeados */
 }
 
 .work i {
   margin: 5px;
-  padding: 0;
 }
 
-.work h3,
-.school h3 {
-  margin: 0;
-  padding: 0;
+.work ul {
+  padding-left: 24px;
 }
 
 .the_work .line_time,
 .the_school .line_time {
   margin: auto 40px;
-  padding: 0;
   width: 5px;
   height: 240px;
   background-color: black;
@@ -365,23 +386,13 @@ main {
 .school:hover {
   transform: scale(1.01); /* Hace que el contenedor se agrande un poco */
   transition: all 0.2s ease-in-out; /* Transición suave para todos los cambios */
-  box-shadow: #4eb8f8 0 0 5px; /* Sombra azul al pasar el mouse */
-}
-
-.mini_nav {
-  display: flex;
-  justify-content: center;
-  margin: 5px 0;
-  padding: 5px 0;
-  justify-content: space-between;
-  text-decoration: none;
+  box-shadow: var(--shadow-color) 0 0 5px; /* Sombra azul al pasar el mouse */
 }
 
 /* Estilo para seccion de skills*/
 .skill_3-3,
 .pro_3-3 {
   margin: 10px;
-  padding: 0;
   flex-direction: column * 3;
   flex-wrap: wrap; /* Permite que los elementos se envuelvan */
   justify-content: center;
@@ -391,10 +402,9 @@ main {
 
 .skill,
 .proye {
-  margin: 0;
   padding: 20px;
   width: 25%;
-  box-shadow: #333 0 0 2px;
+  box-shadow: var(--shadow-color) 0 0 2px;
   border-radius: 15px; /* Bordes redondeados */
 }
 
@@ -402,19 +412,17 @@ main {
 .proye:hover {
   transform: scale(1.01); /* Hace que el contenedor se agrande un poco */
   transition: all 0.2s ease-in-out; /* Transición suave para todos los cambios */
-  box-shadow: #4eb8f8 0 0 5px; /* Sombra azul al pasar el mouse */
+  box-shadow: var(--shadow-color) 0 0 5px; /* Sombra azul al pasar el mouse */
 }
 
 .school h3,
 .school h2 {
   font-weight: bold;
-  margin: 0;
   padding-left: 10px;
   align-self: center;
 }
 
 .school p {
-  margin: 0;
   padding: 10px 10px 0 10px;
   align-self: center;
 }
@@ -422,7 +430,6 @@ main {
 .mini_nav h4,
 .date_school,
 .date_work {
-  margin: 0;
   padding-right: 20px;
   align-content: center;
   font-size: 17px;
@@ -431,7 +438,6 @@ main {
 /*Estilo para la sección de idiomas */
 .idioma_2_2 {
   padding: 30px;
-  margin: 0;
   flex-direction: column * 2;
   display: flex;
   justify-content: center;
@@ -443,7 +449,7 @@ main {
   padding: 15px 30px;
   box-sizing: border-box; /* Asegura que el padding no sobresalga */
   border-radius: 15px; /* Bordes redondeados */
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+  box-shadow: 0 2px 5px var(--shadow-color); /* Sombra sutil */
 }
 
 .idioma:hover {
@@ -452,7 +458,6 @@ main {
 }
 
 .idioma .percentage {
-  padding: 0;
   margin: 5px;
   flex-direction: column * 5;
   display: flex;
@@ -463,36 +468,38 @@ main {
 }
 
 .idioma .percentage .circle_b {
-  background-color: #4eb8f8;
+  background-color: var(--text-decoration-color);
   border-radius: 50%;
   width: 15px;
   height: 15px;
   display: flex;
-  border: 1px solid #333;
+  border: 1px solid var(--text-light-color);
 }
 
 .idioma .percentage .circle_w {
-  border-color: #333;
+  border-color: var(--text-light-color);
   width: 15px;
   height: 15px;
   border-radius: 50%;
   display: flex;
-  border: 1px solid #333;
+  border: 1px solid var(--text-light-color);
 }
 
-.idioma p,
-.idioma h2 {
-  margin: 0;
-  padding: 0;
+.mini_nav {
+  display: flex;
+  justify-content: center;
+  margin: 5px 0;
+  padding: 5px 0;
+  justify-content: space-between;
+  text-decoration: none;
 }
 
 /* Estilos para el footer */
 footer {
   background-color: #333;
-  color: white;
+  color: var(--background-color);
   text-align: center;
   padding: 60px;
-  margin: 0;
   position: relative;
   bottom: 0;
   max-width: 100%;
