@@ -4,7 +4,7 @@
   --text-decoration-color: #4eb8f8;
   --text-light-color: #4a4949;
   --background-color: white;
-  --light-color: #f4f4f4; /* Color de fondo claro */
+  --light-color: #eeeeee; /* Color de fondo claro */
   --btn-color: #4caf50;
   --shadow-color: #6b6b6b;
   --font-family: "Afacad Flux", sans-serif; /* Fuente personalizada */
@@ -29,7 +29,9 @@ html {
 /* Estilo para el body */
 body {
   font-family: var(--font-family); /* Usando la variable de fuente */
-  background-color: var(--light-color); /* Color de fondo usando la variable */
+  background-color: var(
+    --background-color
+  ); /* Color de fondo usando la variable */
   color: var(--text-color); /* Color de texto usando la variable (Negro) */
   margin: 0;
   padding: 0;
@@ -46,6 +48,7 @@ main {
   padding: 20px;
   box-sizing: border-box; /* Asegura que el padding no sobresalga */
   overflow: hidden; /* Evita el scroll en el contenido principal */
+  background-color: var(--light-color);
 }
 
 /* Estilo para el header */
@@ -146,7 +149,7 @@ main {
   font-family: "Montserrat", sans-serif;
   display: flex;
   justify-content: center;
-  padding: 70px 200px 70px; /* Espacio superior e inferior */
+  padding: 0px 200px 90px; /* Espacio superior e inferior */
   background-color: var(--background-color);
   align-items: center; /* Alinea verticalmente al centro */
   text-align: center; /* Centra el texto */
@@ -190,7 +193,7 @@ main {
 
 .welcome {
   justify-content: center;
-  margin: 20px 20px 74px 20px;
+  margin: 80px 20px 75px 20px;
   padding: 0 100px;
   text-align: center;
 }
