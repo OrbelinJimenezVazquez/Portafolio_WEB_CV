@@ -110,12 +110,33 @@ nav {
   width: 100%;
 }
 
+/* Estilo para el ícono de menú hamburguesa */
+.menu-toggle {
+  display: none; /* Ocultar por defecto en pantallas grandes */
+  font-size: 30px;
+  cursor: pointer;
+}
+
 /* Estilo para la lista de navegación (ul) */
 nav ul {
   list-style: none; /* Elimina los puntos de la lista */
   margin: 10px;
   display: flex;
   gap: 25px;
+}
+
+/* Estilo cuando el menú está en modo desplegado */
+nav ul.active {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  position: absolute;
+  top: 70px; /* Ajusta la posición según el header */
+  left: 0;
+  width: 100%;
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
 /* Estilo para los links en el menú */
@@ -506,4 +527,192 @@ footer {
   position: relative;
   bottom: 0;
   max-width: 100%;
+}
+
+/* Estilo responsivo */
+@media (max-width: 900px) {
+  .i_am {
+    flex-direction: column; /* Cambia a columna en pantallas pequeñas */
+    padding: 0px 20px; /* Espacio superior e inferior */
+  }
+
+  header .logo p {
+    font-size: 25px;
+    font-weight: bold;
+  }
+
+  header .logo {
+    padding: 0;
+    font-size: 17px;
+  }
+  .i_am img {
+    width: 25%; /* Imagen ocupa el 100% del ancho */
+    height: auto; /* Mantiene la proporción de la imagen */
+    margin-right: 0; /* Elimina el margen derecho */
+  }
+
+  .welcome h1 {
+    font-size: 40px; /* Tamaño de fuente más pequeño */
+  }
+
+  .welcome p {
+    font-size: 18px; /* Tamaño de fuente más pequeño */
+  }
+  nav {
+    padding: 0;
+  }
+
+  nav ul {
+    flex-direction: row; /* Cambia a columna en pantallas pequeñas */
+    gap: 10px; /* Espacio entre los elementos */
+    margin: 0;
+    padding: 15px;
+  }
+  nav ul li a {
+    font-size: 16px; /* Tamaño de fuente más pequeño */
+  }
+
+  #experience,
+  #skills,
+  #proyectos,
+  #edu,
+  #lenguaje {
+    margin: 20px;
+    padding: 0px 0px 45px; /* Espacio superior e inferior */
+  }
+
+  .skill_3-3 {
+    flex-direction: column * 2; /* Cambia a columna en pantallas pequeñas */
+    padding: 0px 0px 45px; /* Espacio superior e inferior */
+    margin: 0px;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan */
+    justify-content: center;
+    display: flex;
+    gap: 20px; /* Espacio entre los elementos */
+  }
+  .skill_3-3 .skill h2 {
+    font-size: 20px; /* Tamaño de fuente más pequeño */
+    line-height: 1.1;
+    width: 100%;
+    height: 50px;
+    align-content: center;
+  }
+
+  .skill_3-3 .skill p {
+    font-size: 16px; /* Tamaño de fuente más pequeño */
+    line-height: 1.5;
+    padding-top: 10px;
+  }
+  .idioma_2_2 {
+    gap: 0;
+  }
+}
+@media (max-width: 700px) {
+  main {
+    padding: 0;
+    margin: 0;
+  }
+  nav {
+    padding: 0;
+  }
+
+  nav ul {
+    flex-direction: row; /* Cambia a columna en pantallas pequeñas */
+    gap: 5px; /* Espacio entre los elementos */
+    margin: 0;
+    padding: 15px;
+  }
+  nav ul li a {
+    font-size: 16px; /* Tamaño de fuente más pequeño */
+  }
+  header.with-shadow {
+    padding: 15px 20px; /* Espacio interno */
+  }
+}
+
+/* Estilo para pantallas pequeñas (700px) */
+@media (max-width: 700px) {
+  main {
+    padding: 0;
+    margin: 0;
+  }
+
+  nav {
+    padding: 0;
+  }
+
+  nav ul {
+    flex-direction: column; /* Menú en columna para pantallas pequeñas */
+    gap: 5px;
+    padding: 15px;
+  }
+
+  nav ul li a {
+    font-size: 16px;
+  }
+
+  .menu-toggle {
+    display: block; /* Muestra el icono de hamburguesa en pantallas pequeñas */
+  }
+
+  nav ul {
+    display: none; /* Oculta el menú por defecto */
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* Estilo para los enlaces del menú */
+  nav ul li a {
+    font-size: 18px; /* Fuente más pequeña para pantallas pequeñas */
+    padding: 10px 0;
+    color: var(--text-color);
+  }
+
+  header.with-shadow {
+    padding: 15px 20px;
+  }
+
+  /* Mejorar el contenedor de la imagen en la sección 'i_am' */
+  .i_am img {
+    width: 60%; /* Ajuste de tamaño para pantallas más pequeñas */
+  }
+
+  /* Ajuste de botones */
+  .welcome .btn {
+    width: 100%; /* Botón ocupa el 100% en pantallas más pequeñas */
+    padding: 12px 0;
+    font-size: 18px;
+  }
+
+  /* Ajustes generales */
+  .social_icons ul {
+    flex-direction: column; /* Iconos sociales en columna */
+    gap: 15px;
+  }
+
+  .btn-container {
+    width: 100%;
+    margin-top: 15px;
+  }
+}
+
+@media screen and (max-width: 430px) {
+  .i_am {
+    flex-direction: column; /* Cambia a columna en pantallas pequeñas */
+    padding: 0px 20px; /* Espacio superior e inferior */
+  }
+
+  .i_am img {
+    width: 100%; /* Imagen ocupa el 100% del ancho */
+    height: auto; /* Mantiene la proporción de la imagen */
+    margin-right: 0; /* Elimina el margen derecho */
+  }
+
+  .welcome h1 {
+    font-size: 30px; /* Tamaño de fuente más pequeño */
+  }
+
+  .welcome p {
+    font-size: 16px; /* Tamaño de fuente más pequeño */
+  }
 }

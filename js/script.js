@@ -60,3 +60,19 @@ document.addEventListener("DOMContentLoaded", () => {
     btn.addEventListener("mouseenter", explodeOnHover);
   }
 });
+
+const menuToggle = document.getElementById("menu-toggle");
+const navList = document.getElementById("nav-list");
+const menuIcon = document.getElementById("menu-icon");
+const closeIcon = document.getElementById("close-icon");
+
+// Agregar evento de clic para mostrar u ocultar el menú
+menuToggle.addEventListener("click", () => {
+  // Alterna la clase active para mostrar el menú
+  navList.classList.toggle("active");
+
+  // Alterna la visibilidad de los íconos
+  menuIcon.style.display = menuIcon.style.display === "none" ? "block" : "none";
+  closeIcon.style.display =
+    closeIcon.style.display === "none" ? "block" : "none";
+});
