@@ -696,7 +696,7 @@ footer {
   }
 }
 
-@media screen and (max-width: 430px) {
+@media screen and (max-width: 431px) {
   .i_am {
     flex-direction: column; /* Cambia a columna en pantallas pequeñas */
     padding: 0px 20px; /* Espacio superior e inferior */
@@ -708,11 +708,133 @@ footer {
     margin-right: 0; /* Elimina el margen derecho */
   }
 
+  .i_am_text .saludo {
+    margin-top: 25px;
+  }
+
+  .i_am_text .saludo,
+  .i_am_text .name {
+    font-size: 30px; /* Tamaño de fuente más pequeño */
+    line-height: 1.2;
+    padding-left: 0px; /* Espacio interno */
+    text-align: center; /* Centra el texto */
+  }
+  .i_am_text .description {
+    font-size: 18px; /* Tamaño de fuente más pequeño */
+    line-height: 1.6;
+    padding: 0 20px; /* Espacio interno */
+    text-align: center; /* Centra el texto */
+    margin-top: 20px; /* Espacio superior */
+  }
   .welcome h1 {
     font-size: 30px; /* Tamaño de fuente más pequeño */
   }
 
   .welcome p {
     font-size: 16px; /* Tamaño de fuente más pequeño */
+    justify-content: center;
+  }
+
+  .social_icons ul {
+    flex-direction: row; /* Iconos sociales en columna */
+    gap: 15px;
+  }
+  .welcome h1 {
+    font-size: 30px; /* Tamaño de fuente más pequeño */
+    padding-bottom: 20px;
+  }
+
+  .welcome p {
+    font-size: 16px; /* Tamaño de fuente más pequeño */
+  }
+
+  .welcome .btn {
+    width: 100%; /* Botón ocupa el 100% en pantallas más pequeñas */
+    padding: 12px 0;
+    font-size: 18px;
+    align-items: center;
+    margin: 20px 0 0 0;
+  }
+
+  .line_time {
+    display: none;
+  }
+
+  .work,
+  .school {
+    margin: 0 10px 0 10px;
+    padding: 24px;
+    width: 100%;
+    flex-direction: column; /* Cambia a columna en pantallas pequeñas */
+    box-shadow: var(--shadow-color) 0 0 2px;
+    border-radius: 15px; /* Bordes redondeados */
+  }
+  .work h2,
+  .school h2 {
+    font-size: 18px; /* Tamaño de fuente más pequeño */
+    line-height: 1.1;
+    width: 100%;
+    height: 60px;
+    align-content: center;
+    margin-bottom: 10px;
+  }
+  .work h4,
+  .school h4 {
+    font-size: 13px; /* Tamaño de fuente más pequeño */
+    line-height: 1.1;
+    width: 100%;
+    height: 50px;
+    text-align: right; /* Alinea el texto a la derecha */
+    padding: 0; /* Espacio interno */
+  }
+  .date_school,
+  .date_work {
+    font-size: 15px; /* Tamaño de fuente más pequeño */
+    line-height: 1.1;
+    width: 100%;
+    height: 50px;
+    padding: 0; /* Espacio interno */
+  }
+  #edu,
+  #experience,
+  #lenguaje,
+  #skills {
+    padding: 24px; /* Espacio superior e inferior */
+  }
+  .text-cont {
+    padding: 20px 0; /* Espacio superior e inferior */
+    margin: 0;
+    text-align: center; /* Centra el texto */
+    line-height: 1.5; /* Espaciado entre líneas */
+  }
+  .idioma_2_2 {
+    gap: 15px;
+    padding: 0;
+  }
+
+  .idioma {
+    margin: 0;
+    padding: 15px;
+    gap: 5px;
+  }
+
+  .skill_3-3 {
+    flex-direction: column;
+    width: -100%;
+    padding: 0px 0px 25px; /* Espacio superior e inferior */
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan */
+    justify-content: center;
+  }
+  .skill_3-3 .skill h2 {
+    font-size: 20px; /* Tamaño de fuente más pequeño */
+    line-height: 1.1;
+    width: 150px;
+    height: 50px;
+    align-content: center;
+  }
+
+  .skill {
+    padding: 10px;
+    width: 100%;
   }
 }
