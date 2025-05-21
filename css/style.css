@@ -527,6 +527,10 @@ footer {
   position: relative;
   bottom: 0;
   max-width: 100%;
+  min-height: 35dvh;
+  flex-wrap: grow;
+  display: flex;
+  flex-direction: column;
 }
 
 /* Estilo responsivo */
@@ -696,14 +700,14 @@ footer {
   }
 }
 
-@media screen and (max-width: 431px) {
+@media screen and (max-width: 440px) {
   .i_am {
     flex-direction: column; /* Cambia a columna en pantallas pequeñas */
     padding: 0px 20px; /* Espacio superior e inferior */
   }
 
   .i_am img {
-    width: 100%; /* Imagen ocupa el 100% del ancho */
+    width: 50%; /* Imagen ocupa el 100% del ancho */
     height: auto; /* Mantiene la proporción de la imagen */
     margin-right: 0; /* Elimina el margen derecho */
   }
@@ -720,7 +724,7 @@ footer {
     text-align: center; /* Centra el texto */
   }
   .i_am_text .description {
-    font-size: 18px; /* Tamaño de fuente más pequeño */
+    font-size: 13px; /* Tamaño de fuente más pequeño */
     line-height: 1.6;
     padding: 0 20px; /* Espacio interno */
     text-align: center; /* Centra el texto */
@@ -809,7 +813,7 @@ footer {
   }
   .idioma_2_2 {
     gap: 15px;
-    padding: 0;
+    padding: 10px;
   }
 
   .idioma {
@@ -821,7 +825,7 @@ footer {
   .skill_3-3 {
     flex-direction: column;
     width: -100%;
-    padding: 0px 0px 25px; /* Espacio superior e inferior */
+    padding: 20px 0px 25px; /* Espacio superior e inferior */
     flex-wrap: wrap; /* Permite que los elementos se envuelvan */
     justify-content: center;
   }
@@ -836,5 +840,68 @@ footer {
   .skill {
     padding: 10px;
     width: 100%;
+  }
+}
+@media screen and (max-width: 370px) {
+  .i_am_text .description {
+    font-size: 13px;
+  }
+  .welcome {
+    padding: 0;
+  }
+  .work h2,
+  .school h2 {
+    font-size: 16px; /* Tamaño de fuente más pequeño */
+    line-height: 1.1;
+    width: 100%;
+    height: 50px;
+    align-content: center;
+    margin-bottom: 28px;
+  }
+  .work h4,
+  .school h4 {
+    font-size: 12px; /* Tamaño de fuente más pequeño */
+    line-height: 1.1;
+    width: 100%;
+    height: 50px;
+    text-align: right; /* Alinea el texto a la derecha */
+    padding: 0; /* Espacio interno */
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .work h2,
+  .school h2 {
+    font-size: 14px; /* Tamaño de fuente más pequeño */
+    line-height: 1.1;
+    width: 100%;
+    height: 50px;
+    align-content: center;
+    margin-bottom: 28px;
+  }
+  .work h4,
+  .school h4 {
+    font-size: 10px; /* Tamaño de fuente más pequeño */
+    line-height: 1.1;
+    width: 100%;
+    height: 50px;
+    text-align: right; /* Alinea el texto a la derecha */
+    padding: 0; /* Espacio interno */
+  }
+  .welcome {
+    padding: 10px;
+  }
+  .text-cont h1 {
+    font-size: 30px;
+  }
+  .text-cont {
+    padding: 0;
+  }
+  .idioma_2_2 {
+    padding-top: 15px;
+    flex-direction: column;
+  }
+  .idioma {
+    text-align: center;
   }
 }
