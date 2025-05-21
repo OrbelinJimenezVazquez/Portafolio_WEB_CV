@@ -112,8 +112,8 @@ nav {
 }
 
 /* Estilo para el ícono de menú hamburguesa */
-.menu-toggle i {
-  display: block; /* Ocultar por defecto en pantallas grandes */
+.menu-toggle {
+  display: none; /* Ocultar por defecto en pantallas grandes */
   font-size: 30px;
   cursor: pointer;
   z-index: 1000;
