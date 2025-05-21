@@ -51,6 +51,12 @@ window.addEventListener("scroll", () => {
     ticking = true;
   }
 });
+function explodeOnHover() {
+  // Puedes agregar el efecto que desees aquí. Por ejemplo, un pequeño cambio de escala:
+  this.style.transform = "scale(1.1)";
+  this.style.transition = "transform 0.3s ease-in-out";
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   checkScroll();
   updateActiveSection();
