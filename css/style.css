@@ -56,7 +56,8 @@ header {
   position: sticky; /* Hace que el header se quede fijo al hacer scroll */
   top: 0; /* Se pega al top cuando haga scroll */
   left: 0; /* Alineación al lado izquierdo */
-  max-width: 100%; /* Asegura que ocupe todo el ancho */
+  right: 0;
+  width: 100%; /* Asegura que ocupe todo el ancho */
   background-color: transparent;
   z-index: 1000; /* Asegura que el header quede encima del contenido */
   color: var(--text-color);
@@ -82,6 +83,8 @@ header.with-shadow {
 header .logo {
   padding-left: 60px;
   text-decoration: none;
+  position: absolute; /* Fija el logo en su lugar */
+  left: 0;
 }
 header .logo a {
   text-decoration: none;
@@ -103,24 +106,23 @@ header .logo p:hover {
 }
 
 nav {
-  padding-right: 50px;
   display: flex;
-  align-items: center;
   justify-content: flex-end; /* Alinea el menú a la derecha */
   width: 100%;
 }
 
 /* Estilo para el ícono de menú hamburguesa */
-.menu-toggle {
-  display: none; /* Ocultar por defecto en pantallas grandes */
+.menu-toggle i {
+  display: block; /* Ocultar por defecto en pantallas grandes */
   font-size: 30px;
   cursor: pointer;
+  z-index: 1000;
 }
 
 /* Estilo para la lista de navegación (ul) */
 nav ul {
   list-style: none; /* Elimina los puntos de la lista */
-  margin: 10px;
+  margin: 0px;
   display: flex;
   gap: 25px;
 }
@@ -129,14 +131,22 @@ nav ul {
 nav ul.active {
   display: flex;
   flex-direction: column;
-  gap: 15px;
   position: absolute;
-  top: 70px; /* Ajusta la posición según el header */
+  top: 50px; /* Ajusta la posición según el header */
   left: 0;
   width: 100%;
-  background-color: white;
   padding: 20px;
+  background-color: white;
+
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+nav ul.active .fa-bars {
+  display: none; /* Oculta el icono de hamburguesa cuando el menú está abierto */
+}
+
+nav ul.active .fa-times {
+  display: block; /* Muestra el icono de la "X" cuando el menú está abierto */
 }
 
 /* Estilo para los links en el menú */
@@ -163,6 +173,16 @@ main {
   max-width: 100%;
   margin-top: 0px; /* Espacio superior para el header */
   padding: 0;
+}
+
+/* El ícono de hamburguesa se muestra por defecto */
+.fas.fa-bars {
+  display: block;
+}
+
+/* El ícono de la "X" se oculta por defecto */
+#close-icon {
+  display: none;
 }
 
 /*Estilos para la sección de mi cv */
@@ -550,6 +570,7 @@ footer {
   header .logo {
     padding: 0;
     font-size: 17px;
+    left: 30px;
   }
   .i_am img {
     width: 25%; /* Imagen ocupa el 100% del ancho */
@@ -613,44 +634,42 @@ footer {
     gap: 0;
   }
 }
-@media (max-width: 700px) {
+
+/* Estilo para pantallas pequeñas (700px) */
+@media (max-width: 720px) {
   main {
     padding: 0;
     margin: 0;
   }
+
   nav {
     padding: 0;
   }
+  header {
+    padding: 15px 20px; /* Espacio interno */
+  }
 
-  nav ul {
-    flex-direction: row; /* Cambia a columna en pantallas pequeñas */
-    gap: 5px; /* Espacio entre los elementos */
-    margin: 0;
-    padding: 15px;
+  header .logo {
+    left: 20px; /* Asegura que el logo esté a la izquierda */
+    position: absolute; /* Fija el logo */
   }
-  nav ul li a {
-    font-size: 16px; /* Tamaño de fuente más pequeño */
-  }
+
   header.with-shadow {
     padding: 15px 20px; /* Espacio interno */
   }
-}
 
-/* Estilo para pantallas pequeñas (700px) */
-@media (max-width: 700px) {
-  main {
-    padding: 0;
-    margin: 0;
-  }
-
-  nav {
-    padding: 0;
-  }
-
+  /* El menú de navegación se coloca en una columna */
   nav ul {
-    flex-direction: column; /* Menú en columna para pantallas pequeñas */
-    gap: 5px;
-    padding: 15px;
+    flex-direction: column; /* Cambia a columna para pantallas pequeñas */
+    align-items: center; /* Alinea el menú a la izquierda */
+    display: none; /* Inicialmente oculto */
+    top: 0px;
+    height: 40vh; /* Altura completa de la pantalla */
+    max-width: 100%;
+    padding: 0;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: all 0.6s ease-in-out; /* Transición suave */
   }
 
   nav ul li a {
@@ -659,12 +678,8 @@ footer {
 
   .menu-toggle {
     display: block; /* Muestra el icono de hamburguesa en pantallas pequeñas */
-  }
-
-  nav ul {
-    display: none; /* Oculta el menú por defecto */
-    flex-direction: column;
-    align-items: center;
+    right: 50px; /* Alinea a la derecha */
+    top: 15px;
   }
 
   /* Estilo para los enlaces del menú */
@@ -674,13 +689,10 @@ footer {
     color: var(--text-color);
   }
 
-  header.with-shadow {
-    padding: 15px 20px;
-  }
-
   /* Mejorar el contenedor de la imagen en la sección 'i_am' */
   .i_am img {
-    width: 60%; /* Ajuste de tamaño para pantallas más pequeñas */
+    width: 40%; /* Imagen ocupa el 100% del ancho */
+    height: auto; /* Mantiene la proporción de la imagen */
   }
 
   /* Ajuste de botones */
@@ -709,7 +721,7 @@ footer {
   }
 
   .i_am img {
-    width: 50%; /* Imagen ocupa el 100% del ancho */
+    width: 35%; /* Imagen ocupa el 100% del ancho */
     height: auto; /* Mantiene la proporción de la imagen */
     margin-right: 0; /* Elimina el margen derecho */
   }

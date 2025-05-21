@@ -63,16 +63,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
 const menuToggle = document.getElementById("menu-toggle");
 const navList = document.getElementById("nav-list");
-const menuIcon = document.getElementById("menu-icon");
-const closeIcon = document.getElementById("close-icon");
+const menuIcon = document.querySelector(".fas.fa-bars"); // Icono de hamburguesa
+const closeIcon = document.getElementById("close-icon"); // Icono de X
 
 // Agregar evento de clic para mostrar u ocultar el menú
 menuToggle.addEventListener("click", () => {
-  // Alterna la clase active para mostrar el menú
+  // Alterna la clase active para mostrar u ocultar el menú
   navList.classList.toggle("active");
 
   // Alterna la visibilidad de los íconos
-  menuIcon.style.display = menuIcon.style.display === "none" ? "block" : "none";
-  closeIcon.style.display =
-    closeIcon.style.display === "none" ? "block" : "none";
+  if (navList.classList.contains("active")) {
+    menuIcon.style.display = "none"; // Ocultar el ícono de hamburguesa
+    closeIcon.style.display = "block"; // Mostrar el ícono de X
+  } else {
+    menuIcon.style.display = "block"; // Mostrar el ícono de hamburguesa
+    closeIcon.style.display = "none"; // Ocultar el ícono de X
+  }
 });
