@@ -3,8 +3,8 @@
   top: 0;
   margin: 0;
   padding: 0;
-  width: 95%;
-  height: 102%;
+  width: 100%;
+  height: 100%;
   overflow: hidden;
   z-index: 0;
 }
@@ -174,61 +174,5 @@
   .circles {
     width: 100%;
     height: 155.5%;
-  }
-}
-/* Estilo responsivo */
-@media (max-width: 700px) {
-  .circles {
-    width: 100%;
-    height: 149.4%;
-  }
-}
-@media screen and (max-width: 440px) {
-  .circles {
-    width: 100%;
-    height: 195.5%;
-  }
-}
-
-@media screen and (max-width: 400px) {
-  .circles {
-    width: 100%;
-    height: 200%;
-  }
-}
-@media screen and (max-width: 370px) {
-  .circles {
-    width: 100%;
-    height: 140%;
-  }
-}
-@media screen and (max-width: 350px) {
-  .circles {
-    width: 100%;
-    height: 130%;
-  }
-}
-@media screen and (max-width: 340px) {
-  .circles {
-    width: 100%;
-    height: 130%;
-  }
-}
-@media screen and (max-width: 330px) {
-  .circles {
-    width: 100%;
-    height: 130%;
-  }
-}
-@media screen and (max-width: 320px) {
-  .circles {
-    width: 100%;
-    height: 133.8%;
-  }
-}
-
-@media screen and (max-width: 310px) {
-  .circles {
-    height: 202%;
   }
 }
