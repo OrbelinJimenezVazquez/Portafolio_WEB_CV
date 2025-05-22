@@ -86,3 +86,62 @@ menuToggle.addEventListener("click", () => {
     closeIcon.style.display = "none"; // Ocultar el ícono de X
   }
 });
+
+//Inicio de libreríass
+// ✅ AOS: Animaciones al hacer scroll
+AOS.init({
+  duration: 1000,
+  once: true,
+});
+
+// ✅ ScrollReveal: apariciones suaves
+ScrollReveal().reveal(".text-cont h1", {
+  delay: 200,
+  origin: "bottom",
+  distance: "50px",
+});
+
+// ✅ Typed.js: texto animado
+new Typed(".saludo", {
+  strings: ["Hola,", "Bienvenido 👋", "Soy Orbelin."],
+  typeSpeed: 60,
+  backSpeed: 30,
+  loop: true,
+});
+
+// ✅ ProgressBar.js: animación para habilidades (si la usas después)
+const bar = new ProgressBar.Circle(".circle_b", {
+  color: "#4eb8f8",
+  strokeWidth: 6,
+  trailWidth: 1,
+  duration: 1400,
+  text: {
+    autoStyleContainer: false,
+  },
+  from: { color: "#aaa", width: 1 },
+  to: { color: "#4eb8f8", width: 6 },
+  step: (state, circle) => {
+    circle.path.setAttribute("stroke", state.color);
+    circle.setText(Math.round(circle.value() * 100) + "%");
+  },
+});
+bar.animate(0.9); // 90%
+
+// ✅ EmailJS (solo si tienes un form con ID #form-contacto)
+emailjs.init("TU_USER_ID");
+
+document
+  .getElementById("form-contacto")
+  ?.addEventListener("submit", function (e) {
+    e.preventDefault();
+    emailjs.sendForm("TU_SERVICE_ID", "TU_TEMPLATE_ID", this).then(
+      () => {
+        Swal.fire("¡Mensaje enviado!", "Gracias por contactarme.", "success");
+        this.reset();
+      },
+      (error) => {
+        Swal.fire("Error", "No se pudo enviar el mensaje.", "error");
+        console.error(error);
+      }
+    );
+  });
