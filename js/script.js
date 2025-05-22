@@ -88,52 +88,36 @@ menuToggle.addEventListener("click", () => {
 });
 
 //Inicio de libreríass
-// ✅ AOS: Animaciones al hacer scroll
+// ✅ AOS: animaciones al hacer scroll
 AOS.init({
   duration: 1000,
   once: true,
 });
 
-// ✅ ScrollReveal: apariciones suaves
+// ✅ ScrollReveal: apariciones suaves en títulos
 ScrollReveal().reveal(".text-cont h1", {
   delay: 200,
-  origin: "bottom",
   distance: "50px",
+  origin: "bottom",
+  reset: false,
 });
 
-// ✅ Typed.js: texto animado
-new Typed(".saludo", {
+// ✅ Typed.js: texto animado en la sección "saludo"
+const typed = new Typed(".saludo", {
   strings: ["Hola,", "Bienvenido 👋", "Soy Orbelin."],
-  typeSpeed: 60,
-  backSpeed: 30,
+  typeSpeed: 70,
+  backSpeed: 35,
   loop: true,
 });
 
-// ✅ ProgressBar.js: animación para habilidades (si la usas después)
-const bar = new ProgressBar.Circle(".circle_b", {
-  color: "#4eb8f8",
-  strokeWidth: 6,
-  trailWidth: 1,
-  duration: 1400,
-  text: {
-    autoStyleContainer: false,
-  },
-  from: { color: "#aaa", width: 1 },
-  to: { color: "#4eb8f8", width: 6 },
-  step: (state, circle) => {
-    circle.path.setAttribute("stroke", state.color);
-    circle.setText(Math.round(circle.value() * 100) + "%");
-  },
-});
-bar.animate(0.9); // 90%
+// ✅ EmailJS: formulario de contacto (solo si tienes uno con id="form-contacto")
+emailjs.init("TU_USER_ID"); // ← reemplaza con tu USER ID de EmailJS
 
-// ✅ EmailJS (solo si tienes un form con ID #form-contacto)
-emailjs.init("TU_USER_ID");
-
-document
-  .getElementById("form-contacto")
-  ?.addEventListener("submit", function (e) {
+const form = document.getElementById("form-contacto");
+if (form) {
+  form.addEventListener("submit", function (e) {
     e.preventDefault();
+
     emailjs.sendForm("TU_SERVICE_ID", "TU_TEMPLATE_ID", this).then(
       () => {
         Swal.fire("¡Mensaje enviado!", "Gracias por contactarme.", "success");
@@ -145,3 +129,12 @@ document
       }
     );
   });
+}
+
+// ✅ Bonus: animación a los botones al hacer clic
+document.querySelectorAll(".btn").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    btn.classList.add("clicked");
+    setTimeout(() => btn.classList.remove("clicked"), 200);
+  });
+});

@@ -933,7 +933,7 @@ footer {
     text-align: center; /* Centra el texto */
   }
 }
-@media screen and (max-width: 370px) {
+@media screen and (max-width: 376px) {
   .i_am_text .description {
     font-size: 13px;
   }
