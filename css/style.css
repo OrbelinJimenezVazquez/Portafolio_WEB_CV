@@ -83,7 +83,6 @@ header.with-shadow {
 /* Estilo para el logo */
 header .logo {
   padding-left: 60px;
-  text-decoration: none;
   position: absolute; /* Fija el logo en su lugar */
   left: 0;
 }
@@ -93,57 +92,42 @@ header .logo a {
 
 header .logo p {
   font-size: 40px;
-  letter-spacing: 2px;
   color: var(--text-color);
   font-weight: bold;
-  text-align: center;
-  text-decoration: none;
+  transition: all 0.2s ease-in-out;
 }
 
 header .logo p:hover {
   color: var(--text-decoration-color); /* Cambio de color al pasar el mouse */
   transform: scale(1.1); /* Hace que el logo se agrande un poco */
-  transition: all 0.2s ease-in-out; /* Transición suave para todos los cambios */
 }
 
+/* Menú principal (pantallas grandes) */
 nav {
   display: flex;
   justify-content: flex-end; /* Alinea el menú a la derecha */
   width: 100%;
-  margin: 12px;
+}
+#nav-list {
+  display: flex;
+  gap: 25px;
 }
 
-/* Estilo para el ícono de menú hamburguesa */
+#nav-list li a {
+  font-weight: bold;
+  color: var(--text-color);
+  text-decoration: none;
+  font-size: 22px;
+  transition: color 0.3s ease;
+}
+
+#nav-list li a:hover {
+  color: var(--btn-color);
+}
+
+/* Menú hamburguesa oculto en pantallas grandes */
 .menu-toggle {
   display: none;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 30px;
-  height: 21px;
-  cursor: pointer;
-  z-index: 1001;
-  transition: all 0.3s ease-in-out;
-}
-
-.menu-toggle span {
-  display: block;
-  height: 3px;
-  background: var(--text-color);
-  border-radius: 2px;
-  transition: all 0.3s ease;
-}
-
-/* Animación para la X */
-.menu-toggle.active span:nth-child(1) {
-  transform: rotate(45deg) translate(5px, 5px);
-}
-
-.menu-toggle.active span:nth-child(2) {
-  opacity: 0;
-}
-
-.menu-toggle.active span:nth-child(3) {
-  transform: rotate(-45deg) translate(5px, -5px);
 }
 
 /* Estilo para la lista de navegación (ul) */
@@ -754,49 +738,73 @@ footer p {
     padding: 15px 20px; /* Espacio interno */
   }
 
-  /* El menú de navegación se coloca en una columna */
-  nav ul {
-    flex-direction: column; /* Cambia a columna para pantallas pequeñas */
-    align-items: center; /* Alinea el menú a la izquierda */
-    display: none; /* Inicialmente oculto */
-    height: 40vh; /* Altura completa de la pantalla */
-    width: 100%;
-    padding: 20px 0;
-    background-color: white;
-  }
-  nav ul.active {
+  /* Mostrar ícono hamburguesa */
+  .menu-toggle {
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 21px;
+    cursor: pointer;
+    z-index: 1001;
   }
-  nav ul li a {
-    font-size: 16px;
+
+  .menu-toggle span {
+    display: block;
+    height: 3px;
+    background: var(--text-color);
+    border-radius: 2px;
+    transition: all 0.3s ease;
   }
+
+  /* Animación de la X */
+  .menu-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+  }
+
+  .menu-toggle.active span:nth-child(2) {
+    opacity: 0;
+  }
+
+  .menu-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+  }
+
+  /* Estilo del menú desplegable */
   #nav-list {
     position: absolute;
-    top: 70px; /* ajusta según altura del header */
+    top: 50px;
     left: 0;
+    gap: 0;
+    width: 100%;
+    height: auto;
+    background-color: white;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0 20px 0;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     z-index: 999;
-    transition: all 0.3s ease-in-out;
+
+    /* Oculto con animación */
     opacity: 0;
+    visibility: hidden;
     transform: translateY(-20px);
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
   }
 
-  #nav-list.active {
-    display: flex;
+  /* Activación del menú */
+  #nav-list.visible {
     opacity: 1;
+    visibility: visible;
     transform: translateY(0);
   }
-  .menu-toggle {
-    display: flex; /* Muestra el icono de hamburguesa en pantallas pequeñas */
-    right: 50px; /* Alinea a la derecha */
-    top: 0px;
+
+  #nav-list li {
+    margin: 10px 0;
   }
 
-  /* Estilo para los enlaces del menú */
-  nav ul li a {
-    font-size: 18px; /* Fuente más pequeña para pantallas pequeñas */
-    padding: 10px 0;
-    color: var(--text-color);
+  #nav-list li a {
+    font-size: 18px;
   }
 
   /* Mejorar el contenedor de la imagen en la sección 'i_am' */

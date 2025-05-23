@@ -52,12 +52,12 @@ window.addEventListener("scroll", () => {
   }
 });
 
-const menuToggle = document.getElementById("menu-toggle");
+const menuToggle = document.querySelector(".menu-toggle");
 const navList = document.getElementById("nav-list");
 
 menuToggle.addEventListener("click", () => {
-  navList.classList.toggle("active");
   menuToggle.classList.toggle("active");
+  navList.classList.toggle("visible");
 });
 
 //Inicio de libreríass
