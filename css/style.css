@@ -324,6 +324,7 @@ main {
 
 .btn-container .btn {
   padding: 12px 24px;
+  overflow: hidden;
 }
 
 .btn {
@@ -336,16 +337,12 @@ main {
   z-index: 5;
   transition: background 0.3s ease;
   font-weight: bold;
+  position: relative;
 }
 
 .btn:hover {
   background: var(--btn-color);
   color: var(--background-color);
-  transform: scale(1.05);
-}
-
-.btn:active {
-  transform: scale(0.95);
 }
 
 /*Estilos para la sección de experience */
@@ -559,6 +556,25 @@ footer {
   flex-wrap: grow;
   display: flex;
   flex-direction: column;
+}
+
+.ripple {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  transform: scale(0);
+  animation: ripple-animation 0.6s linear;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes ripple-animation {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
 }
 
 /* Estilo responsivo */

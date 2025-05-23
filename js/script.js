@@ -51,21 +51,6 @@ window.addEventListener("scroll", () => {
     ticking = true;
   }
 });
-function explodeOnHover() {
-  // Puedes agregar el efecto que desees aquí. Por ejemplo, un pequeño cambio de escala:
-  this.style.transform = "scale(1.1)";
-  this.style.transition = "transform 0.3s ease-in-out";
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-  checkScroll();
-  updateActiveSection();
-
-  const btn = document.querySelector(".btn-container .btn");
-  if (btn) {
-    btn.addEventListener("mouseenter", explodeOnHover);
-  }
-});
 
 const menuToggle = document.getElementById("menu-toggle");
 const navList = document.getElementById("nav-list");
@@ -95,17 +80,8 @@ AOS.init({
   once: true,
 });
 
-// ✅ Bonus: animación a los botones al hacer clic
-document.querySelectorAll(".btn").forEach((btn) => {
-  btn.addEventListener("click", () => {
-    btn.classList.add("clicked");
-    setTimeout(() => btn.classList.remove("clicked"), 200);
-  });
-});
-
 // ✅ Typed.js: texto animado en la sección "saludo"
 const typed = new Typed(".name", {
-  with: 100,
   strings: ["", "", "Orbelin Jimenez Vazquez."],
   typeSpeed: 100,
   backSpeed: 100,
@@ -212,4 +188,56 @@ ScrollReveal().reveal(".welcome .btn", {
   delay: 800,
   easing: "ease-out",
   reset: true,
+});
+// Efecto "explode" al pasar el mouse
+function explodeEffect(btn) {
+  btn.style.transform = "scale(1.15)";
+  btn.style.transition = "transform 0.3s ease, box-shadow 0.3s ease";
+  btn.style.boxShadow = "0 0 20px rgba(0, 0, 0, 0.3)";
+  setTimeout(() => {
+    btn.style.transform = "scale(1)";
+    btn.style.boxShadow = "none";
+  }, 300);
+}
+
+// Ripple + acciones personalizadas
+document.querySelectorAll("#btn-cv, #btn-proyectos").forEach((btn) => {
+  // Hover (mouseenter)
+  btn.addEventListener("mouseenter", () => explodeEffect(btn));
+
+  // Click
+  btn.addEventListener("click", function (e) {
+    // Explotar al hacer clic
+    explodeEffect(btn);
+
+    // Ripple
+    const ripple = document.createElement("span");
+    ripple.className = "ripple";
+    ripple.style.left = `${e.offsetX}px`;
+    ripple.style.top = `${e.offsetY}px`;
+    this.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 600);
+
+    // SweetAlert solo para el botón del CV
+    if (btn.id === "btn-cv") {
+      e.preventDefault(); // Evita descarga directa
+      Swal.fire({
+        title: "¿Descargar CV?",
+        text: "Puedes guardar una copia de mi CV en PDF.",
+        icon: "info",
+        showCancelButton: true,
+        confirmButtonText: "Sí, descargar",
+        cancelButtonText: "Cancelar",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          const link = document.createElement("a");
+          link.href = btn.getAttribute("href");
+          link.download = "";
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        }
+      });
+    }
+  });
 });
