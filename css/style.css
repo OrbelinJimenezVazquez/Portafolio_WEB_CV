@@ -122,6 +122,7 @@ nav {
   height: 21px;
   cursor: pointer;
   z-index: 1001;
+  transition: all 0.3s ease-in-out;
 }
 
 .menu-toggle span {
@@ -132,9 +133,9 @@ nav {
   transition: all 0.3s ease;
 }
 
-/* Animación al abrir el menú */
+/* Animación para la X */
 .menu-toggle.active span:nth-child(1) {
-  transform: rotate(45deg) translateY(9px);
+  transform: rotate(45deg) translate(5px, 5px);
 }
 
 .menu-toggle.active span:nth-child(2) {
@@ -142,7 +143,7 @@ nav {
 }
 
 .menu-toggle.active span:nth-child(3) {
-  transform: rotate(-45deg) translateY(-9px);
+  transform: rotate(-45deg) translate(5px, -5px);
 }
 
 /* Estilo para la lista de navegación (ul) */
@@ -758,13 +759,10 @@ footer p {
     flex-direction: column; /* Cambia a columna para pantallas pequeñas */
     align-items: center; /* Alinea el menú a la izquierda */
     display: none; /* Inicialmente oculto */
-    top: 60px;
     height: 40vh; /* Altura completa de la pantalla */
     width: 100%;
     padding: 20px 0;
-    position: absolute;
     background-color: white;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
   }
   nav ul.active {
     display: flex;
@@ -772,7 +770,18 @@ footer p {
   nav ul li a {
     font-size: 16px;
   }
+  #nav-list {
+    position: absolute;
+    top: 70px; /* ajusta según altura del header */
+    left: 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 999;
+    transition: all 0.3s ease-in-out;
+  }
 
+  #nav-list.active {
+    display: flex;
+  }
   .menu-toggle {
     display: flex; /* Muestra el icono de hamburguesa en pantallas pequeñas */
     right: 50px; /* Alinea a la derecha */
@@ -874,7 +883,9 @@ footer p {
   .i_am_text .saludo {
     margin-top: 25px;
   }
-
+  .i_am_text .name {
+    height: 60px;
+  }
   .i_am_text .saludo,
   .i_am_text .name {
     font-size: 30px; /* Tamaño de fuente más pequeño */
