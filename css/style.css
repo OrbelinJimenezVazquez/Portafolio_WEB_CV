@@ -777,10 +777,14 @@ footer p {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     z-index: 999;
     transition: all 0.3s ease-in-out;
+    opacity: 0;
+    transform: translateY(-20px);
   }
 
   #nav-list.active {
     display: flex;
+    opacity: 1;
+    transform: translateY(0);
   }
   .menu-toggle {
     display: flex; /* Muestra el icono de hamburguesa en pantallas pequeñas */
