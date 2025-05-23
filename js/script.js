@@ -98,7 +98,14 @@ ScrollReveal().reveal(".text-cont h1", {
   easing: "ease-in-out",
   reset: false, // si quieres que solo se animen una vez
 });
-
+ScrollReveal().reveal(".social_icons ul li", {
+  origin: "bottom",
+  distance: "30px",
+  duration: 1000,
+  interval: 170,
+  easing: "ease-out",
+  reset: true,
+});
 // Animar las cajas de habilidades desde la derecha
 ScrollReveal().reveal(".skill", {
   origin: "right",
@@ -127,18 +134,18 @@ ScrollReveal().reveal(".proye:nth-child(even)", {
 ScrollReveal().reveal(".idioma:nth-child(odd)", {
   origin: "left",
   distance: "80px",
-  duration: 1200,
+  duration: 800,
   easing: "ease-in-out",
-  reset: true,
+  reset: false,
 });
 
 // Idiomas pares → desde la derecha
 ScrollReveal().reveal(".idioma:nth-child(even)", {
   origin: "right",
-  distance: "80px",
-  duration: 1200,
+  distance: "180px",
+  duration: 800,
   easing: "ease-in-out",
-  reset: true,
+  reset: false,
 });
 
 // Educación desde abajo
@@ -187,8 +194,35 @@ ScrollReveal().reveal(".welcome .btn", {
   duration: 1000,
   delay: 800,
   easing: "ease-out",
+  reset: false,
+});
+// Animar sección de contacto al hacer scroll
+ScrollReveal().reveal("#contacto .text-cont", {
+  origin: "bottom",
+  distance: "60px",
+  duration: 800,
+  delay: 200,
+  easing: "ease-in-out",
+  reset: false,
+});
+// Animar seccion de footer
+ScrollReveal().reveal("footer", {
+  origin: "bottom",
+  distance: "80px",
+  duration: 800,
+  delay: 200,
+  easing: "ease-out",
+  reset: false,
+});
+ScrollReveal().reveal("footer p, .footer-links a", {
+  origin: "bottom",
+  distance: "40px",
+  duration: 800,
+  interval: 150,
+  easing: "ease-out",
   reset: true,
 });
+
 // Efecto "explode" al pasar el mouse
 function explodeEffect(btn) {
   btn.style.transform = "scale(1.15)";
@@ -240,4 +274,57 @@ document.querySelectorAll("#btn-cv, #btn-proyectos").forEach((btn) => {
       });
     }
   });
+});
+
+//Mi barra de progreso en idiomas
+function crearCirculo(selector, porcentaje, color) {
+  const elemento = document.querySelector(selector);
+  if (elemento) {
+    elemento.innerHTML = ""; // limpia si ya existía
+    const barra = new ProgressBar.Circle(selector, {
+      color: color,
+      strokeWidth: 6,
+      duration: 1600,
+      easing: "easeInOut",
+      trailColor: "#eee",
+      trailWidth: 2,
+      text: {
+        value: Math.round(porcentaje * 100) + "%",
+        style: {
+          color: "#272727",
+          fontWeight: "bold",
+          fontSize: "14px",
+          position: "absolute",
+          left: "50%",
+          top: "50%",
+          padding: 0,
+          margin: 0,
+          transform: "translate(-50%, -50%)",
+        },
+      },
+    });
+    barra.animate(porcentaje);
+  }
+}
+
+ScrollReveal().reveal("#lenguaje", {
+  beforeReveal: () => {
+    // Siempre se animan al hacer scroll hacia la sección
+    crearCirculo("#circle-es", 1.0, "#4eb8f8");
+    crearCirculo("#circle-en", 0.4, "#4caf50");
+  },
+  reset: true, // Para que se vuelva a ejecutar cada vez que haces scroll
+});
+
+// Mostrar sección de tecnologías circulo
+ScrollReveal().reveal("#tech .tech", {
+  beforeReveal: () => {
+    crearCirculo("#circle-html", 1.0, "#e44d26"); // 100% - HTML (naranja)
+    crearCirculo("#circle-css", 0.95, "#264de4"); // 95% - CSS (azul)
+    crearCirculo("#circle-js", 0.9, "#f7df1e"); // 90% - JS (amarillo)
+    crearCirculo("#circle-node", 0.7, "#68a063"); // 70% - Node.js (verde)
+    crearCirculo("#circle-react", 0.6, "#61dbfb"); // 60% - React (celeste)
+  },
+
+  reset: true, // para que se reinicie si vuelves a scrollear
 });
