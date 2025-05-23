@@ -750,7 +750,7 @@ footer p {
   .menu-toggle {
     display: block; /* Muestra el icono de hamburguesa en pantallas pequeñas */
     right: 50px; /* Alinea a la derecha */
-    top: 15px;
+    top: 10px;
   }
 
   /* Estilo para los enlaces del menú */
