@@ -88,48 +88,12 @@ menuToggle.addEventListener("click", () => {
 });
 
 //Inicio de libreríass
-// ✅ AOS: animaciones al hacer scroll
+
+// ✅ AOS: animaciones al iniciar
 AOS.init({
   duration: 1000,
   once: true,
 });
-
-// ✅ ScrollReveal: apariciones suaves en títulos
-ScrollReveal().reveal(".text-cont h1", {
-  delay: 200,
-  distance: "50px",
-  origin: "bottom",
-  reset: false,
-});
-
-// ✅ Typed.js: texto animado en la sección "saludo"
-const typed = new Typed(".saludo", {
-  strings: ["Hola,", "Bienvenido 👋", "Soy Orbelin."],
-  typeSpeed: 70,
-  backSpeed: 35,
-  loop: true,
-});
-
-// ✅ EmailJS: formulario de contacto (solo si tienes uno con id="form-contacto")
-emailjs.init("TU_USER_ID"); // ← reemplaza con tu USER ID de EmailJS
-
-const form = document.getElementById("form-contacto");
-if (form) {
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
-
-    emailjs.sendForm("TU_SERVICE_ID", "TU_TEMPLATE_ID", this).then(
-      () => {
-        Swal.fire("¡Mensaje enviado!", "Gracias por contactarme.", "success");
-        this.reset();
-      },
-      (error) => {
-        Swal.fire("Error", "No se pudo enviar el mensaje.", "error");
-        console.error(error);
-      }
-    );
-  });
-}
 
 // ✅ Bonus: animación a los botones al hacer clic
 document.querySelectorAll(".btn").forEach((btn) => {
@@ -137,4 +101,115 @@ document.querySelectorAll(".btn").forEach((btn) => {
     btn.classList.add("clicked");
     setTimeout(() => btn.classList.remove("clicked"), 200);
   });
+});
+
+// ✅ Typed.js: texto animado en la sección "saludo"
+const typed = new Typed(".name", {
+  with: 100,
+  strings: ["", "", "Orbelin Jimenez Vazquez."],
+  typeSpeed: 100,
+  backSpeed: 100,
+  loop: true,
+});
+
+// ✅ ScrollReveal: apariciones suaves en títulos
+// Animar títulos de sección desde abajo
+ScrollReveal().reveal(".text-cont h1", {
+  origin: "bottom",
+  distance: "60px",
+  duration: 1000,
+  delay: 200,
+  easing: "ease-in-out",
+  reset: false, // si quieres que solo se animen una vez
+});
+
+// Animar las cajas de habilidades desde la derecha
+ScrollReveal().reveal(".skill", {
+  origin: "right",
+  distance: "80px",
+  duration: 1200,
+  interval: 150, // va uno por uno
+  easing: "ease-in-out",
+  reset: true,
+});
+
+ScrollReveal().reveal(".proye:nth-child(odd)", {
+  origin: "left",
+  distance: "60px",
+  duration: 1300,
+  interval: 150,
+});
+
+ScrollReveal().reveal(".proye:nth-child(even)", {
+  origin: "right",
+  distance: "60px",
+  duration: 1300,
+  interval: 150,
+});
+
+// Idiomas impares → desde la izquierda
+ScrollReveal().reveal(".idioma:nth-child(odd)", {
+  origin: "left",
+  distance: "80px",
+  duration: 1200,
+  easing: "ease-in-out",
+  reset: true,
+});
+
+// Idiomas pares → desde la derecha
+ScrollReveal().reveal(".idioma:nth-child(even)", {
+  origin: "right",
+  distance: "80px",
+  duration: 1200,
+  easing: "ease-in-out",
+  reset: true,
+});
+
+// Educación desde abajo
+ScrollReveal().reveal("#edu .the_school", {
+  origin: "bottom",
+  distance: "80px",
+  duration: 1200,
+  interval: 200,
+  easing: "ease-in-out",
+  reset: true,
+});
+
+// Experiencia desde abajo
+ScrollReveal().reveal("#experience .the_work", {
+  origin: "bottom",
+  distance: "80px",
+  duration: 1200,
+  interval: 200,
+  easing: "ease-in-out",
+  reset: true,
+});
+
+// Animar h1 de "welcome"
+ScrollReveal().reveal(".welcome h1", {
+  origin: "bottom",
+  distance: "60px",
+  duration: 1000,
+  delay: 200,
+  easing: "ease-in-out",
+  reset: false,
+});
+
+// Animar párrafos de "welcome"
+ScrollReveal().reveal(".welcome p", {
+  origin: "bottom",
+  distance: "40px",
+  duration: 1000,
+  delay: 400, // un poco después del h1
+  easing: "ease-in-out",
+  interval: 200,
+  reset: false,
+});
+ScrollReveal().reveal(".welcome .btn", {
+  origin: "bottom",
+  distance: "30px",
+  duration: 1000,
+  delay: 800,
+  easing: "ease-out",
+  reset: true,
 });

@@ -7,8 +7,10 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
     />
+    <link rel="icon" href="data:,">
     <link rel="stylesheet" href="css/style.css" />
     <link rel="stylesheet" href="css/square.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -19,22 +21,22 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
-    
+
     <title>Portafolio</title>
   </head>
   <body>
-    <header>
-  <div class="logo">
-    <a href="#"><p>Orbe</p></a>
+  <header data-aos="slide-down">
+  <div class="logo" >
+    <a href="#"  ><p>Orbe</p></a>
   </div>
-  <nav>
+  <nav >
     <!-- Icono de menú hamburguesa -->
     <div class="menu-toggle" id="menu-toggle">
       <i class="fas fa-bars"></i> <!-- Icono de hamburguesa -->
       <i class="fas fa-times" id="close-icon" style="display: none;"></i> <!-- Icono de X -->
     </div>
     <!-- Menú de navegación -->
-    <ul id="nav-list">
+    <ul id="nav-list"  data-aos="slide-down">
       <li><a href="#experience"><i class="fa-solid fa-briefcase"></i> Experiencia</a></li>
       <li><a href="#skills"><i class="fa-solid fa-code"></i> Habilidades</a></li>
       <li><a href="#edu"><i class="fa-solid fa-user-graduate"></i> Educación</a></li>
@@ -44,8 +46,8 @@
     </ul>
   </nav>
 </header>
-    <div class="i_am">
-      <img src="images/Mi_foto.jpg" alt="Foto de perfil de Orbe" />
+    <div class="i_am" ">
+      <img src="images/Mi_foto.jpg" data-aos="fade-right" alt="Foto de perfil de Orbe" />
       <ul class="circles">
                   <li></li>
                   <li></li>
@@ -68,9 +70,9 @@
                   <li></li>
                   <li></li>
             </ul>
-      <div class="i_am_text">
+      <div class="i_am_text" data-aos="zoom-in">
         <p class="saludo"><b>Hola,</b> soy</p>
-        <p class="name">Orbelin Jimenez Vazquez.</p>
+        <div class="name"></div>
         <p class="description">
           Estudiante de Ingeniería en Datos e Inteligencia Organizacional con
           experiencia práctica en desarrollo web frontend y soporte informático.
@@ -364,18 +366,12 @@
     <footer>
       <p>&copy; 2025 Mi Portafolio. Todos los derechos reservados.</p>
     </footer>
-    <script src="js/script.js"></script>
-    <!-- AOS -->
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <!-- ScrollReveal -->
+    <!-- Librerías -->
     <script src="https://unpkg.com/scrollreveal"></script>
-    <!-- Typed.js -->
-    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
-    <!-- ProgressBar.js -->
     <script src="https://cdn.jsdelivr.net/npm/progressbar.js"></script>
-    <!-- EmailJS -->
-    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@2.6.4/dist/email.min.js"></script>
-    <!-- SweetAlert2 -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <!-- script -->
+    <script src="js/script.js"></script>
   </body>
 </html>
