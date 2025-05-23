@@ -115,10 +115,34 @@ nav {
 
 /* Estilo para el ícono de menú hamburguesa */
 .menu-toggle {
-  display: none; /* Ocultar por defecto en pantallas grandes */
-  font-size: 30px;
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
   cursor: pointer;
-  z-index: 1000;
+  z-index: 1001;
+}
+
+.menu-toggle span {
+  display: block;
+  height: 3px;
+  background: var(--text-color);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Animación al abrir el menú */
+.menu-toggle.active span:nth-child(1) {
+  transform: rotate(45deg) translateY(9px);
+}
+
+.menu-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.menu-toggle.active span:nth-child(3) {
+  transform: rotate(-45deg) translateY(-9px);
 }
 
 /* Estilo para la lista de navegación (ul) */
@@ -734,23 +758,25 @@ footer p {
     flex-direction: column; /* Cambia a columna para pantallas pequeñas */
     align-items: center; /* Alinea el menú a la izquierda */
     display: none; /* Inicialmente oculto */
-    top: 0px;
+    top: 60px;
     height: 40vh; /* Altura completa de la pantalla */
-    max-width: 100%;
-    padding: 0;
+    width: 100%;
+    padding: 20px 0;
+    position: absolute;
     background-color: white;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    transition: all 0.6s ease-in-out; /* Transición suave */
   }
-
+  nav ul.active {
+    display: flex;
+  }
   nav ul li a {
     font-size: 16px;
   }
 
   .menu-toggle {
-    display: block; /* Muestra el icono de hamburguesa en pantallas pequeñas */
+    display: flex; /* Muestra el icono de hamburguesa en pantallas pequeñas */
     right: 50px; /* Alinea a la derecha */
-    top: 10px;
+    top: 0px;
   }
 
   /* Estilo para los enlaces del menú */

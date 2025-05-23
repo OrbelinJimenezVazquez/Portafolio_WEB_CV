@@ -54,22 +54,10 @@ window.addEventListener("scroll", () => {
 
 const menuToggle = document.getElementById("menu-toggle");
 const navList = document.getElementById("nav-list");
-const menuIcon = document.querySelector(".fas.fa-bars"); // Icono de hamburguesa
-const closeIcon = document.getElementById("close-icon"); // Icono de X
 
-// Agregar evento de clic para mostrar u ocultar el menú
 menuToggle.addEventListener("click", () => {
-  // Alterna la clase active para mostrar u ocultar el menú
   navList.classList.toggle("active");
-
-  // Alterna la visibilidad de los íconos
-  if (navList.classList.contains("active")) {
-    menuIcon.style.display = "none"; // Ocultar el ícono de hamburguesa
-    closeIcon.style.display = "block"; // Mostrar el ícono de X
-  } else {
-    menuIcon.style.display = "block"; // Mostrar el ícono de hamburguesa
-    closeIcon.style.display = "none"; // Ocultar el ícono de X
-  }
+  menuToggle.classList.toggle("active");
 });
 
 //Inicio de libreríass
