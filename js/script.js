@@ -51,7 +51,7 @@ window.addEventListener("scroll", () => {
     ticking = true;
   }
 });
-
+//Funcion de el menu hamburguesa
 const menuToggle = document.querySelector(".menu-toggle");
 const navList = document.getElementById("nav-list");
 
@@ -101,7 +101,7 @@ ScrollReveal().reveal(".skill", {
   duration: 1200,
   interval: 150, // va uno por uno
   easing: "ease-in-out",
-  reset: true,
+  reset: false,
 });
 
 ScrollReveal().reveal(".proye:nth-child(odd)", {
@@ -143,7 +143,7 @@ ScrollReveal().reveal("#edu .the_school", {
   duration: 1200,
   interval: 200,
   easing: "ease-in-out",
-  reset: true,
+  reset: false,
 });
 
 // Experiencia desde abajo
@@ -153,7 +153,7 @@ ScrollReveal().reveal("#experience .the_work", {
   duration: 1200,
   interval: 200,
   easing: "ease-in-out",
-  reset: true,
+  reset: false,
 });
 
 // Animar h1 de "welcome"
@@ -263,6 +263,32 @@ document.querySelectorAll("#btn-cv, #btn-proyectos").forEach((btn) => {
     }
   });
 });
+
+const btnPro = document.getElementById("btn-pro");
+
+if (btnPro) {
+  // Explode al pasar el mouse
+  btnPro.addEventListener("mouseenter", () => {
+    btnPro.style.transition = "transform 0.3s ease, box-shadow 0.3s ease";
+    btnPro.style.transform = "scale(1.15)";
+    btnPro.style.boxShadow = "0 0 20px rgba(0, 0, 0, 0.3)";
+
+    setTimeout(() => {
+      btnPro.style.transform = "scale(1)";
+      btnPro.style.boxShadow = "none";
+    }, 300);
+  });
+
+  // Ripple al hacer clic
+  btnPro.addEventListener("click", function (e) {
+    const ripple = document.createElement("span");
+    ripple.className = "ripple";
+    ripple.style.left = `${e.offsetX}px`;
+    ripple.style.top = `${e.offsetY}px`;
+    this.appendChild(ripple);
+    setTimeout(() => ripple.remove(), 600);
+  });
+}
 
 //Mi barra de progreso en idiomas
 function crearCirculo(selector, porcentaje, color) {
