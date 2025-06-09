@@ -45,12 +45,12 @@ body {
 /* Ajuste del contenedor main */
 main {
   max-width: 100%;
-  margin-top: 50px; /* Espacio superior para el header */
+  margin-top: 0px; /* Espacio superior para el header */
   padding: 20px;
   box-sizing: border-box; /* Asegura que el padding no sobresalga */
   overflow: hidden; /* Evita el scroll en el contenido principal */
   background-color: var(--light-color);
-  border-radius: 0 0 100px 100px ;
+  border-radius: 0 0 50px 50px ;
 }
 
 /* Estilo para el header */
@@ -179,13 +179,6 @@ nav ul li a.active {
 
 nav ul li a:hover {
   color: var(--btn-color);
-}
-
-/* Estilo para la sección main */
-main {
-  max-width: 100%;
-  margin-top: 0px; /* Espacio superior para el header */
-  padding: 0;
 }
 
 /* El ícono de hamburguesa se muestra por defecto */
