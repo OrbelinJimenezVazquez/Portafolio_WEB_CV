@@ -39,7 +39,7 @@ body {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-  font-size: 16px;
+  font-size: clamp(1rem, -0.25rem + 3.333vw, 2.75rem);
 }
 
 /* Ajuste del contenedor main */
@@ -93,7 +93,7 @@ header .logo a {
 }
 
 header .logo p {
-  font-size: 40px;
+  font-size: clamp(1rem, -0.25rem + 8.333vw, 2.75rem);
   color: var(--text-color);
   font-weight: bold;
   transition: all 0.2s ease-in-out;
@@ -119,7 +119,7 @@ nav {
   font-weight: bold;
   color: var(--text-color);
   text-decoration: none;
-  font-size: 22px;
+  font-size: clamp(1rem, 0rem + 122.222vw, 1.222rem);
   transition: color 0.3s ease;
 }
 
@@ -167,14 +167,14 @@ nav ul li a {
   font-weight: bold;
   color: var(--text-color);
   text-decoration: none;
-  font-size: 22px;
+  font-size: clamp(0.889rem, 0rem + 122.222vw, 1.222rem);
   transition: color 0.3s, font-size 0.3s;
 }
 
 /* Estilo para los links cuando están activos */
 nav ul li a.active {
   color: var(--btn-color); /* Color para el enlace activo (resaltado) */
-  font-size: 24px; /* Puedes cambiar el tamaño si quieres que el enlace activo sea más grande */
+  font-size: clamp(0.889rem, 0rem + 122.222vw, 1.333rem); /* Puedes cambiar el tamaño si quieres que el enlace activo sea más grande */
 }
 
 nav ul li a:hover {
@@ -216,7 +216,7 @@ nav ul li a:hover {
 
 /* Estilo para el id "saludo" */
 .i_am .saludo {
-  font-size: 30px;
+  font-size: clamp(1.389rem, 0rem + 122.222vw, 1.667rem);
   letter-spacing: 2px;
   padding-left: 15px;
   text-align: left;
@@ -224,7 +224,7 @@ nav ul li a:hover {
 
 /* Estilo para el id "name" */
 .i_am .name {
-  font-size: 30px;
+  font-size: clamp(1.389rem, 0rem + 122.222vw, 1.667rem);
   color: var(--text-decoration-color);
   font-weight: bold;
   padding-left: 15px;
@@ -237,8 +237,8 @@ nav ul li a:hover {
 }
 
 /* Estilo para el id "description" */
-.i_am .description {
-  font-size: 18px;
+.i_am_text .description {
+  font-size: clamp(0.8125rem, 0.4219rem + 1.25vw, 1.125rem);
   color: var(--text-light-color);
   line-height: 1.6;
   margin-top: 25px;
@@ -253,19 +253,20 @@ nav ul li a:hover {
 }
 
 .welcome h1 {
-  font-size: 60px;
+  font-size: clamp(1.667rem, 0rem + 122.222vw, 3.333rem);
   font-weight: bold;
   color: var(--text-decoration-color);
 }
 
 .welcome p {
-  font-size: 20px;
+  font-size: clamp(0.775rem, 0rem + 100vw, 1rem);
   color: var(--text-light-color);
   line-height: 1.6;
   text-align: center;
 }
 
 .welcome .btn {
+  font-size: clamp(1rem, 0.6875rem + 1vw, 1.25rem);
   margin: 20px; /* Centra el botón */
   padding: 10px 20px; /* Espaciado interno */
 }
@@ -288,7 +289,7 @@ nav ul li a:hover {
 
 /* Estilo para el párrafo en .puesto */
 #contacto p {
-  font-size: 20px;
+  font-size: clamp(1rem, 0.6875rem + 1vw, 1.25rem);
   padding-top: 25px;
 }
 
@@ -330,6 +331,7 @@ nav ul li a:hover {
 .btn-container .btn {
   padding: 12px 24px;
   overflow: hidden;
+  font-size: clamp(0.8125rem, 0.4219rem + 1.25vw, 1.125rem);
 }
 
 .btn {
@@ -374,6 +376,7 @@ nav ul li a:hover {
 .school p,
 .idioma p {
   color: var(--text-light-color);
+  font-size: clamp(0.8125rem, 0.4219rem + 1.25vw, 1.125rem);
 }
 
 .text-cont {
@@ -389,7 +392,7 @@ nav ul li a:hover {
 }
 
 .text-cont h1 {
-  font-size: 46px;
+  font-size: clamp(1.75rem, 0.3438rem + 4.5vw, 2.875rem);
   font-weight: bold;
   width: max-content;
   align-items: center;
@@ -419,6 +422,12 @@ nav ul li a:hover {
   box-shadow: var(--shadow-color) 0 0 2px;
   border-radius: 15px; /* Bordes redondeados */
 }
+
+  .school h3,
+  .work h3 {
+    font-weight: bold;
+    font-size: clamp(0.8125rem, 0.2656rem + 1.75vw, 1.25rem);
+  }
 
 .work i {
   margin: 5px;
@@ -470,6 +479,21 @@ nav ul li a:hover {
   transform: scale(1.1); /* Hace que el contenedor se agrande un poco */
   box-shadow: var(--shadow-color) 0 0 5px; /* Sombra azul al pasar el mouse */
 }
+
+.skill_3-3 .skill p {
+    font-size: clamp(0.875rem, 0.7188rem + 0.5vw, 1rem); /* Tamaño de fuente más pequeño */
+    line-height: 1.5;
+    padding-top: 10px;
+  }
+
+  .skill_3-3 .skill h2 {
+    font-size: 20px; /* Tamaño de fuente más pequeño */
+    line-height: 1.1;
+    width: 100%;
+    height: 50px;
+    align-content: center;
+  }
+
 .tech {
   box-sizing: border-box; /* Asegura que el padding no sobresalga */
   border-radius: 15px; /* Bordes redondeados */
@@ -512,6 +536,23 @@ nav ul li a:hover {
   font-size: 17px;
 }
 
+.mini_nav {
+  display: flex;
+  justify-content: center;
+  margin: 5px 0;
+  padding: 5px 0;
+  justify-content: space-between;
+  text-decoration: none;
+}
+
+.mini_nav h2 {
+    font-size: clamp(0.9375rem, 0.3906rem + 1.75vw, 1.375rem);
+    line-height: 1.1;
+    width: 100%;
+    height: 50px;
+    align-content: center;
+    padding: 0; /* Espacio interno */
+  }
 /*Estilo para proyectos*/
 .proye {
   background-color: var(--background-color);
@@ -527,7 +568,7 @@ nav ul li a:hover {
   margin-bottom: 15px;
 }
 .proye h3 {
-  font-size: 20px;
+  font-size: clamp(0.9375rem, 0.5469rem + 1.25vw, 1.25rem);
   margin: 10px 0;
   color: var(--text-decoration-color);
 }
@@ -539,7 +580,7 @@ nav ul li a:hover {
 
 .proye .btn {
   padding: 10px 20px;
-  font-size: 14px;
+  font-size: clamp(1rem, 0.8438rem + 0.5vw, 1.125rem);
 }
 .tech-used {
   margin: 18px 0 15px 0;
@@ -594,14 +635,6 @@ nav ul li a:hover {
   position: relative;
 }
 
-.mini_nav {
-  display: flex;
-  justify-content: center;
-  margin: 5px 0;
-  padding: 5px 0;
-  justify-content: space-between;
-  text-decoration: none;
-}
 
 /* Estilos para el footer */
 footer {
@@ -703,14 +736,6 @@ footer p {
     height: auto; /* Mantiene la proporción de la imagen */
     margin-right: 0; /* Elimina el margen derecho */
   }
-
-  .welcome h1 {
-    font-size: 40px; /* Tamaño de fuente más pequeño */
-  }
-
-  .welcome p {
-    font-size: 18px; /* Tamaño de fuente más pequeño */
-  }
   nav {
     padding: 0;
   }
@@ -721,10 +746,7 @@ footer p {
     margin: 0;
     padding: 15px;
   }
-  nav ul li a {
-    font-size: 16px; /* Tamaño de fuente más pequeño */
-  }
-
+  
   #experience,
   #skills,
   #proyectos,
@@ -744,19 +766,8 @@ footer p {
     display: flex;
     gap: 20px; /* Espacio entre los elementos */
   }
-  .skill_3-3 .skill h2 {
-    font-size: 20px; /* Tamaño de fuente más pequeño */
-    line-height: 1.1;
-    width: 100%;
-    height: 50px;
-    align-content: center;
-  }
 
-  .skill_3-3 .skill p {
-    font-size: 16px; /* Tamaño de fuente más pequeño */
-    line-height: 1.5;
-    padding-top: 10px;
-  }
+  
   .idioma_2_2 {
     gap: 0;
   }
@@ -897,7 +908,6 @@ footer p {
   .welcome .btn {
     width: 40%; /* Botón ocupa el 100% en pantallas más pequeñas */
     padding: 12px 0;
-    font-size: 18px;
   }
 
   /* Ajustes generales */
@@ -919,16 +929,9 @@ footer p {
     margin: 0;
     text-align: center; /* Centra el texto */
   }
-  .mini_nav h2 {
-    font-size: 22px; /* Tamaño de fuente más pequeño */
-    line-height: 1.1;
-    width: 100%;
-    height: 50px;
-    align-content: center;
-    padding: 0; /* Espacio interno */
-  }
+ 
   .mini_nav h4 {
-    font-size: 18px; /* Tamaño de fuente más pequeño */
+    font-size: clamp(0.875rem, 0.5625rem + 1vw, 1.125rem); /* Tamaño de fuente más pequeño */
     line-height: 1.1;
     width: 100%;
     align-content: center;
@@ -980,12 +983,11 @@ footer p {
   }
 
   .welcome h1 {
-    font-size: 30px; /* Tamaño de fuente más pequeño */
     margin-top: 40px;
+    padding-bottom: 20px;
   }
 
   .welcome p {
-    font-size: 16px; /* Tamaño de fuente más pequeño */
     justify-content: center;
   }
 
@@ -993,18 +995,9 @@ footer p {
     flex-direction: row; /* Iconos sociales en columna */
     gap: 15px;
   }
-  .welcome h1 {
-    font-size: 30px; /* Tamaño de fuente más pequeño */
-    padding-bottom: 20px;
-  }
-
-  .welcome p {
-    font-size: 16px; /* Tamaño de fuente más pequeño */
-  }
 
   .welcome .btn {
     width: 50%; /* Botón ocupa el 100% en pantallas más pequeñas */
-    font-size: 18px;
     align-items: center;
     margin: 20px 0 0 0;
   }
@@ -1019,19 +1012,10 @@ footer p {
     border-radius: 15px; /* Bordes redondeados */
   }
   .mini_nav h2 {
-    font-size: 18px; /* Tamaño de fuente más pequeño */
-    line-height: 1.1;
-    width: 100%;
     height: 45px;
-    align-content: center;
     margin-top: 10px;
   }
   .mini_nav h4 {
-    font-size: 15.5px; /* Tamaño de fuente más pequeño */
-    line-height: 1.1;
-    width: 100%;
-    text-align: center; /* Alinea el texto a la derecha */
-    padding: 0; /* Espacio interno */
     margin: 0;
   }
   .date_school,
@@ -1045,13 +1029,7 @@ footer p {
     display: none;
   }
 
-  .school h3,
-  .work h3 {
-    font-weight: bold;
-    font-size: 14.5px;
-    align-self: center;
-    text-align: center;
-  }
+
   .school p,
   .work ul,
   .skill p {
@@ -1075,9 +1053,6 @@ footer p {
     margin: 0;
     text-align: center; /* Centra el texto */
     line-height: 1.5; /* Espaciado entre líneas */
-  }
-  .text-cont h1 {
-    font-size: 32px; /* Tamaño de fuente más pequeño */
   }
   .idioma_2_2 {
     gap: 15px;
@@ -1104,9 +1079,6 @@ footer p {
   }
 
   .skill_3-3 .skill p {
-    font-size: 14.5px; /* Tamaño de fuente más pequeño */
-    line-height: 1.5;
-    padding-top: 10px;
     text-align: center; /* Centra el texto */
   }
 
@@ -1162,14 +1134,8 @@ footer p {
   .mini_nav {
     padding: 0; /* Espacio superior e inferior */
   }
-  .mini_nav h2 {
-    font-size: 16px; /* Tamaño de fuente más pequeño */
-  }
   .mini_nav h4 {
-    font-size: 15px; /* Tamaño de fuente más pequeño */
     height: 50px;
-    text-align: center; /* Alinea el texto a la derecha */
-    padding: 0; /* Espacio interno */
   }
   .idioma_2_2 {
     flex-direction: column;
@@ -1180,15 +1146,10 @@ footer p {
   .name {
     height: 50px;
   }
-  .mini_nav h2 {
-    font-size: 16px; /* Tamaño de fuente más pequeño */
-  }
-  .mini_nav h4 {
-    font-size: 13px; /* Tamaño de fuente más pequeño */
-  }
   .work h3,
   .school h3 {
-    font-size: 13px; /* Tamaño de fuente más pequeño */
+    align-self: center;
+    text-align: center;
   }
   .work li,
   .school li {
@@ -1198,9 +1159,6 @@ footer p {
   }
   .welcome {
     padding: 0px;
-  }
-  .text-cont h1 {
-    font-size: 28px;
   }
   .idioma_2_2 {
     padding-top: 15px;
