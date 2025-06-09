@@ -86,7 +86,7 @@ ScrollReveal().reveal(".text-cont h1", {
   easing: "ease-in-out",
   reset: false, // si quieres que solo se animen una vez
 });
-ScrollReveal().reveal(".social_icons ul li", {
+ScrollReveal().reveal("#i_am_social ul li", {
   origin: "bottom",
   distance: "30px",
   duration: 1000,
@@ -194,21 +194,14 @@ ScrollReveal().reveal("#contacto .text-cont", {
   reset: false,
 });
 // Animar seccion de footer
-ScrollReveal().reveal("footer", {
-  origin: "bottom",
-  distance: "80px",
-  duration: 800,
-  delay: 200,
-  easing: "ease-out",
-  reset: false,
-});
+
 ScrollReveal().reveal("footer p, .footer-links a", {
   origin: "bottom",
-  distance: "40px",
-  duration: 800,
-  interval: 150,
+  distance: "180px",
+  duration: 1000,
+  interval: 350,
   easing: "ease-out",
-  reset: true,
+  reset: false,
 });
 
 // Efecto "explode" al pasar el mouse

@@ -29,7 +29,8 @@ html {
 /* Estilo para el body */
 body {
   font-family: var(--font-family); /* Usando la variable de fuente */
-  background-color: var(
+  background-color: #1f2937;
+  /*background-color: var(
     --background-color
   ); /* Color de fondo usando la variable */
   color: var(--text-color); /* Color de texto usando la variable (Negro) */
@@ -49,6 +50,7 @@ main {
   box-sizing: border-box; /* Asegura que el padding no sobresalga */
   overflow: hidden; /* Evita el scroll en el contenido principal */
   background-color: var(--light-color);
+  border-radius: 0 0 100px 100px ;
 }
 
 /* Estilo para el header */
@@ -617,8 +619,13 @@ footer {
   width: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   gap: 15px;
+  position: sticky;
+  bottom: 0;
+  z-index: -1;
+
 }
 
 footer p {
@@ -639,6 +646,7 @@ footer p {
   text-decoration: none;
   font-weight: bold;
   transition: color 0.3s ease;
+  
 }
 
 .footer-links a:hover {
