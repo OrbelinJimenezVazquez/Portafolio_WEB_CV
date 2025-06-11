@@ -337,28 +337,33 @@ ScrollReveal().reveal("#tech .tech", {
 });
 
 
-const toggleBtn = document.getElementById('theme-toggle');
+  const toggleBtn = document.getElementById('theme-toggle');
   const root = document.documentElement;
   const icon = toggleBtn.querySelector('i');
 
-  // Cargar estado guardado
+  // Cargar el estado guardado
   if (localStorage.getItem('theme') === 'dark') {
     root.setAttribute('data-theme', 'dark');
-    icon.classList.remove('fa-moon');
-    icon.classList.add('fa-sun');
+    icon.classList.replace('fa-moon', 'fa-sun');
   }
 
   toggleBtn.addEventListener('click', () => {
     const isDark = root.getAttribute('data-theme') === 'dark';
-    if (isDark) {
-      root.removeAttribute('data-theme');
-      localStorage.setItem('theme', 'light');
-      icon.classList.remove('fa-sun');
-      icon.classList.add('fa-moon');
-    } else {
-      root.setAttribute('data-theme', 'dark');
-      localStorage.setItem('theme', 'dark');
-      icon.classList.remove('fa-moon');
-      icon.classList.add('fa-sun');
-    }
+
+    icon.classList.add('fade-out');
+
+    // Esperar la transición antes de cambiar el icono y el tema
+    setTimeout(() => {
+      if (isDark) {
+        root.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'light');
+        icon.classList.replace('fa-sun', 'fa-moon');
+      } else {
+        root.setAttribute('data-theme', 'dark');
+        localStorage.setItem('theme', 'dark');
+        icon.classList.replace('fa-moon', 'fa-sun');
+      }
+
+      icon.classList.remove('fade-out');
+    }, 200);
   });

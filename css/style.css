@@ -207,7 +207,11 @@ nav ul li a:hover {
 #close-icon {
   display: none;
 }
+
 #theme-toggle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background: transparent;
   border: none;
   font-size: 1.2rem;
@@ -215,13 +219,17 @@ nav ul li a:hover {
   color: var(--text-color);
   transition: color 0.3s ease;
 }
-
+#theme-toggle i {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  display: inline-block;
+}
+#theme-toggle i.fade-out {
+  opacity: 0;
+  transform: rotate(360deg) scale(0.7);
+}
 #theme-toggle:hover {
   color: var(--btn-color);
 }
-
-
-
 
 /*Estilos para la sección de mi cv */
 .i_am {
@@ -775,7 +783,10 @@ footer p {
   #nav-list li a i{
     display: none;
   }
-  
+  #theme-toggle i {
+    display: inline-block; 
+  }
+
   .pro_3-3 {
     width: 100%;
     flex-direction: column;
@@ -833,8 +844,9 @@ footer p {
     .idioma_2_2 {
     gap: 0;
   }
-
-
+  #theme-toggle {
+    display: block; 
+  }
 }
 
 /* Estilo para pantallas pequeñas (700px) */
