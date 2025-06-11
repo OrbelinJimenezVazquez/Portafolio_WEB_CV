@@ -208,7 +208,7 @@ ScrollReveal().reveal("footer p, .footer-links a", {
 function explodeEffect(btn) {
   btn.style.transform = "scale(1.15)";
   btn.style.transition = "transform 0.3s ease, box-shadow 0.3s ease";
-  btn.style.boxShadow = "0 0 20px rgba(0, 0, 0, 0.3)";
+  btn.style.boxShadow = "0 0 10px rgba(0, 0, 0, 0.3)";
   setTimeout(() => {
     btn.style.transform = "scale(1)";
     btn.style.boxShadow = "none";
@@ -263,8 +263,8 @@ if (btnPro) {
   // Explode al pasar el mouse
   btnPro.addEventListener("mouseenter", () => {
     btnPro.style.transition = "transform 0.3s ease, box-shadow 0.3s ease";
-    btnPro.style.transform = "scale(1.15)";
-    btnPro.style.boxShadow = "0 0 20px rgba(0, 0, 0, 0.3)";
+    btnPro.style.transform = "scale(1.06)";
+    btnPro.style.boxShadow = "0 0 10px rgba(0, 0, 0, 0.3)";
 
     setTimeout(() => {
       btnPro.style.transform = "scale(1)";
@@ -335,3 +335,30 @@ ScrollReveal().reveal("#tech .tech", {
 
   reset: true, // para que se reinicie si vuelves a scrollear
 });
+
+
+const toggleBtn = document.getElementById('theme-toggle');
+  const root = document.documentElement;
+  const icon = toggleBtn.querySelector('i');
+
+  // Cargar estado guardado
+  if (localStorage.getItem('theme') === 'dark') {
+    root.setAttribute('data-theme', 'dark');
+    icon.classList.remove('fa-moon');
+    icon.classList.add('fa-sun');
+  }
+
+  toggleBtn.addEventListener('click', () => {
+    const isDark = root.getAttribute('data-theme') === 'dark';
+    if (isDark) {
+      root.removeAttribute('data-theme');
+      localStorage.setItem('theme', 'light');
+      icon.classList.remove('fa-sun');
+      icon.classList.add('fa-moon');
+    } else {
+      root.setAttribute('data-theme', 'dark');
+      localStorage.setItem('theme', 'dark');
+      icon.classList.remove('fa-moon');
+      icon.classList.add('fa-sun');
+    }
+  });

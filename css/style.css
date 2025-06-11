@@ -1,15 +1,27 @@
 /* Definir Variables Globales */
 :root {
+  --background-color: #fff;
   --text-color: #1f2937; /* Color de texto (Negro) */
-  --text-decoration-color: #4eb8f8;
   --text-light-color: #4a4949;
-  --background-color: white;
-  --light-color: #eeeeee; /* Color de fondo claro */
+  --text-decoration-color: #4eb8f8;
   --btn-color: #4caf50;
+  --line-color: #1f2937;
   --shadow-color: #6b6b6b;
+  --light-color: #eeeeee; /* Color de fondo claro */
+  
   --font-family: "Afacad Flux", sans-serif; /* Fuente personalizada */
-  --transition-speed: 0.3s; /* Velocidad de las transiciones */
 }
+:root[data-theme="dark"] {
+  --background-color: #1f2937;
+  --text-color: #f0f1f2;
+  --text-light-color: #cacbcd;
+  --text-decoration-color: #4eb8f8;
+  --btn-color: #4caf50;
+  --line-color: #ffffff;
+  --shadow-color: #121212;
+  --light-color: #2c3440;
+}
+
 
 /* Estilos Generales */
 * {
@@ -57,10 +69,9 @@ header {
   top: 0; /* Se pega al top cuando haga scroll */
   left: 0; /* Alineación al lado izquierdo */
   right: 0;
-  width: 100%; /* Asegura que ocupe todo el ancho */
+  max-width: 100%; /* Asegura que ocupe todo el ancho */
   z-index: 5; /* Asegura que el header quede encima del contenido */
   color: var(--text-color);
-  background-color: transparent;
   background-color: var(--background-color);
   padding: 15px 40px; /* Espaciado interno */
   display: flex; /* Usamos flexbox para distribuir los elementos */
@@ -124,6 +135,7 @@ header .logo p:hover {
 }
 #nav-list li a:hover {
   transition: all 0.2s ease-in-out;
+  transform: scale(1.05);
   color: var(--btn-color);
 }
 #nav-list li a i {
@@ -181,7 +193,7 @@ nav ul li a {
 /* Estilo para los links cuando están activos */
 nav ul li a.active {
   color: var(--btn-color); /* Color para el enlace activo (resaltado) */
-  font-size: clamp(0.889rem, 0rem + 122.222vw, 1.333rem); /* Puedes cambiar el tamaño si quieres que el enlace activo sea más grande */
+  font-size: clamp(0.889rem, 0rem + 122.222vw, 1.222rem); /* Puedes cambiar el tamaño si quieres que el enlace activo sea más grande */
 }
 nav ul li a:hover {
   transition: all 0.2s ease-in-out;
@@ -195,6 +207,21 @@ nav ul li a:hover {
 #close-icon {
   display: none;
 }
+#theme-toggle {
+  background: transparent;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: var(--text-color);
+  transition: color 0.3s ease;
+}
+
+#theme-toggle:hover {
+  color: var(--btn-color);
+}
+
+
+
 
 /*Estilos para la sección de mi cv */
 .i_am {
@@ -208,7 +235,6 @@ nav ul li a:hover {
   line-height: 1.5; /* Espaciado entre líneas */
   overflow: hidden;
   position: relative;
-  width: 100%;
   z-index: 2;
 }
 
@@ -221,12 +247,15 @@ nav ul li a:hover {
   z-index: 1;
 }
 
+
+
 /* Estilo para el id "saludo" */
 .i_am .saludo {
   font-size: clamp(1.389rem, 0rem + 122.222vw, 1.667rem);
   letter-spacing: 2px;
   padding-left: 15px;
   text-align: left;
+  margin: 0;
 }
 
 /* Estilo para el id "name" */
@@ -243,6 +272,12 @@ nav ul li a:hover {
   display: none;
 }
 
+.i_am_text {
+  justify-content: center; /* Centra verticalmente el texto */
+  align-items: flex-start; /* Alinea el texto a la izquierda */
+  padding: 50px 20px 0 20px ; /* Espacio superior e inferior */
+  width: 100%; /* Ocupa todo el ancho disponible */
+}
 /* Estilo para el id "description" */
 .i_am_text .description {
   font-size: clamp(0.8125rem, 0.4219rem + 1.25vw, 1.125rem);
@@ -456,7 +491,7 @@ nav ul li a:hover {
   margin: auto 40px;
   width: 5px;
   height: 240px;
-  background-color: black;
+  background-color: var(--line-color);
   border-radius: 15px;
 }
 
@@ -493,7 +528,7 @@ nav ul li a:hover {
 .tech:hover {
   transform: scale(1.05); /* Hace que el contenedor se agrande un poco */
   box-shadow: var(--shadow-color) 0 0 5px;
-  transition: all 1.5s ease-in-out;
+  transition: all 2.5s ease-in-out;
   }
 
 .skill_3-3 .skill p {
@@ -1090,7 +1125,7 @@ footer p {
   }
   .i_am .name {
     height: 60px;
-    margin-bottom: 25px;
+    margin-bottom: 35px;
   }
   .welcome {
     padding: 0;
@@ -1117,6 +1152,9 @@ footer p {
 }
 
 @media screen and (max-width: 320px) {
+  .i_am .name{
+    height: 80px;
+  }
   .name {
     height: 50px;
   }
@@ -1142,28 +1180,5 @@ footer p {
   }
   .tech h3 {
     width: 30%;
-  }
-}
-
-@media(prefers-color-scheme: dark) {
-  :root {
-    --background-color: #121212; /* Fondo oscuro */
-    --text-color: #ffffff; /* Texto claro */
-    --text-light-color: #b0b0b0; /* Texto claro secundario */
-    --text-decoration-color: #f2c119; /* Color de decoración */
-    --btn-color: #f2c119; /* Color del botón */
-    --shadow-color: rgba(0, 0, 0, 0.5); /* Sombra oscura */
-    --light-color: #1f2937; /* Color claro para el fondo de secciones */
-  }
-}
-@media(prefers-color-scheme: light) {
-  :root {
-    --background-color: #ffffff; /* Fondo claro */
-    --text-color: #000000; /* Texto oscuro */
-    --text-light-color: #4a4a4a; /* Texto claro secundario */
-    --text-decoration-color: #f2c119; /* Color de decoración */
-    --btn-color: #f2c119; /* Color del botón */
-    --shadow-color: rgba(0, 0, 0, 0.1); /* Sombra clara */
-    --light-color: #f8f9fa; /* Color claro para el fondo de secciones */
   }
 }
