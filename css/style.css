@@ -48,6 +48,7 @@ main {
   overflow: hidden; /* Evita el scroll en el contenido principal */
   background-color: var(--light-color);
   border-radius: 0 0 50px 50px ;
+  z-index: 2;
 }
 
 /* Estilo para el header */
@@ -57,7 +58,7 @@ header {
   left: 0; /* Alineación al lado izquierdo */
   right: 0;
   width: 100%; /* Asegura que ocupe todo el ancho */
-  z-index: 1000; /* Asegura que el header quede encima del contenido */
+  z-index: 5; /* Asegura que el header quede encima del contenido */
   color: var(--text-color);
   background-color: transparent;
   background-color: var(--background-color);
@@ -98,6 +99,7 @@ header .logo p {
 
 header .logo p:hover {
   color: var(--text-decoration-color); /* Cambio de color al pasar el mouse */
+  transition: all 0.2s ease-in-out;
   transform: scale(1.1); /* Hace que el logo se agrande un poco */
 }
 
@@ -113,6 +115,7 @@ header .logo p:hover {
   transition: all color 0.3s ease;
 }
 #nav-list li a:hover {
+  transition: all 0.2s ease-in-out;
   color: var(--btn-color);
 }
 /* Menú hamburguesa oculto en pantallas grandes */
@@ -165,6 +168,7 @@ nav ul li a.active {
   font-size: clamp(0.889rem, 0rem + 122.222vw, 1.333rem); /* Puedes cambiar el tamaño si quieres que el enlace activo sea más grande */
 }
 nav ul li a:hover {
+  transition: all 0.2s ease-in-out;
   color: var(--btn-color);
 }
 /* El ícono de hamburguesa se muestra por defecto */
@@ -189,6 +193,7 @@ nav ul li a:hover {
   overflow: hidden;
   position: relative;
   width: 100%;
+  z-index: 2;
 }
 
 .i_am img {
@@ -197,7 +202,7 @@ nav ul li a:hover {
   border-radius: 15px; /* Hace que la imagen sea circular */
   margin-right: 50px; /* Espacio entre la imagen y el texto */
   box-shadow: 0 2px 5px var(--shadow-color); /* Sombra sutil */
-  z-index: 10;
+  z-index: 1;
 }
 
 /* Estilo para el id "saludo" */
@@ -297,7 +302,7 @@ nav ul li a:hover {
 .social_icons ul li {
   display: inline-block;
   margin: 0 10px; /* Espacio entre los íconos */
-  z-index: 5;
+  z-index: 4;
 }
 
 .social_icons a {
@@ -317,7 +322,7 @@ nav ul li a:hover {
   justify-content: center;
   margin: 20px 0 10px;
   position: relative;
-  z-index: 5;
+  z-index: 4;
 }
 
 .btn-container .btn {
@@ -333,13 +338,14 @@ nav ul li a:hover {
   border-radius: 50px;
   text-decoration: none;
   overflow: hidden;
-  z-index: 5;
+  z-index: 4;
   transition: background 0.3s ease;
   font-weight: bold;
   position: relative;
 }
 
 .btn:hover {
+  transition: all 0.2s ease-in-out;
   background: var(--btn-color);
   color: var(--background-color);
 }
@@ -372,15 +378,15 @@ nav ul li a:hover {
 }
 
 .text-cont {
-  margin: 0 24px;
-  width: 100%;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center; /* Centra el contenido */
   display: flex;
-  padding: 24px; /* Espacio superior e inferior */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   text-align: center; /* Centra el texto */
   line-height: 1.5; /* Espaciado entre líneas */
+  width: 100%;
+  margin: 0 24px;
+  padding: 24px; /* Espacio superior e inferior */
 }
 
 .text-cont h1 {
@@ -413,12 +419,13 @@ nav ul li a:hover {
   flex-direction: row;
   box-shadow: var(--shadow-color) 0 0 2px;
   border-radius: 15px; /* Bordes redondeados */
+  transition: all 2s ease-n-iout;
 }
 
-  .school h3,
-  .work h3 {
-    font-size: clamp(0.8125rem, 0.2656rem + 1.75vw, 1.25rem);
-  }
+.school h3,
+.work h3 {
+  font-size: clamp(0.8125rem, 0.2656rem + 1.75vw, 1.25rem);
+}
 
 .work i {
   margin: 5px;
@@ -439,9 +446,9 @@ nav ul li a:hover {
 
 .work:hover,
 .school:hover {
-  transform: scale(1.01); /* Hace que el contenedor se agrande un poco */
-  transition: all 0.2s ease-in-out; /* Transición suave para todos los cambios */
-  box-shadow: var(--shadow-color) 0 0 5px; /* Sombra azul al pasar el mouse */
+  transform: scale(1.02); /* Hace que el contenedor se agrande un poco */
+  box-shadow: var(--shadow-color) 0 0 5px; 
+  transition: all 0.2s ease-in-out;
 }
 
 /* Estilo para seccion de skills*/
@@ -466,10 +473,12 @@ nav ul li a:hover {
 }
 
 .skill:hover,
-.proye:hover {
-  transform: scale(1.1); /* Hace que el contenedor se agrande un poco */
-  box-shadow: var(--shadow-color) 0 0 5px; /* Sombra azul al pasar el mouse */
-}
+.proye:hover,
+.tech:hover {
+  transform: scale(1.05); /* Hace que el contenedor se agrande un poco */
+  box-shadow: var(--shadow-color) 0 0 5px;
+  transition: all 1.5s ease-in-out;
+  }
 
 .skill_3-3 .skill p {
     font-size: clamp(0.875rem, 0.7188rem + 0.5vw, 1rem); /* Tamaño de fuente más pequeño */
@@ -489,7 +498,7 @@ nav ul li a:hover {
   display: flex;
   justify-content: center;
   flex-wrap: wrap; /* Permite que los elementos se envuelvan */
-  gap: 30px;
+  gap: 10px;
   padding: 30px 0;
 }
 .tech {
@@ -498,12 +507,9 @@ nav ul li a:hover {
   flex-direction: column;
   box-sizing: border-box; /* Asegura que el padding no sobresalga */
   border-radius: 15px; /* Bordes redondeados */
-  box-shadow: 0 2px 5px var(--shadow-color); /* Sombra sutil */
-  margin: 20px;
+  box-shadow: var(--shadow-color) 0 0 2px;
+  margin: 10px;
   padding: 15px;
-}
-#circle-react{
-  justify-content: center;
 }
 
 .tech h3 {
@@ -563,9 +569,13 @@ nav ul li a:hover {
 
 /*Estilo para proyectos*/
 .proye {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  align-items: center;
   background-color: var(--background-color);
   overflow: hidden;
-  text-align: center;
   padding: 40px 20px 40px 20px;
 }
 .proye img {
@@ -585,9 +595,9 @@ nav ul li a:hover {
   color: var(--text-light-color);
   margin-bottom: 15px;
 }
-.proye .btn {
+.proye .btn-pro {
   padding: 10px 20px;
-  font-size: clamp(1rem, 0.8438rem + 0.5vw, 1.125rem);
+  justify-content: center;
 }
 
 .btn-pro {
@@ -600,26 +610,28 @@ nav ul li a:hover {
   text-decoration: none;
   position: relative;
   overflow: hidden;
+  width: 50%;
 }
 
 /*Estilo para la sección de idiomas */
 .idioma_2_2 {
-  padding: 30px;
-  flex-direction: column * 2;
   display: flex;
   justify-content: center;
-  gap: 70px; /* Espacio entre los elementos */
+  flex-direction: column * 2;
+  padding: 30px;
+  gap: 70px;
 }
 .idioma {
   margin: 20px;
   padding: 15px 30px;
   box-sizing: border-box; /* Asegura que el padding no sobresalga */
   border-radius: 15px; /* Bordes redondeados */
-  box-shadow: 0 2px 5px var(--shadow-color); /* Sombra sutil */
+  box-shadow: var(--shadow-color) 0 0 2px;
 }
 .idioma:hover {
-  transform: scale(1.02); /* Hace que el contenedor se agrande un poco */
+  transform: scale(1.05); /* Hace que el contenedor se agrande un poco */
   transition: all 0.2s ease-in-out; /* Transición suave para todos los cambios */
+  box-shadow: var(--shadow-color) 0 0 5px;
 }
 .idioma h2{
   text-align: center;
@@ -651,7 +663,7 @@ footer {
   gap: 15px;
   position: sticky;
   bottom: 0;
-  z-index: -1;
+  z-index: 1;
 
 }
 
@@ -674,10 +686,13 @@ footer p {
   text-decoration: none;
   font-weight: bold;
   transition: color 0.3s ease;
+  cursor: pointer;
+  font-size: clamp(1rem, 0.8621rem + 0.6897vw, 1.25rem);  
   
 }
 
 .footer-links a:hover {
+  transition: all 0.2s ease-in-out;
   color: #ffffff;
 }
 
@@ -690,7 +705,7 @@ footer p {
   transform: scale(0);
   animation: ripple-animation 0.6s linear;
   pointer-events: none;
-  z-index: 1;
+  z-index: 3;
 }
 
 @keyframes ripple-animation {
@@ -708,6 +723,14 @@ footer p {
   }
   #nav-list li a i{
     display: none;
+  }
+  
+  .pro_3-3 {
+    width: 100%;
+    flex-direction: column;
+  }
+  .proye{
+    width: auto;
   }
 }
 /* Estilo responsivo */
@@ -749,14 +772,17 @@ footer p {
   }
 
   .skill_3-3 {
-    flex-direction: column * 2; /* Cambia a columna en pantallas pequeñas */
-    padding: 0px 0px 45px; /* Espacio superior e inferior */
-    margin: 0px;
+    flex-wrap: wrap; 
+    margin: 0px 0px 45px; /* Espacio superior e inferior */
   }
 
+  .proye{
+    margin: 40px 20px 40px 20px;
+  }
     .idioma_2_2 {
     gap: 0;
   }
+
 
 }
 
@@ -942,11 +968,7 @@ footer p {
   .work,
   .school {
     margin: 0 10px 0 10px;
-    padding: 24px;
-    width: 100%;
-    flex-direction: column; /* Cambia a columna en pantallas pequeñas */
-    box-shadow: var(--shadow-color) 0 0 2px;
-    border-radius: 15px; /* Bordes redondeados */
+    flex-direction: column; 
   }
 
   .work h3,
@@ -994,32 +1016,16 @@ footer p {
     padding: 24px; /* Espacio superior e inferior */
   }
   .text-cont {
-    padding: 0; /* Espacio superior e inferior */
-    margin: 0;
-    text-align: center; /* Centra el texto */
-    line-height: 1.5; /* Espaciado entre líneas */
+    padding: 0;
   }
-  .idioma_2_2 {
-    gap: 15px;
-    padding: 10px;
-  }
-
-  .idioma {
-    margin: 0;
-    padding: 15px;
-    gap: 5px;
-  }
-
-  .skill_3-3 {
-    flex-direction: column;
-    width: -100%;
+  .skill_3-3, .pro_3-3 {
+    width: 100%;
     padding: 20px 0px 25px; /* Espacio superior e inferior */
     flex-wrap: wrap; /* Permite que los elementos se envuelvan */
     justify-content: center;
   }
 
-  .skill {
-    padding: 10px;
+  .skill, .proye {
     width: 100%;
   }
 
@@ -1050,6 +1056,16 @@ footer p {
   .tech h3 {
     width: 50%;
     align-self: center;
+  }
+    .idioma_2_2 {
+    gap: 15px;
+    padding: 10px;
+  }
+
+  .idioma {
+    margin: 0;
+    padding: 15px;
+    gap: 5px;
   }
 }
 @media screen and (max-width: 376px) {
