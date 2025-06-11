@@ -86,9 +86,9 @@ ScrollReveal().reveal(".text-cont h1", {
   easing: "ease-in-out",
   reset: false, // si quieres que solo se animen una vez
 });
-ScrollReveal().reveal("#i_am_social ul li", {
+ScrollReveal().reveal("#i_am_social ul li, .social_icons", {
   origin: "bottom",
-  distance: "30px",
+  distance: "70px",
   duration: 1000,
   interval: 170,
   easing: "ease-out",

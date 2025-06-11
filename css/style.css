@@ -22,8 +22,6 @@
 html {
   scroll-behavior: smooth; /* Desplazamiento suave */
   font-size: 100%; /* Asegura un tamaño de fuente base */
-  margin: 0;
-  padding: 0;
 }
 
 /* Estilo para el body */
@@ -45,7 +43,6 @@ body {
 /* Ajuste del contenedor main */
 main {
   max-width: 100%;
-  margin-top: 0px; /* Espacio superior para el header */
   padding: 20px;
   box-sizing: border-box; /* Asegura que el padding no sobresalga */
   overflow: hidden; /* Evita el scroll en el contenido principal */
@@ -104,34 +101,31 @@ header .logo p:hover {
   transform: scale(1.1); /* Hace que el logo se agrande un poco */
 }
 
-/* Menú principal (pantallas grandes) */
-nav {
-  display: flex;
-  justify-content: flex-end; /* Alinea el menú a la derecha */
-  width: 100%;
-}
 #nav-list {
   display: flex;
   gap: 25px;
 }
-
 #nav-list li a {
   font-weight: bold;
   color: var(--text-color);
   text-decoration: none;
   font-size: clamp(1rem, 0rem + 122.222vw, 1.222rem);
-  transition: color 0.3s ease;
+  transition: all color 0.3s ease;
 }
-
 #nav-list li a:hover {
   color: var(--btn-color);
 }
-
 /* Menú hamburguesa oculto en pantallas grandes */
 .menu-toggle {
   display: none;
 }
-
+/* Menú principal (pantallas grandes) */
+nav {
+  display: flex;
+  justify-content: flex-end; /* Alinea el menú a la derecha */
+  width: 100%;
+  padding: 0;
+}
 /* Estilo para la lista de navegación (ul) */
 nav ul {
   list-style: none; /* Elimina los puntos de la lista */
@@ -139,7 +133,6 @@ nav ul {
   display: flex;
   gap: 25px;
 }
-
 /* Estilo cuando el menú está en modo desplegado */
 nav ul.active {
   display: flex;
@@ -150,18 +143,14 @@ nav ul.active {
   width: 100%;
   padding: 20px;
   background-color: white;
-
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
-
 nav ul.active .fa-bars {
   display: none; /* Oculta el icono de hamburguesa cuando el menú está abierto */
 }
-
 nav ul.active .fa-times {
   display: block; /* Muestra el icono de la "X" cuando el menú está abierto */
 }
-
 /* Estilo para los links en el menú */
 nav ul li a {
   font-weight: bold;
@@ -170,22 +159,18 @@ nav ul li a {
   font-size: clamp(0.889rem, 0rem + 122.222vw, 1.222rem);
   transition: color 0.3s, font-size 0.3s;
 }
-
 /* Estilo para los links cuando están activos */
 nav ul li a.active {
   color: var(--btn-color); /* Color para el enlace activo (resaltado) */
   font-size: clamp(0.889rem, 0rem + 122.222vw, 1.333rem); /* Puedes cambiar el tamaño si quieres que el enlace activo sea más grande */
 }
-
 nav ul li a:hover {
   color: var(--btn-color);
 }
-
 /* El ícono de hamburguesa se muestra por defecto */
 .fas.fa-bars {
   display: block;
 }
-
 /* El ícono de la "X" se oculta por defecto */
 #close-icon {
   display: none;
@@ -203,6 +188,7 @@ nav ul li a:hover {
   line-height: 1.5; /* Espaciado entre líneas */
   overflow: hidden;
   position: relative;
+  width: 100%;
 }
 
 .i_am img {
@@ -250,19 +236,23 @@ nav ul li a:hover {
   margin: 80px 20px 75px 20px;
   padding: 20px 100px;
   text-align: center;
+  line-height: 1.5; /* Espaciado entre líneas */
 }
 
 .welcome h1 {
-  font-size: clamp(1.667rem, 0rem + 122.222vw, 3.333rem);
+  font-size: clamp(1.25rem, -0.6466rem + 9.4828vw, 4.6875rem);
   font-weight: bold;
+  line-height: 1;
   color: var(--text-decoration-color);
+  margin-bottom: 30px;
 }
 
 .welcome p {
-  font-size: clamp(0.775rem, 0rem + 100vw, 1rem);
+  font-size: clamp(0.875rem, 0.7371rem + 0.6897vw, 1.125rem);
   color: var(--text-light-color);
   line-height: 1.6;
   text-align: center;
+  padding:  0 20px 0 20px;
 }
 
 .welcome .btn {
@@ -283,7 +273,7 @@ nav ul li a:hover {
 
 /* Estilo para el título en .puesto */
 #contacto h1 {
-  font-size: 60px;
+  font-size: clamp(1.75rem, 0.6466rem + 5.5172vw, 3.75rem);
   font-weight: bold;
 }
 
@@ -301,7 +291,6 @@ nav ul li a:hover {
 }
 
 .social_icons ul {
-  display: flex;
   list-style: none; /* Elimina los puntos de lista */
 }
 
@@ -324,6 +313,9 @@ nav ul li a:hover {
 }
 
 .btn-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0 10px;
   position: relative;
   z-index: 5;
 }
@@ -425,7 +417,6 @@ nav ul li a:hover {
 
   .school h3,
   .work h3 {
-    font-weight: bold;
     font-size: clamp(0.8125rem, 0.2656rem + 1.75vw, 1.25rem);
   }
 
@@ -456,11 +447,11 @@ nav ul li a:hover {
 /* Estilo para seccion de skills*/
 .skill_3-3,
 .pro_3-3 {
-  margin: 10px;
+  display: flex;
+  justify-content: center;
   flex-direction: column * 3;
   flex-wrap: wrap; /* Permite que los elementos se envuelvan */
-  justify-content: center;
-  display: flex;
+  margin: 10px;
   gap: 20px; /* Espacio entre los elementos */
   width: 100%;
   padding: 20px 0;
@@ -494,26 +485,39 @@ nav ul li a:hover {
     align-content: center;
   }
 
+.tech-bars {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap; /* Permite que los elementos se envuelvan */
+  gap: 30px;
+  padding: 30px 0;
+}
 .tech {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
   box-sizing: border-box; /* Asegura que el padding no sobresalga */
   border-radius: 15px; /* Bordes redondeados */
   box-shadow: 0 2px 5px var(--shadow-color); /* Sombra sutil */
   margin: 20px;
   padding: 15px;
-  align-content: center;
 }
-
-.tech-bars {
-  margin: 0;
-  display: flex;
-  flex-direction: row;
-  gap: 30px;
-  padding: 30px 0;
+#circle-react{
+  justify-content: center;
 }
 
 .tech h3 {
   color: var(--text-color);
   text-align: center;
+  font-size: clamp(0.8125rem, 0.4219rem + 1.25vw, 1.125rem);
+}
+.tech-used {
+  margin: 18px 0 15px 0;
+  font-size: 24px;
+  color: var(--text-color);
+}
+.tech-used i {
+  margin: 0 10px;
 }
 
 .school h3,
@@ -533,7 +537,7 @@ nav ul li a:hover {
 .date_work {
   padding-right: 20px;
   align-content: center;
-  font-size: 17px;
+  color: var(--text-decoration-color);
 }
 
 .mini_nav {
@@ -544,15 +548,19 @@ nav ul li a:hover {
   justify-content: space-between;
   text-decoration: none;
 }
-
 .mini_nav h2 {
     font-size: clamp(0.9375rem, 0.3906rem + 1.75vw, 1.375rem);
     line-height: 1.1;
-    width: 100%;
+    width: 80%;
     height: 50px;
     align-content: center;
     padding: 0; /* Espacio interno */
   }
+.mini_nav h4{
+  font-size: clamp(0.875rem, 0.5625rem + 1vw, 1.125rem); /* Tamaño de fuente más pequeño */
+  width: 100%;
+}
+
 /*Estilo para proyectos*/
 .proye {
   background-color: var(--background-color);
@@ -577,20 +585,13 @@ nav ul li a:hover {
   color: var(--text-light-color);
   margin-bottom: 15px;
 }
-
 .proye .btn {
   padding: 10px 20px;
   font-size: clamp(1rem, 0.8438rem + 0.5vw, 1.125rem);
 }
-.tech-used {
-  margin: 18px 0 15px 0;
-  font-size: 24px;
-  color: var(--text-color);
-}
-.tech-used i {
-  margin: 0 10px;
-}
+
 .btn-pro {
+  font-size: clamp(0.8125rem, 0.4219rem + 1.25vw, 1.125rem);
   padding: 8px 16px;
   margin: 0;
   background-color: var(--btn-color);
@@ -609,7 +610,6 @@ nav ul li a:hover {
   justify-content: center;
   gap: 70px; /* Espacio entre los elementos */
 }
-
 .idioma {
   margin: 20px;
   padding: 15px 30px;
@@ -617,17 +617,18 @@ nav ul li a:hover {
   border-radius: 15px; /* Bordes redondeados */
   box-shadow: 0 2px 5px var(--shadow-color); /* Sombra sutil */
 }
-
 .idioma:hover {
   transform: scale(1.02); /* Hace que el contenedor se agrande un poco */
   transition: all 0.2s ease-in-out; /* Transición suave para todos los cambios */
 }
-
-.idioma h2,
+.idioma h2{
+  text-align: center;
+  font-size: clamp(0.8125rem, 0.1094rem + 2.25vw, 1.375rem);
+}
 .idioma p {
   text-align: center;
+  font-size: clamp(0.8125rem, 0.4219rem + 1.25vw, 1.125rem);
 }
-
 .barra {
   width: 120px;
   height: 120px;
@@ -656,7 +657,7 @@ footer {
 
 footer p {
   margin: 0;
-  font-size: 18px;
+  font-size: clamp(0.9375rem, 0.5469rem + 1.25vw, 1.25rem);
   font-weight: 400;
 }
 
@@ -665,6 +666,7 @@ footer p {
   gap: 20px;
   flex-wrap: wrap;
   justify-content: center;
+  
 }
 
 .footer-links a {
@@ -699,54 +701,43 @@ footer p {
 }
 
 @media (max-width: 1100px) {
-  .i_am {
-    width: 100%;
-  }
-  .i_am .name {
-    height: 70px;
-    width: 100%;
-  }
+
   .i_am img {
     width: 30%;
     height: auto;
   }
-  #nav-list li a {
-    font-size: 18px;
+  #nav-list li a i{
+    display: none;
   }
 }
 /* Estilo responsivo */
 @media (max-width: 900px) {
-  .i_am {
-    flex-direction: column; /* Cambia a columna en pantallas pequeñas */
-    padding: 0px 20px; /* Espacio superior e inferior */
-  }
 
   header .logo p {
     font-size: 25px;
     font-weight: bold;
   }
-
   header .logo {
     padding: 0;
     font-size: 17px;
     left: 30px;
+  }
+
+  nav ul {
+    flex-direction: row; /* Cambia a columna en pantallas pequeñas */
+    gap: 10px; /* Espacio entre los elementos */
+    padding: 15px;
+  }
+
+  .i_am {
+    flex-direction: column; /* Cambia a columna en pantallas pequeñas */
+    padding: 0px 20px; /* Espacio superior e inferior */
   }
   .i_am img {
     width: 25%; /* Imagen ocupa el 100% del ancho */
     height: auto; /* Mantiene la proporción de la imagen */
     margin-right: 0; /* Elimina el margen derecho */
   }
-  nav {
-    padding: 0;
-  }
-
-  nav ul {
-    flex-direction: row; /* Cambia a columna en pantallas pequeñas */
-    gap: 10px; /* Espacio entre los elementos */
-    margin: 0;
-    padding: 15px;
-  }
-  
   #experience,
   #skills,
   #proyectos,
@@ -761,46 +752,35 @@ footer p {
     flex-direction: column * 2; /* Cambia a columna en pantallas pequeñas */
     padding: 0px 0px 45px; /* Espacio superior e inferior */
     margin: 0px;
-    flex-wrap: wrap; /* Permite que los elementos se envuelvan */
-    justify-content: center;
-    display: flex;
-    gap: 20px; /* Espacio entre los elementos */
   }
 
-  
-  .idioma_2_2 {
+    .idioma_2_2 {
     gap: 0;
   }
 
-  .tech-bars {
-    width: 80%;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 15px;
-  }
-  .tech {
-    width: 25%;
-    height: auto;
-    flex-direction: row;
-    display: flex;
-  }
-
-  .tech h3 {
-    color: var(--text-color);
-    text-align: center;
-  }
 }
 
 /* Estilo para pantallas pequeñas (700px) */
-@media (max-width: 720px) {
-  main {
-    padding: 0;
+@media (max-width: 750px) {
+  
+  .i_am_text {
+    padding: 0 20px; /* Espacio superior e inferior */
     margin: 0;
+    text-align: center; /* Centra el texto */
+  }
+  .welcome {
+    padding: 10px;
+    margin: 10px;
+  }
+  /* Ajuste de botones */
+  .welcome .btn {
+    width: 40%; /* Botón ocupa el 100% en pantallas más pequeñas */
+    padding: 12px 0;
   }
 
-  nav {
-    padding: 0;
+  .btn-container {
+    width: 100%;
+    margin-top: 15px;
   }
   header {
     padding: 15px 20px; /* Espacio interno */
@@ -884,42 +864,6 @@ footer p {
     font-size: 18px;
   }
 
-  /* Mejorar el contenedor de la imagen en la sección 'i_am' */
-  .i_am img {
-    width: 40%; /* Imagen ocupa el 100% del ancho */
-    height: auto; /* Mantiene la proporción de la imagen */
-  }
-
-  .i_am_text {
-    padding: 0 20px; /* Espacio superior e inferior */
-    margin: 0;
-    text-align: center; /* Centra el texto */
-  }
-  .welcome {
-    padding: 10px;
-    margin: 10px;
-    text-align: center; /* Centra el texto */
-    line-height: 1.5; /* Espaciado entre líneas */
-  }
-  .welcome h1 {
-    margin-top: 30px;
-  }
-  /* Ajuste de botones */
-  .welcome .btn {
-    width: 40%; /* Botón ocupa el 100% en pantallas más pequeñas */
-    padding: 12px 0;
-  }
-
-  /* Ajustes generales */
-  .social_icons ul {
-    flex-direction: column; /* Iconos sociales en columna */
-    gap: 15px;
-  }
-
-  .btn-container {
-    width: 100%;
-    margin-top: 15px;
-  }
   .line_time {
     display: none;
   }
@@ -929,11 +873,9 @@ footer p {
     margin: 0;
     text-align: center; /* Centra el texto */
   }
- 
+
   .mini_nav h4 {
-    font-size: clamp(0.875rem, 0.5625rem + 1vw, 1.125rem); /* Tamaño de fuente más pequeño */
     line-height: 1.1;
-    width: 100%;
     align-content: center;
     margin-bottom: 10px;
     padding: 0; /* Espacio interno */
@@ -982,11 +924,6 @@ footer p {
     margin-top: 20px; /* Espacio superior */
   }
 
-  .welcome h1 {
-    margin-top: 40px;
-    padding-bottom: 20px;
-  }
-
   .welcome p {
     justify-content: center;
   }
@@ -1011,9 +948,17 @@ footer p {
     box-shadow: var(--shadow-color) 0 0 2px;
     border-radius: 15px; /* Bordes redondeados */
   }
+
+  .work h3,
+  .school h3 {
+    align-self: center;
+    text-align: center;
+  }
+
   .mini_nav h2 {
     height: 45px;
     margin-top: 10px;
+    width: 100%;
   }
   .mini_nav h4 {
     margin: 0;
@@ -1097,12 +1042,9 @@ footer p {
   }
 
   .tech-bars {
-    align-content: center;
-    flex-direction: column;
     gap: 0;
   }
   .tech {
-    width: 80%;
     margin: 5px;
   }
   .tech h3 {
@@ -1146,11 +1088,6 @@ footer p {
   .name {
     height: 50px;
   }
-  .work h3,
-  .school h3 {
-    align-self: center;
-    text-align: center;
-  }
   .work li,
   .school li {
     font-size: 13px; /* Tamaño de fuente más pequeño */
@@ -1165,9 +1102,6 @@ footer p {
   }
   .idioma {
     text-align: center;
-  }
-  h1 {
-    font-size: 22px;
   }
   .tech {
     width: 100%;
