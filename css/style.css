@@ -105,9 +105,17 @@ header .logo p:hover {
 
 #nav-list {
   display: flex;
+  justify-content: center;
   gap: 25px;
 }
+#nav-list ul li{
+  display: flex;
+  justify-content: center;
+}
+
 #nav-list li a {
+  display: flex;
+  align-items: center; /* Alinea el icono y el texto verticalmente */
   font-weight: bold;
   color: var(--text-color);
   text-decoration: none;
@@ -118,6 +126,10 @@ header .logo p:hover {
   transition: all 0.2s ease-in-out;
   color: var(--btn-color);
 }
+#nav-list li a i {
+  margin-right: 8px; /* Espacio entre el icono y el texto */
+  font-size: clamp(1rem, 0rem + 122.222vw, 1.222rem);
+}
 /* Menú hamburguesa oculto en pantallas grandes */
 .menu-toggle {
   display: none;
@@ -127,11 +139,13 @@ nav {
   display: flex;
   justify-content: flex-end; /* Alinea el menú a la derecha */
   width: 100%;
+  height: auto;
   padding: 0;
 }
 /* Estilo para la lista de navegación (ul) */
 nav ul {
   list-style: none; /* Elimina los puntos de la lista */
+  align-items: center;
   margin: 0px;
   display: flex;
   gap: 25px;
@@ -156,6 +170,8 @@ nav ul.active .fa-times {
 }
 /* Estilo para los links en el menú */
 nav ul li a {
+  align-items: center; 
+  display: flex;
   font-weight: bold;
   color: var(--text-color);
   text-decoration: none;
@@ -1126,5 +1142,28 @@ footer p {
   }
   .tech h3 {
     width: 30%;
+  }
+}
+
+@media(prefers-color-scheme: dark) {
+  :root {
+    --background-color: #121212; /* Fondo oscuro */
+    --text-color: #ffffff; /* Texto claro */
+    --text-light-color: #b0b0b0; /* Texto claro secundario */
+    --text-decoration-color: #f2c119; /* Color de decoración */
+    --btn-color: #f2c119; /* Color del botón */
+    --shadow-color: rgba(0, 0, 0, 0.5); /* Sombra oscura */
+    --light-color: #1f2937; /* Color claro para el fondo de secciones */
+  }
+}
+@media(prefers-color-scheme: light) {
+  :root {
+    --background-color: #ffffff; /* Fondo claro */
+    --text-color: #000000; /* Texto oscuro */
+    --text-light-color: #4a4a4a; /* Texto claro secundario */
+    --text-decoration-color: #f2c119; /* Color de decoración */
+    --btn-color: #f2c119; /* Color del botón */
+    --shadow-color: rgba(0, 0, 0, 0.1); /* Sombra clara */
+    --light-color: #f8f9fa; /* Color claro para el fondo de secciones */
   }
 }

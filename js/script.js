@@ -73,7 +73,7 @@ const typed = new Typed(".name", {
   strings: ["", "", "Orbelin Jimenez Vazquez."],
   typeSpeed: 100,
   backSpeed: 100,
-  loop: true,
+  loop: false,
 });
 
 // ✅ ScrollReveal: apariciones suaves en títulos
