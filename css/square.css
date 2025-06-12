@@ -15,7 +15,7 @@
   list-style: none;
   width: 20px;
   height: 20px;
-  background: rgba(27, 167, 172, 0.2);
+  background: var(--circles-color, #f0f0f0);
   animation: animate 25s linear infinite;
   bottom: -110px;
 }

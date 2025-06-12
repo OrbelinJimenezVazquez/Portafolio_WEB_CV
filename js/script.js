@@ -352,6 +352,13 @@ ScrollReveal().reveal("#tech .tech", {
 
     icon.classList.add('fade-out');
 
+    
+document.documentElement.classList.add('transitioning');
+
+setTimeout(() => {
+  document.documentElement.classList.remove('transitioning');
+}, 400);
+
     // Esperar la transición antes de cambiar el icono y el tema
     setTimeout(() => {
       if (isDark) {
