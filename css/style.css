@@ -1,30 +1,68 @@
 /* Definir Variables Globales */
 :root {
-  --background-color: #fff;
-  --text-color: #1f2937; /* Color de texto (Negro) */
-  --text-light-color: #4a4949;
-  --text-decoration-color: #4eb8f8;
-  --btn-color: #4caf50;
-  --line-color: #1f2937;
-  --shadow-color:  #6b6b6b;
-  --light-color: #eeeeee; /* Color de fondo claro */
-  --text-footer: #f0f1f2;
-  --circles-color: rgba(27, 167, 172, 0.2) ;
-  --font-family: "Afacad Flux", sans-serif; /* Fuente personalizada */
+  /* Colores base - Modo claro */
+  --background-color: #f8fafc; /* Fondo principal más claro */
+  --background-color-m: #f1f5f9; /* Fondo secundario */
+  --background-color-m2: #e2e8f0; /* Cartas y elementos destacados */
+  --background-color-d: #1e293b; /* Footer y modo oscuro base */
+  
+  /* Textos */
+  --text-color: #1e293b; /* Texto principal - azul oscuro */
+  --text-white: #ffffff; /* Texto blanco */
+  --text-light-color: #64748b; /* Texto secundario - gris azulado */
+  
+  /* Colores de acento */
+  --text-decoration-color: #3b82f6; /* Azul profesional */
+  --text-decoration-color-hover: #2563eb; /* Azul más oscuro para hover */
+  --accent-color: #3b82f6; /* Coherencia con los enlaces */
+  --accent-footer: #f2c119;
+  
+  /* Bordes y líneas */
+  --line-color: #8b9096; /* Gris  para linea separadores */
+  --border-color: #e2e8f0; /* Bordes sutiles */
+  
+  /* Sombras */
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  
+  /* Elementos decorativos */
+  --circles-color: rgba(59, 130, 246, 0.1); /* Azul muy suave para las burbujas */
+  
+  /* Tipografía */
+  --font-family: "Afacad Flux", sans-serif;
 }
+/* Modo oscuro */
 :root[data-theme="dark"] {
-  --background-color: #1f2937;
-  --text-color: #f0f1f2;
-  --text-light-color: #cacbcd;
-  --text-decoration-color: #4db5f5ee;
-  --btn-color: #4caf50;
-  --line-color: #ffe8e8;
-  --shadow-color: #515050;
-  --light-color: #2c3440;
-  --text-footer: #f0f1f2;
-  --circles-color: rgba(24, 217, 224, 0.573);
-}
+  --background-color: #0f172a; /* Azul muy oscuro */
+  --background-color-m: #1e293b; /* Un poco más claro */
+  --background-color-m2: #334155; /* Cartas en modo oscuro */
+  --background-color-d: #020617; /* Footer más oscuro */
+  
+  --text-color: #f8fafc; /* Texto claro */
+  --text-light-color: #94a3b8; /* Texto secundario */
+  
+  --text-decoration-color: #60a5fa; /* Azul más claro para mejor contraste */
+  --text-decoration-color-hover: #93c5fd;
+  --accent-color: #f8fafc;
+  
+  --line-color: #334155;
+  --border-color: #475569;
+  
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  
+  --circles-color: rgba(96, 165, 250, 0.1);
 
+  .proye img {
+    filter: brightness(0.85);
+  }
+  
+  .line {
+    opacity: 0.8;
+  }
+  
+  .work, .school, .skill, .proye {
+    border: 1px solid var(--border-color);
+  }
+}
 
 /* Estilos Generales */
 * {
@@ -42,7 +80,7 @@ html {
 /* Estilo para el body */
 body {
   font-family: var(--font-family); /* Usando la variable de fuente */
-  background-color: #1f2937;
+  background-color: var(--background-color-d);
   /*background-color: var(
     --background-color
   ); /* Color de fondo usando la variable */
@@ -67,7 +105,8 @@ main {
   padding: 20px;
   box-sizing: border-box; /* Asegura que el padding no sobresalga */
   overflow: hidden; /* Evita el scroll en el contenido principal */
-  background-color: var(--light-color);
+  background-color: var(--background-color-m);
+  border-bottom: 3px solid var(--border-color);
   border-radius: 0 0 50px 50px ;
   z-index: 2;
 }
@@ -87,6 +126,7 @@ header {
   justify-content: space-between; /* Espacio entre logo y menú */
   align-items: center; /* Alinea los elementos en el centro verticalmente */
   transition: box-shadow 0.25s ease-in-out; /* Transición suave para la sombra */
+  filter: brightness(0.95);
 }
 
 /* Sin box-shadow cuando está en la parte superior */
@@ -145,7 +185,7 @@ header .logo p:hover {
 #nav-list li a:hover {
   transition: all 0.2s ease-in-out;
   transform: scale(1.05);
-  color: var(--btn-color);
+  color: var(--text-decoration-color-hover);
 }
 #nav-list li a i {
   margin-right: 8px; /* Espacio entre el icono y el texto */
@@ -162,6 +202,7 @@ nav {
   width: 100%;
   height: auto;
   padding: 0;
+  
 }
 /* Estilo para la lista de navegación (ul) */
 nav ul {
@@ -180,7 +221,7 @@ nav ul.active {
   left: 0;
   width: 100%;
   padding: 20px;
-  background-color: white;
+  background-color: var(--background-color);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 nav ul.active .fa-bars {
@@ -201,12 +242,12 @@ nav ul li a {
 }
 /* Estilo para los links cuando están activos */
 nav ul li a.active {
-  color: var(--btn-color); /* Color para el enlace activo (resaltado) */
+  color: var(--text-decoration-color); /* Color para el enlace activo (resaltado) */
   font-size: clamp(0.889rem, 0rem + 122.222vw, 1.222rem); /* Puedes cambiar el tamaño si quieres que el enlace activo sea más grande */
 }
 nav ul li a:hover {
   transition: all 0.2s ease-in-out;
-  color: var(--btn-color);
+  color: var(--text-decoration-color-hover);
 }
 /* El ícono de hamburguesa se muestra por defecto */
 .fas.fa-bars {
@@ -221,12 +262,15 @@ nav ul li a:hover {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: transparent;
+  background: var(--background-color-m2);
   border: none;
   font-size: 1.2rem;
   cursor: pointer;
   color: var(--text-color);
   transition: color 0.3s ease;
+  border-radius: 50%;
+  width: 35px;
+  height: 35px;
 }
 #theme-toggle i {
   transition: opacity 0.3s ease, transform 0.3s ease;
@@ -237,7 +281,7 @@ nav ul li a:hover {
   transform: rotate(360deg) scale(0.7);
 }
 #theme-toggle:hover {
-  color: var(--btn-color);
+  color: var(--background-color);
 }
 
 section, header, footer, .i_am, .welcome, .skill, .school, .proye {
@@ -258,6 +302,7 @@ section, header, footer, .i_am, .welcome, .skill, .school, .proye {
   overflow: hidden;
   position: relative;
   z-index: 2;
+  filter: brightness(0.95);
 }
 
 .i_am img {
@@ -309,6 +354,7 @@ section, header, footer, .i_am, .welcome, .skill, .school, .proye {
   text-align: left;
 }
 
+/*Estilo para la seccion de bienvenida */
 .welcome {
   justify-content: center;
   margin: 80px 20px 75px 20px;
@@ -316,7 +362,6 @@ section, header, footer, .i_am, .welcome, .skill, .school, .proye {
   text-align: center;
   line-height: 1.5; /* Espaciado entre líneas */
 }
-
 .welcome h1 {
   font-size: clamp(1.25rem, -0.6466rem + 9.4828vw, 4.6875rem);
   font-weight: bold;
@@ -324,7 +369,6 @@ section, header, footer, .i_am, .welcome, .skill, .school, .proye {
   color: var(--text-decoration-color);
   margin-bottom: 30px;
 }
-
 .welcome p {
   font-size: clamp(0.875rem, 0.7371rem + 0.6897vw, 1.125rem);
   color: var(--text-light-color);
@@ -332,12 +376,13 @@ section, header, footer, .i_am, .welcome, .skill, .school, .proye {
   text-align: center;
   padding:  0 20px 0 20px;
 }
-
 .welcome .btn {
   font-size: clamp(1rem, 0.6875rem + 1vw, 1.25rem);
   margin: 20px; /* Centra el botón */
   padding: 10px 20px; /* Espaciado interno */
 }
+
+
 /* Estilos para los contenedores de las secciones */
 #contacto {
   padding: 50px;
@@ -385,7 +430,7 @@ section, header, footer, .i_am, .welcome, .skill, .school, .proye {
 }
 
 .social_icons i:hover {
-  color: var(--btn-color); /* Cambio de color al pasar el mouse */
+  color: var(--text-decoration-color-hover); /* Cambio de color al pasar el mouse */
   transform: scale(1.2); /* Hace que el ícono se agrande un poco */
   transition: all 0.2s ease-in-out; /* Transición suave para todos los cambios */
 }
@@ -415,11 +460,13 @@ section, header, footer, .i_am, .welcome, .skill, .school, .proye {
   transition: background 0.3s ease;
   font-weight: bold;
   position: relative;
+  color:var(--text-white);
 }
 
-.btn:hover {
+.btn:hover, btn-pro:hover  {
   transition: all 0.2s ease-in-out;
-  background: var(--btn-color);
+  background: var(--text-decoration-color-hover);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 /*Estilos para la sección de experience */
@@ -469,11 +516,11 @@ section, header, footer, .i_am, .welcome, .skill, .school, .proye {
 }
 
 .line {
-  background-color: var(--text-decoration-color);
-  margin: 0 568px 0;
-  border-radius: 15px;
-  width: 100px;
-  height: 5px;
+  height: 4px;
+  width: 80px;
+  background: linear-gradient(90deg, var(--text-decoration-color), var(--text-decoration-color-hover));
+  border-radius: 2px;
+  margin: 15px auto 30px;
 }
 
 .the_work,
@@ -481,6 +528,12 @@ section, header, footer, .i_am, .welcome, .skill, .school, .proye {
   margin: 30px 0;
   width: 100%;
   display: flex;
+}
+
+.work, .skill, .school, .proye {
+  background-color: var(--background-color-m2);
+  border: 1px solid var(--border-color);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .work,
@@ -510,15 +563,15 @@ section, header, footer, .i_am, .welcome, .skill, .school, .proye {
 .the_work .line_time,
 .the_school .line_time {
   margin: auto 40px;
-  width: 5px;
+  width: 4px;
   height: 240px;
-  background-color: var(--line-color);
+  background: linear-gradient(to bottom, var(--line-color), var(--background-color-d));
   border-radius: 15px;
 }
 
 .work:hover,
-.school:hover {
-  transform: scale(1.02); /* Hace que el contenedor se agrande un poco */
+.school:hover,.tech:hover {
+  transform: scale(1.01); /* Hace que el contenedor se agrande un poco */
   box-shadow: var(--shadow-color) 0 0 5px; 
   transition: all 0.2s ease-in-out;
 }
@@ -545,11 +598,10 @@ section, header, footer, .i_am, .welcome, .skill, .school, .proye {
 }
 
 .skill:hover,
-.proye:hover,
-.tech:hover {
-  transform: scale(1.05); /* Hace que el contenedor se agrande un poco */
-  box-shadow: var(--shadow-color) 0 0 5px;
-  transition: all 2.5s ease-in-out;
+.proye:hover{
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  border-color: var(--line-color);
   }
 
 .skill_3-3 .skill p {
@@ -582,21 +634,11 @@ section, header, footer, .i_am, .welcome, .skill, .school, .proye {
   box-shadow: var(--shadow-color) 0 0 2px;
   margin: 10px;
   padding: 15px;
+  width: 120px;
+  height: 160px;
+  position: relative;
 }
 
-.tech h3 {
-  color: var(--text-color);
-  text-align: center;
-  font-size: clamp(0.8125rem, 0.4219rem + 1.25vw, 1.125rem);
-}
-.tech-used {
-  margin: 18px 0 15px 0;
-  font-size: 24px;
-  color: var(--text-color);
-}
-.tech-used i {
-  margin: 0 10px;
-}
 
 .school h3,
 .school h2 {
@@ -615,7 +657,7 @@ section, header, footer, .i_am, .welcome, .skill, .school, .proye {
 .date_work {
   padding-right: 20px;
   align-content: center;
-  color: var(--text-decoration-color);
+  color: var(--accent-color);
 }
 
 .mini_nav {
@@ -646,7 +688,6 @@ section, header, footer, .i_am, .welcome, .skill, .school, .proye {
   justify-content: center;
   text-align: center;
   align-items: center;
-  background-color: var(--background-color);
   overflow: hidden;
   padding: 40px 20px 40px 20px;
 }
@@ -656,6 +697,13 @@ section, header, footer, .i_am, .welcome, .skill, .school, .proye {
   object-fit: cover;
   border-radius: 10px;
   margin-bottom: 15px;
+  filter: brightness(0.95);
+}
+.proye img:hover {
+  transition: all 0.2s ease-in-out; 
+  box-shadow: var(--shadow-color) 0 0 5px; 
+  border: 1px solid var(--border-color); 
+  
 }
 .proye h3 {
   font-size: clamp(0.9375rem, 0.5469rem + 1.25vw, 1.25rem);
@@ -676,13 +724,32 @@ section, header, footer, .i_am, .welcome, .skill, .school, .proye {
   font-size: clamp(0.8125rem, 0.4219rem + 1.25vw, 1.125rem);
   padding: 8px 16px;
   margin: 0;
-  background-color: var(--btn-color);
+  background-color: var(--text-decoration-color-hover);
   color: white;
   border-radius: 30px;
   text-decoration: none;
   position: relative;
   overflow: hidden;
   width: 50%;
+}
+.tech h3 {
+  color: var(--text-color);
+  text-align: center;
+  font-size: clamp(0.8125rem, 0.4219rem + 1.25vw, 1.125rem);
+}
+.tech-used {
+  margin: 18px 0 15px 0;
+  font-size: 24px;
+  color: var(--text-color);
+}
+.tech-used i {
+  margin: 0 10px;
+  color: var(--text-decoration-color);
+  font-size: 1.5rem;
+  transition: transform 0.3s ease;
+}
+.tech-used i:hover {
+  transform: scale(1.1);
 }
 
 /*Estilo para la sección de idiomas */
@@ -719,32 +786,36 @@ section, header, footer, .i_am, .welcome, .skill, .school, .proye {
   margin: 20px auto 0;
   position: relative;
 }
+.progressbar-text{
+  color: var(--text-color);
+}
 
+.btn, .btn-pro, .proye, .work, .school, .skill, .tech, .idioma, #nav-list li a, .social_icons a {
+  transition: all 0.2s ease-in-out;
+}
 
 /* Estilos para el footer */
+
 footer {
-  background-color: #1f2937; /* Más coherente con tu esquema */
-  color: var(--text-footer);
-  text-align: center;
-  padding: 90px 20px;
-  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 15px;
+  text-align: center;
   position: sticky;
   bottom: 0;
   z-index: 1;
-
+  background-color: var(--background-color-d); /* Más coherente con tu esquema */
+  color: var(--text-white);
+  padding: 60px 20px;
+  width: 100%;
+  gap: 15px;
 }
-
 footer p {
   margin: 0;
   font-size: clamp(0.9375rem, 0.5469rem + 1.25vw, 1.25rem);
   font-weight: 400;
 }
-
 .footer-links {
   display: flex;
   gap: 20px;
@@ -752,21 +823,31 @@ footer p {
   justify-content: center;
   
 }
-
 .footer-links a {
-  color: #f2c119;
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s ease;
+  color: var(--accent-footer); /* Color amarillo para los enlaces */
+  position: relative;
   cursor: pointer;
+  font-weight: bold;
+  text-decoration: none;
   font-size: clamp(1rem, 0.8621rem + 0.6897vw, 1.25rem);  
-  
+  transition: color 0.3s ease;
 }
-
 .footer-links a:hover {
-  transition: all 0.2s ease-in-out;
   color: #ffffff;
   transform: scale(1.05);
+}
+.footer-links a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: var(--accent-footer);
+  transition: width 0.3s ease;
+}
+.footer-links a:hover::after {
+  width: 100%;
 }
 
 .ripple {
@@ -867,12 +948,20 @@ footer p {
 
 /* Estilo para pantallas pequeñas (700px) */
 @media (max-width: 750px) {
-  
+
+  .i_am {
+    padding: 30px 20px; /* Espacio superior e inferior */
+  }
   .i_am_text {
     padding: 0 20px; /* Espacio superior e inferior */
     margin: 0;
     text-align: center; /* Centra el texto */
   }
+  .i_am_text .description {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
   .welcome {
     padding: 10px;
     margin: 10px;
@@ -990,6 +1079,10 @@ footer p {
   .mini_nav .date_school,
   .date_work {
     padding: 0;
+  }
+
+  .work, .school {
+    padding: 20px 15px;
   }
   .work ul,
   .school p {
