@@ -217,7 +217,7 @@ AOS.init({
   distance: '40px',
   duration: 1000,
   delay: 200,
-  mobile: false
+  mobile: true
 });
   
   // Animaciones comunes
@@ -256,7 +256,7 @@ function setupProgressBars() {
     new ProgressBar.Circle(selector, {
       color: color,
       strokeWidth: 6,
-      duration: 1600,
+      duration: 1100,
       easing: "easeInOut",
       trailColor: "#eee",
       trailWidth: 2,
@@ -281,7 +281,7 @@ function setupProgressBars() {
       createCircle("#circle-es", 1.0, "#4eb8f8");
       createCircle("#circle-en", 0.4, "#4caf50");
     },
-    reset: false
+    reset: true
   });
 
   ScrollReveal().reveal("#tech .tech", {
@@ -292,7 +292,7 @@ function setupProgressBars() {
       createCircle("#circle-node", 0.7, "#68a063");
       createCircle("#circle-react", 0.6, "#61dbfb");
     },
-    reset: false
+    reset: true
   });
 }
 
