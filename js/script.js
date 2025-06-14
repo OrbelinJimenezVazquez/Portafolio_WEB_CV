@@ -280,7 +280,7 @@ function setupProgressBars() {
         style: {
           color: "var(--text-color)",
           fontWeight: "bold",
-          fontSize: "14px",
+          fontSize: "clamp(1.2rem, 2vw, 1.45rem)",
           position: "absolute",
           left: "50%",
           top: "50%",
@@ -294,7 +294,7 @@ function setupProgressBars() {
   ScrollReveal().reveal("#lenguaje .idioma", {
     beforeReveal: () => {
       createCircle("#circle-es", 1.0, "#4eb8f8");
-      createCircle("#circle-en", 0.4, "#4caf50");
+      createCircle("#circle-en", 0.3, "#4caf50");
     },
     reset: false
   });
@@ -302,10 +302,10 @@ function setupProgressBars() {
   ScrollReveal().reveal("#tech .tech", {
     beforeReveal: () => {
       createCircle("#circle-html", 1.0, "#e44d26");
-      createCircle("#circle-css", 0.95, "#264de4");
-      createCircle("#circle-js", 0.9, "#f7df1e");
-      createCircle("#circle-node", 0.7, "#68a063");
-      createCircle("#circle-react", 0.6, "#61dbfb");
+      createCircle("#circle-css", 0.75, "#264de4");
+      createCircle("#circle-js", 0.4, "#f7df1e");
+      createCircle("#circle-node", 0.2, "#68a063");
+      createCircle("#circle-react", 0.3, "#61dbfb");
     },
     reset: false
   });
