@@ -281,7 +281,7 @@ function setupProgressBars() {
       createCircle("#circle-es", 1.0, "#4eb8f8");
       createCircle("#circle-en", 0.4, "#4caf50");
     },
-    reset: true
+    reset: false
   });
 
   ScrollReveal().reveal("#tech .tech", {
@@ -292,7 +292,7 @@ function setupProgressBars() {
       createCircle("#circle-node", 0.7, "#68a063");
       createCircle("#circle-react", 0.6, "#61dbfb");
     },
-    reset: true
+    reset: false
   });
 }
 
