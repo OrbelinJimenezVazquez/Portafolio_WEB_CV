@@ -1244,15 +1244,12 @@ footer p {
     .the_work::before {
     left: 20px;
   }
-  .work {
+  .work, .school {
     margin-left: 40px;
     border-left: none;
     border-top: 4px solid var(--text-decoration-color);
   }
-  .work::before {
-    top: -8px;
-    left: 16px;
-  }
+  
   .pro_3-3, .skill_3-3 {
     grid-template-columns: 1fr;
   }
