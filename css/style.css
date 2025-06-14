@@ -475,7 +475,7 @@ img[loading="lazy"].loaded {
   font-weight: bold;
   background: var(--text-decoration-color);
   color: var(--text-white);
-  border-radius: 50px;
+  border-radius: 24px;
   border: var(--accent-border) 2px solid;
   text-decoration: none;
   overflow: hidden;
@@ -483,7 +483,7 @@ img[loading="lazy"].loaded {
   transition: background 0.3s ease;
   position: relative;
   padding: 8px 16px;
-  max-width: 40%;
+  max-width: auto;
 }
 .btn:hover, .btn-pro:hover  {
   transition: all 0.2s ease-in-out;
@@ -883,14 +883,18 @@ img[loading="lazy"].loaded {
   width: 100%;
   max-width: 600px; /* Ancho máximo del formulario */
   gap: 15px;
+  margin: 15px;
+  padding: 15px;
 }
 #contacto .formulario textarea, #contacto .formulario input {
-  border-radius: 15px;
+  
   min-width: 450px;
   min-height: 50px;
-  align-items: center;
-  justify-content: center;
-  align-self: center;
+  font-family: "Montserrat", sans-serif; 
+  font-size: clamp(0.8125rem, 0.4219rem + 1.25vw, 1.125rem);
+  padding: 15px;
+  border-radius: 15px;
+  border: var(--border-color) 2px solid;
 }
 .social_icons {
   padding: 20px;
@@ -900,6 +904,8 @@ img[loading="lazy"].loaded {
 }
 
 .social_icons ul {
+  display: flex;
+  justify-content: center;
   list-style: none; /* Elimina los puntos de lista */
 }
 
