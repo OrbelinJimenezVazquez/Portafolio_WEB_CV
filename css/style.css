@@ -17,8 +17,8 @@
 
 /* Definir Variables Globales */
 :root {
-  /* Colores base - Modo claro */
-  --background-color: #f8fafc; /* Fondo principal más claro */
+  /* Colores base - Modo claro */   
+  --background-color: #ffffff; /* Fondo principal más claro */
   --background-color-m: #f1f5f9; /* Fondo secundario */
   --background-color-m2: #e2e8f0; /* Cartas y elementos destacados */
   --background-color-d: #1e293b; /* Footer y modo oscuro base */
@@ -165,7 +165,6 @@ header {
   justify-content: space-between; /* Espacio entre logo y menú */
   align-items: center; /* Alinea los elementos en el centro verticalmente */
   transition: box-shadow 0.25s ease-in-out; /* Transición suave para la sombra */
-  filter: brightness(0.89);
 }
 /* Sin box-shadow cuando está en la parte superior */
 header.no-shadow {
@@ -365,8 +364,7 @@ section, header, footer, .i_am, .welcome, .skill, .school, .proye {
   align-items: center; /* Alinea verticalmente al centro */
   text-align: center; /* Centra el texto */
   line-height: 1.5; /* Espaciado entre líneas */
-  z-index: 2;
-  filter: brightness(0.9);  
+  z-index: 2; 
   padding: 50px 200px 75px; /* Espacio superior e inferior */
   min-height: 91vh;
 }
@@ -823,6 +821,7 @@ img[loading="lazy"].loaded {
   grid-template-rows: repeat(auto-fill, minmax(250px, 2fr));
   gap: 10px;
 }
+
 .idioma {
   align-self: center; 
   margin: 20px;
@@ -917,7 +916,7 @@ img[loading="lazy"].loaded {
 }
 
 .social_icons i:hover {
-  color: var(--text-decoration-color-hover); /* Cambio de color al pasar el mouse */
+  color: var(--accent-text-hover); /* Cambio de color al pasar el mouse */
   transform: translateY(-5px) scale(1.15);
   transition: all 0.2s ease-in-out; /* Transición suave para todos los cambios */
 }

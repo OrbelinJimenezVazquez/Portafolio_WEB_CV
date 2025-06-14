@@ -197,10 +197,11 @@ function setupAnimations() {
   // Inicializar AOS (Animate On Scroll)
 AOS.init({
   duration: 800,
-  once: true,
-  offset: 120,
-  easing: 'ease-out-quad',
-  disable: window.innerWidth < 768
+  once: true, // No reiniciar animaciones al hacer scroll 
+  offset: 120, // Desplazamiento para activar animaciones
+  easing: 'ease-out-quad', //
+  disable: window.innerWidth < 768 ,
+  loop: false, // Desactivar bucle para animaciones
 });
 
   // Animación de escritura del nombre
@@ -214,20 +215,32 @@ AOS.init({
   // Configurar ScrollReveal
   const sr = ScrollReveal({
   reset: false,
-  distance: '40px',
+  viewFactor: 0.2, // Factor de visibilidad para activar la animación
+  origin: 'bottom', // Dirección de la animación
+  distance: '100px', // Distancia de desplazamiento
+  interval: 100, // Intervalo entre animaciones
+  easing: 'ease-in', // Efecto de aceleración
   duration: 1000,
   delay: 200,
   mobile: true
 });
   
   // Animaciones comunes
-  const commonReveal = {
-    origin: "bottom",
-    distance: "60px",
-    duration: 1000,
-    easing: "ease-in-out"
+  const commonReveal = { // Configuración común para todas las animaciones
+    viewFactor: 0.2, // Factor de visibilidad para activar la animación
+    origin: "bottom", // Dirección de la animación
+    distance: "60px", // Distancia de desplazamiento
+    interval: 100, // Intervalo entre animaciones
+    reset: false, // No reiniciar animaciones al hacer scroll 
+    duration: 1000, // Duración de la animación
+    delay: 100, // Retraso antes de iniciar la animación
+    easing: "ease-in-out", // Efecto de aceleración
+    mobile: true // Habilitar animaciones en dispositivos móviles
+
   };
-  
+
+
+
   // Aplicar animaciones a elementos
   sr.reveal(".text-cont h1, #i_am_social ul li, .social_icons, .welcome h1, #contacto .text-cont", commonReveal);
   
@@ -235,8 +248,8 @@ AOS.init({
   sr.reveal(".skill", { ...commonReveal, origin: "right", interval: 150 });
   sr.reveal(".proye:nth-child(odd)", { ...commonReveal, origin: "left" });
   sr.reveal(".proye:nth-child(even)", { ...commonReveal, origin: "right" });
-  sr.reveal(".idioma:nth-child(odd)", { ...commonReveal, origin: "left", distance: "80px" });
-  sr.reveal(".idioma:nth-child(even)", { ...commonReveal, origin: "right", distance: "180px" });
+  sr.reveal(".idioma:nth-child(odd)", { ...commonReveal, origin: "left", distance: "180px",reset:false });
+  sr.reveal(".idioma:nth-child(even)", { ...commonReveal, origin: "right", distance: "180px", reset:false});
   sr.reveal("#edu .the_school, #experience .the_work", { ...commonReveal, interval: 200 });
   sr.reveal("footer p, .footer-links a", { ...commonReveal, interval: 350, easing: "ease-out" });
   
@@ -258,8 +271,9 @@ function setupProgressBars() {
       strokeWidth: 6,
       duration: 1100,
       easing: "easeInOut",
-      trailColor: "#eee",
+      trailColor: "#eeee ",
       trailWidth: 2,
+      loop: false,
       text: {
         value: `${Math.round(percentage * 100)}%`,
         style: {
@@ -269,19 +283,19 @@ function setupProgressBars() {
           position: "absolute",
           left: "50%",
           top: "50%",
-          transform: "translate(-50%, -50%)",
+          transform: "translate(-50%, -50%)"
         },
       },
     }).animate(percentage);
   }
 
   // Configurar revelación con ScrollReveal
-  ScrollReveal().reveal("#lenguaje", {
+  ScrollReveal().reveal("#lenguaje .idioma", {
     beforeReveal: () => {
       createCircle("#circle-es", 1.0, "#4eb8f8");
       createCircle("#circle-en", 0.4, "#4caf50");
     },
-    reset: true
+    reset: false
   });
 
   ScrollReveal().reveal("#tech .tech", {
