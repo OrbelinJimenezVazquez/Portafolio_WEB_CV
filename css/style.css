@@ -1406,6 +1406,14 @@ footer p {
   .idioma {
     gap: 5px;
   }
+  #contacto .formulario {
+    max-width: 60%;
+  }
+  #contacto .formulario textarea, #contacto .formulario input {
+  border-radius: 15px;
+  min-width: 350px;
+  min-height: 50px;
+}
 }
 @media screen and (max-width: 376px) {
   .i_am_text .description {
@@ -1434,6 +1442,12 @@ footer p {
   .mini_nav h4 {
     height: 50px;
   }
+  #contacto .formulario {
+    max-width: 50%;
+  }
+  #contacto .formulario textarea, #contacto .formulario input {
+    min-width: 300px;
+    min-height: 50px;
 }
 
 @media screen and (max-width: 320px) {
@@ -1460,4 +1474,13 @@ footer p {
   .tech h3 {
     width: 30%;
   }
+    #contacto .formulario {
+    max-width: 40%;
+    }
+    
+    #contacto .formulario textarea, #contacto .formulario input {
+    min-width: 250px;
+    min-height: 50px;
+  }
+}
 }

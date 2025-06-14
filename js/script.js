@@ -250,7 +250,9 @@ AOS.init({
   sr.reveal(".proye:nth-child(even)", { ...commonReveal, origin: "right" });
   sr.reveal(".idioma:nth-child(odd)", { ...commonReveal, origin: "left", distance: "180px",reset:false });
   sr.reveal(".idioma:nth-child(even)", { ...commonReveal, origin: "right", distance: "180px", reset:false});
+  sr.reveal("#tech .tech", { ...commonReveal, origin: "bottom", distance: "85px" });
   sr.reveal("#edu .the_school, #experience .the_work", { ...commonReveal, interval: 200 });
+  sr.reveal("#contacto .formulario", { ...commonReveal, distance: "100px" });
   sr.reveal("footer p, .footer-links a", { ...commonReveal, interval: 350, easing: "ease-out" });
   
   // Animaciones con delays
@@ -273,7 +275,6 @@ function setupProgressBars() {
       easing: "easeInOut",
       trailColor: "#eeee ",
       trailWidth: 2,
-      loop: false,
       text: {
         value: `${Math.round(percentage * 100)}%`,
         style: {
@@ -306,7 +307,7 @@ function setupProgressBars() {
       createCircle("#circle-node", 0.7, "#68a063");
       createCircle("#circle-react", 0.6, "#61dbfb");
     },
-    reset: true
+    reset: false
   });
 }
 
