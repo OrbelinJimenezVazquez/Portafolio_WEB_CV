@@ -1247,9 +1247,14 @@ footer p {
   .work, .school {
     margin-left: 40px;
     border-left: none;
+    border-right: none ;
     border-top: 4px solid var(--text-decoration-color);
   }
-  
+  .work:hover, .school:hover {
+    transform: translateX(0); /* Elimina el efecto de desplazamiento */
+    transform: scale(1.02); /* Agranda ligeramente el contenedor */
+    box-shadow: 0 4px 10px var(--shadow-color);
+  }
   .pro_3-3, .skill_3-3 {
     grid-template-columns: 1fr;
   }
