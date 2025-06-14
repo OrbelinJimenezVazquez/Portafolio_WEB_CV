@@ -628,6 +628,7 @@ img[loading="lazy"].loaded {
 
 .skill_3-3 .skill:hover,
 .pro_3-3 .proye:hover{
+  transition: all 0.6s ease-in-out;
   box-shadow: 0 6px 12px var(--shadow-color);
   border: 2px solid linear-gradient(180deg, var(--text-decoration-color), 
   var(--text-color));
@@ -1254,6 +1255,11 @@ footer p {
     transform: translateX(0); /* Elimina el efecto de desplazamiento */
     transform: scale(1.02); /* Agranda ligeramente el contenedor */
     box-shadow: 0 4px 10px var(--shadow-color);
+  }
+  .skill_3-3 .skill{
+    border-top: none;
+    border-bottom: none ;
+    border-left: 4px solid var(--text-decoration-color);
   }
   .pro_3-3, .skill_3-3 {
     grid-template-columns: 1fr;
