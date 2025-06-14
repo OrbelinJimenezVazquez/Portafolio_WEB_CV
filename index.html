@@ -3,6 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Portafolio profesional de Orbelin Jiménez, desarrollador web especializado en frontend y análisis de datos">
+    <meta name="keywords" content="desarrollador web, frontend, portfolio, HTML, CSS, JavaScript, React">
+    <meta name="author" content="Orbelin Jiménez Vázquez">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&display=swap"></noscript>
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
@@ -13,10 +18,6 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" /> 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Afacad+Flux:wght@100..1000&display=swap"
-      rel="stylesheet"
-    />
     <link
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
@@ -39,7 +40,7 @@
 
     <!-- Menú de navegación -->
     <ul id="nav-list"  data-aos="slide-down">
-      <li><a href="#experience"><i class="fa-solid fa-briefc  ase"></i> Experiencia</a></li>
+      <li><a href="#experience"><i class="fa-solid fa-briefcase"></i> Experiencia</a></li>
       <li><a href="#skills"><i class="fa-solid fa-code"></i> Habilidades</a></li>
       <li><a href="#tech"><i class="fa-solid fa-microchip"></i> Tecnologías</a></li>
       <li><a href="#edu"><i class="fa-solid fa-user-graduate"></i> Educación</a></li>
@@ -51,7 +52,7 @@
 </header>
     <div class="i_am">
       <div class="i_am_img">
-        <img src="images/Mi_foto.jpg" data-aos="fade-right" alt="Foto de perfil de Orbe" />
+        <img src="images/Mi_foto.jpg" loading="lazy" alt="Foto de perfil" data-aos="fade-right">
       </div>
       <ul class="circles">
         <li></li>
@@ -121,8 +122,10 @@
           Explora mis proyectos y descubre cómo puedo ayudarte a hacer realidad
           tus ideas.
         </p>
-        <a href="#proyectos" class="btn" id="btn-proyectos">Ver Proyectos</a>
-      </div>
+        <div class="btn-container">
+          <a href="#proyectos" class="btn" id="btn-proyectos">Ver Proyectos</a>
+          </div>  
+        </div>
       <section id="experience"> 
         <div class="text-cont">
           <h1>Mi experiencia</h1>
@@ -259,23 +262,23 @@
         <div class="tech-bars">
           <div class="tech">
             <h3>HTML</h3>
-            <div id="circle-html" "></div>
+            <div id="circle-html" class="progress_circle"></div>
           </div>
           <div class="tech">
             <h3>CSS</h3>
-            <div id="circle-css" "></div>
+            <div id="circle-css" class="progress_circle" ></div>
           </div>
           <div class="tech">
             <h3>JS</h3>
-            <div id="circle-js"></div>
+            <div id="circle-js" class="progress_circle"></div>
           </div>
           <div class="tech">
             <h3>Node.js</h3>
-            <div id="circle-node" ></div>
+            <div id="circle-node" class="progress_circle" ></div>
           </div>
           <div class="tech">
             <h3>React</h3>
-            <div id="circle-react" ></div>
+            <div id="circle-react" class="progress_circle" ></div>
           </div>
         </div>
       </section>
@@ -432,58 +435,61 @@
         <div class="text-cont">
           <h1>Contáctame</h1>
           <div class="line"></div>
-          <p>
-            ¿Te interesa trabajar conmigo? 💬
-            <strong>Contáctame a través de mis redes sociales.</strong>
-          </p>
-          </div>
-          <div class="social_icons">
-            <ul>
-              <li>
-                <a
-                  href="https://linkedin.com/in/orbelin-jim%C3%A9nez-vazquez-046741325"
-                  target="_blank"
-                  title="LinkedIn"
-                  ><i class="fab fa-linkedin"></i
-                ></a>
-              </li>
-              <li>
-                <a
-                  href="https://www.github.com/OrbelinJimenezVazquez"
-                  target="_blank"
-                  title="GitHub"
-                  ><i class="fab fa-github"></i
-                ></a>
-              </li>
-              <li>
-                <a
-                  href="https://www.facebook.com/Jimenez.Orbelin"
-                  target="_blank"
-                  title="Facebook"
-                  ><i class="fab fa-facebook"></i
-                ></a>
-              </li>
-            </ul>
-          </div>
+          <p>¿Tienes un proyecto en mente? <h6>Escríbeme.</h6></p>
+        </div>
+        <form class="formulario" action="https://formsubmit.co/tu-email@example.com" method="POST">
+          <input type="text" name="name" placeholder="Nombre" required>
+          <input type="email" name="email" placeholder="Email" required>
+          <textarea name="message" placeholder="Mensaje" required></textarea>
+          <button type="submit" class="btn">Enviar</button>
+        </form>
+        <div class="social_icons">
+          <ul>
+            <li>
+              <a
+                href="https://linkedin.com/in/orbelin-jim%C3%A9nez-vazquez-046741325"
+                target="_blank"
+                title="LinkedIn"
+                ><i class="fab fa-linkedin"></i
+              ></a>
+            </li>
+            <li>
+              <a
+                href="https://www.github.com/OrbelinJimenezVazquez"
+                target="_blank"
+                title="GitHub"
+                ><i class="fab fa-github"></i
+              ></a>
+            </li>
+            <li>
+              <a
+                href="https://www.facebook.com/Jimenez.Orbelin"
+                target="_blank"
+                title="Facebook"
+                ><i class="fab fa-facebook"></i>
+              </a>
+            </li>
+          </ul>
+        </div>
       </section>
     </main>
-  <footer id="footer">
-    <div class="footer-content">
-      <p>&copy; 2025 Orbelin Jiménez Vázquez. Todos los derechos reservados.</p>
-      <div class="footer-links">
-        <a href="#">Inicio</a>
-        <a href="#proyectos">Proyectos</a>
-        <a href="#">Sobre mi</a>
+    <footer id="footer">
+      <div class="footer-content">
+        <p>&copy; 2025 Orbelin Jiménez. Todos los derechos reservados.</p>
+        <div class="footer-links">
+          <a href="#">Inicio</a>
+          <a href="#proyectos">Proyectos</a>
+          <a href="#contacto">Contacto</a> 
+        </div>
       </div>
-    </div>
-  </footer>
+    </footer>
     <!-- librerías -->
     <script src="https://unpkg.com/scrollreveal"></script>
     <script src="https://cdn.jsdelivr.net/npm/progressbar.js"></script>
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- script -->
-    <script src="js/script.js"></script>
+    <script src="js/script.js" defer></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js" async></script>
   </body>
 </html>

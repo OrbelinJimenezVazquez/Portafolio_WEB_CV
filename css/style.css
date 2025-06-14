@@ -10,7 +10,7 @@
 }
 @keyframes ripple-animation {
   to {
-    transform: scale(4);
+    transform: scale(3.5);
     opacity: 0;
   }
 }
@@ -31,8 +31,11 @@
   /* Colores de acento */
   --text-decoration-color: #3b82f6; /* Azul profesional */
   --text-decoration-color-hover: #2563eb; /* Azul más oscuro para hover */
-  --accent-color: #3b82f6; /* Coherencia con los enlaces */
+  --accent-border: #3b82f6; /* Coherencia con los enlaces */
+  --accent-text: #3b82f6;
+  --accent-text-hover: #3b82f6;
   --accent-footer: #f2c119;
+  --accent-links: #ddb115;
   
   /* Bordes y líneas */
   --line-color: #8b9096; /* Gris  para linea separadores */
@@ -59,12 +62,15 @@
   
   --text-decoration-color: #60a5fa; /* Azul más claro para mejor contraste */
   --text-decoration-color-hover: #93c5fd; 
-  --accent-color: #f8fafc;
+  --accent-border: #f8fafc;
+  --accent-text: #f8fafc;
+  --accent-text-hover: #f2c223;
+  --accent-links: #f2c112;
   
   --line-color: #334155;
   --border-color: #475569;
   
-  --shadow-color: rgba(0, 0, 0, 0.3);
+  --shadow-color: rgba(242, 242, 242, 0.3);
   
   --circles-color: rgba(96, 165, 250, 0.1);
 
@@ -80,9 +86,20 @@
     border: 2px solid var(--border-color);
   }
   .work, .school {
-    border-left: 4px solid var(--accent-color);
+    border-left: 4px solid var(--accent-border);
   }
   
+}
+:root[data-theme="dark"] .ripple {
+  background: rgba(59, 130, 246, 0.5);
+}
+/* Modo oscuro - asegura la visibilidad */
+:root[data-theme="dark"] #nav-list li a.active {
+  color: #60a5fa !important; /* Azul más claro para mejor contraste */
+}
+
+:root[data-theme="dark"] #nav-list li a.active::after {
+  background-color: #60a5fa;
 }
 
 /* Estilos Generales */
@@ -90,6 +107,7 @@
   margin: 0; /* Elimina el margen por defecto */
   padding: 0; /* Elimina el padding por defecto */
   box-sizing: border-box; /* Asegura que el tamaño de los elementos se calcule correctamente */
+  transition: all 0.2s ease-in-out; /* Transición suave para todos los cambios */ 
 }
 
 /* Configuración del HTML */
@@ -147,7 +165,7 @@ header {
   justify-content: space-between; /* Espacio entre logo y menú */
   align-items: center; /* Alinea los elementos en el centro verticalmente */
   transition: box-shadow 0.25s ease-in-out; /* Transición suave para la sombra */
-  filter: brightness(0.95);
+  filter: brightness(0.89);
 }
 /* Sin box-shadow cuando está en la parte superior */
 header.no-shadow {
@@ -197,12 +215,36 @@ header .logo p:hover {
   text-decoration: none;
   font-size: clamp(1rem, 0rem + 122.222vw, 1.222rem);
   transition: all color 0.3s ease;
+  position: relative;
 }
 #nav-list li a:hover {
   transition: all 0.2s ease-in-out;
   transform: scale(1.05);
-  color: var(--text-decoration-color-hover);
+  width: 100%;
+  color: var(--accent-links);
 }
+
+  #nav-list li a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  bottom: -4px;
+  height: 2px;
+  left: 0;
+  background-color: var(--accent-links);
+  transition: width 0.3s ease;
+}
+#nav-list li a:hover::after {
+  width: 100%;
+}
+/* Estado activo - importante que sea específico */
+#nav-list li a.active {
+  color: var(--text-decoration-color) !important;
+  font-weight: bold;
+  }
+  #nav-list li a.active::after {
+  background-color: var(--text-decoration-color);
+  }
 #nav-list li a i {
   margin-right: 8px; /* Espacio entre el icono y el texto */
   font-size: clamp(1rem, 0rem + 122.222vw, 1.222rem);
@@ -316,7 +358,7 @@ section, header, footer, .i_am, .welcome, .skill, .school, .proye {
     var(--background-color) 0%, 
     var(--background-color-m) 100%
   );
-  position: relative;
+  position: relative; 
   overflow: hidden;
   display: flex;
   justify-content: center;
@@ -324,7 +366,7 @@ section, header, footer, .i_am, .welcome, .skill, .school, .proye {
   text-align: center; /* Centra el texto */
   line-height: 1.5; /* Espaciado entre líneas */
   z-index: 2;
-  filter: brightness(0.95);  
+  filter: brightness(0.9);  
   padding: 50px 200px 75px; /* Espacio superior e inferior */
   min-height: 91vh;
 }
@@ -344,6 +386,14 @@ section, header, footer, .i_am, .welcome, .skill, .school, .proye {
 .i_am_img img:hover {
   filter: brightness(1.05); /* Aumenta el brillo al pasar el mouse */
   transform: translateY(-5px);
+}
+img[loading="lazy"] {
+  transition: opacity 0.3s;
+  opacity: 0;
+}
+
+img[loading="lazy"].loaded {
+  opacity: 1;
 }
 /* Estilo para el id "saludo" */
 .i_am .saludo {
@@ -409,65 +459,6 @@ section, header, footer, .i_am, .welcome, .skill, .school, .proye {
   text-align: center;
   padding:  0 20px 0 20px;
 }
-.welcome .btn {
-  font-size: clamp(1rem, 0.6875rem + 1vw, 1.25rem);
-  margin: 20px; /* Centra el botón */
-  padding: 10px 20px; /* Espaciado interno */
-}
-
-
-/* Estilos para los contenedores de las secciones */
-#contacto {
-  padding: 50px;
-  margin: 20px 0;
-  max-width: 100%;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box; /* Asegura que el padding no sobresalga */
-}
-
-/* Estilo para el título en .puesto */
-#contacto h1 {
-  font-size: clamp(1.75rem, 0.6466rem + 5.5172vw, 3.75rem);
-  font-weight: bold;
-}
-
-/* Estilo para el párrafo en .puesto */
-#contacto p {
-  font-size: clamp(1rem, 0.6875rem + 1vw, 1.25rem);
-  padding-top: 25px;
-}
-
-.social_icons {
-  padding: 20px;
-  display: flex;
-  justify-content: center; /* Centra los íconos horizontalmente */
-  gap: 20px; /* Espacio entre los íconos */
-}
-
-.social_icons ul {
-  list-style: none; /* Elimina los puntos de lista */
-}
-
-.social_icons ul li {
-  display: inline-block;
-  margin: 0 10px; /* Espacio entre los íconos */
-  z-index: 4;
-}
-
-.social_icons a {
-  font-size: 30px;
-  color: var(--text-color);
-  transition: color 0.3s;
-}
-
-.social_icons i:hover {
-  color: var(--text-decoration-color-hover); /* Cambio de color al pasar el mouse */
-  transform: scale(1.2); /* Hace que el ícono se agrande un poco */
-  transition: all 0.2s ease-in-out; /* Transición suave para todos los cambios */
-}
-
 .btn-container {
   display: flex;
   justify-content: center;
@@ -475,32 +466,34 @@ section, header, footer, .i_am, .welcome, .skill, .school, .proye {
   position: relative;
   z-index: 4;
 }
-
 .btn-container .btn {
   padding: 12px 24px;
-  overflow: hidden;
-  font-size: clamp(0.8125rem, 0.4219rem + 1.25vw, 1.125rem);
 }
-
-.btn {
-  display: inline-block;
+.btn, .btn-pro {
+  font-family: var(--font-family);
+  display: inline-block; 
+  justify-content: center;
+  font-size: clamp(0.8125rem, 0.4219rem + 1.25vw, 1.125rem);
+  font-weight: bold;
   background: var(--text-decoration-color);
-  color: var(--text-footer);
+  color: var(--text-white);
   border-radius: 50px;
+  border: var(--accent-border) 2px solid;
   text-decoration: none;
   overflow: hidden;
   z-index: 4;
   transition: background 0.3s ease;
-  font-weight: bold;
   position: relative;
-  color:var(--text-white);
+  padding: 8px 16px;
+  max-width: 40%;
 }
-
-.btn:hover, btn-pro:hover  {
+.btn:hover, .btn-pro:hover  {
   transition: all 0.2s ease-in-out;
   background: var(--text-decoration-color-hover);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 2px 8px var(--shadow-color);
+  border: var(--text-decoration-color) 2px solid;
 }
+
 
 /*Estilos para la sección de experience */
 #experience,
@@ -552,7 +545,7 @@ section, header, footer, .i_am, .welcome, .skill, .school, .proye {
 .line {
   height: 4px;
   width: 80px;
-  background: linear-gradient(90deg, var(--text-decoration-color), var(--text-decoration-color-hover));
+  background: linear-gradient(90deg, var(--accent-text-hover), var(--accent-text-hover ));
   border-radius: 2px;
   margin: 15px auto 30px;
 }
@@ -579,7 +572,7 @@ section, header, footer, .i_am, .welcome, .skill, .school, .proye {
   flex-direction: row;
   box-shadow: var(--shadow-color) 0 0 2px;
   border-radius: 15px; /* Bordes redondeados */
-  transition: all 2s ease-n-iout;
+  transition: all .8s ease-out;
 }
 
 .school h3,
@@ -606,37 +599,40 @@ section, header, footer, .i_am, .welcome, .skill, .school, .proye {
 
 .work:hover,
 .school:hover,.tech:hover {
-  transform: scale(1.01); /* Hace que el contenedor se agrande un poco */
-  border: 1px solid var(--line-color);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  transform: translateX(8px);  
+  border: 2px solid var(--line-color);
+  box-shadow: 5px 0 18px var(--shadow-color);
   transition: all 0.2s ease-in-out;
+  h2{
+    color: var(--accent-text-hover);
+    transition: width 0.2s ease-in-out, color 0.2s ease-in-out;
+  }
 }
 
 /* Estilo para seccion de skills*/
-.skill_3-3 {
-  display: flex;
+.skill_3-3{
+  display: grid;
   justify-content: center;
-  flex-direction: column * 3;
-  flex-wrap: wrap; /* Permite que los elementos se envuelvan */
-  margin: 10px;
-  gap: 20px; /* Espacio entre los elementos */
-  width: 100%;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   padding: 20px 0;
+  flex-wrap: wrap; 
+  margin: 10px;
+  gap: 20px; 
+  width: 90%;
 }
-
-.skill,
-.proye {
+.skill_3-3 .skill,
+.pro_3-3 .proye {
   padding: 20px;
-  width: 30%;
   box-shadow: var(--shadow-color) 0 0 2px;
   border-radius: 15px; /* Bordes redondeados */
+  border: 2px solid var(--background-color-m2) ;
 }
 
-.skill:hover,
-.proye:hover{
-  transform: translateY(-5px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-  border-color: var(--line-color);
+.skill_3-3 .skill:hover,
+.pro_3-3 .proye:hover{
+  box-shadow: 0 6px 12px var(--shadow-color);
+  border: 2px solid linear-gradient(180deg, var(--text-decoration-color), 
+  var(--text-color));
   }
 
 .skill_3-3 .skill p {
@@ -666,14 +662,13 @@ section, header, footer, .i_am, .welcome, .skill, .school, .proye {
   flex-direction: column;
   box-sizing: border-box; /* Asegura que el padding no sobresalga */
   border-radius: 15px; /* Bordes redondeados */
-  box-shadow: var(--shadow-color) 0 0 2px;
   margin: 10px;
   padding: 15px;
   width: 120px;
   height: 160px;
   position: relative;
-  background: var(--background-color-m2);
-  border: 1px solid var(--border-color);
+  background-color: var(--background-color-m2);
+  border: 2px solid var(--shadow-color);
   transition: all 0.3s ease;
   perspective: 1000px;
 }
@@ -702,7 +697,7 @@ section, header, footer, .i_am, .welcome, .skill, .school, .proye {
 .date_work {
   padding-right: 20px;
   align-content: center;
-  color: var(--accent-color);
+  color: var(--accent-text);
 }
 
 .mini_nav {
@@ -758,7 +753,7 @@ section, header, footer, .i_am, .welcome, .skill, .school, .proye {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 4px;
+  height: 6px;
   background: linear-gradient(
     90deg,
     var(--background-color-m),
@@ -767,10 +762,6 @@ section, header, footer, .i_am, .welcome, .skill, .school, .proye {
   );
   transform: scaleX(0);
   transition: transform 0.3s ease;
-}
-.proye:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 14px 28px rgba(0,0,0,0.1), 0 10px 10px rgba(0,0,0,0.05);
 }
 .proye:hover::after {
   transform: scaleX(1);
@@ -801,23 +792,6 @@ section, header, footer, .i_am, .welcome, .skill, .school, .proye {
   color: var(--text-light-color);
   margin-bottom: 15px;
 }
-.proye .btn-pro {
-  padding: 10px 20px;
-  justify-content: center;
-}
-
-.btn-pro {
-  font-size: clamp(0.8125rem, 0.4219rem + 1.25vw, 1.125rem);
-  padding: 8px 16px;
-  margin: 0;
-  background-color: var(--text-decoration-color-hover);
-  color: white;
-  border-radius: 30px;
-  text-decoration: none;
-  position: relative;
-  overflow: hidden;
-  width: 50%;
-}
 .tech h3 {
   color: var(--text-color);
   text-align: center;
@@ -842,22 +816,26 @@ section, header, footer, .i_am, .welcome, .skill, .school, .proye {
 /*Estilo para la sección de idiomas */
 .idioma_2_2 {
   display: flex;
+  flex-wrap: wrap; /* Permite que los elementos se envuelvan */
   justify-content: center;
-  flex-direction: column * 2;
-  padding: 30px;
-  gap: 70px;
+  flex-direction: row ;
+  width: auto;
+  grid-template-rows: repeat(auto-fill, minmax(250px, 2fr));
+  gap: 10px;
 }
 .idioma {
+  align-self: center; 
   margin: 20px;
   padding: 15px 30px;
   box-sizing: border-box; /* Asegura que el padding no sobresalga */
   border-radius: 15px; /* Bordes redondeados */
-  box-shadow: var(--shadow-color) 0 0 2px;
+  border: var(--shadow-color) 2px solid;
+  background-color: var(--background-color-m);
 }
 .idioma:hover {
   transform: scale(1.05); /* Hace que el contenedor se agrande un poco */
   transition: all 0.2s ease-in-out; /* Transición suave para todos los cambios */
-  box-shadow: var(--shadow-color) 0 0 5px;
+  box-shadow: var(--shadow-color) 0 4px 10px;
 }
 .idioma h2{
   text-align: center;
@@ -867,20 +845,82 @@ section, header, footer, .i_am, .welcome, .skill, .school, .proye {
   text-align: center;
   font-size: clamp(0.8125rem, 0.4219rem + 1.25vw, 1.125rem);
 }
-.barra {
-  width: 120px;
-  height: 120px;
-  margin: 20px auto 0;
-  position: relative;
+
+/* Estilos para contacto */
+#contacto {
+  padding: 50px;
+  margin: 20px 0;
+  max-width: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box; /* Asegura que el padding no sobresalga */
 }
-.progressbar-text{
+
+/* Estilo para el título en .puesto */
+#contacto h1 {
+  font-size: clamp(1.75rem, 0.6466rem + 5.5172vw, 3.75rem);
+  font-weight: bold;
+}
+#contacto h6 {
+  font-size: clamp(1.25rem, 0.1094rem + 2.25vw, 1.875rem);
+  color: var(--accent-footer);
+  margin-top: 10px;
+}
+/* Estilo para el párrafo en .puesto */
+#contacto p {
+  font-size: clamp(1rem, 0.6875rem + 1vw, 1.25rem);
+  padding-top: 25px;
+}
+#contacto .text-cont{
+  padding: 0;
+  margin: 0;
+}
+#contacto .formulario {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* Centra el formulario */
+  width: 100%;
+  max-width: 600px; /* Ancho máximo del formulario */
+  gap: 15px;
+}
+#contacto .formulario textarea, #contacto .formulario input {
+  border-radius: 15px;
+  min-width: 450px;
+  min-height: 50px;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+}
+.social_icons {
+  padding: 20px;
+  display: flex;
+  justify-content: center; /* Centra los íconos horizontalmente */
+  gap: 20px; /* Espacio entre los íconos */
+}
+
+.social_icons ul {
+  list-style: none; /* Elimina los puntos de lista */
+}
+
+.social_icons ul li {
+  display: inline-block;
+  margin: 0 10px; /* Espacio entre los íconos */
+  z-index: 4;
+}
+
+.social_icons a {
+  font-size: 30px;
   color: var(--text-color);
+  transition: color 0.3s;
 }
 
-.btn, .btn-pro, .proye, .work, .school, .skill, .tech, .idioma, #nav-list li a, .social_icons a {
-  transition: all 0.2s ease-in-out;
+.social_icons i:hover {
+  color: var(--text-decoration-color-hover); /* Cambio de color al pasar el mouse */
+  transform: translateY(-5px) scale(1.15);
+  transition: all 0.2s ease-in-out; /* Transición suave para todos los cambios */
 }
-
 /* Estilos para el footer */
 
 footer {
@@ -892,7 +932,6 @@ footer {
   position: sticky;
   bottom: 0;
   z-index: 1;
-  padding: 40px 20px;
   background-color: var(--background-color-d); /* Más coherente con tu esquema */
   color: var(--text-white);
   padding: 60px 20px;
@@ -951,7 +990,11 @@ footer p {
   z-index: 3;
 }
 
-
+@media (min-width: 768px) and (max-width: 1024px) {
+  .pro_3-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
 
 @media (max-width: 1100px) {
 
@@ -1135,13 +1178,33 @@ footer p {
     visibility: visible;
     transform: translateY(0);
   }
-
   #nav-list li {
     margin: 10px 0;
   }
-
   #nav-list li a {
     font-size: 18px;
+    position: relative;
+    transition: all 0.3s ease;
+  }
+  #nav-list li a:hover {
+    color: var(--text-decoration-color-hover);
+  }
+  /* Estilo para los links cuando están activos */
+  #nav-list li a.active {
+    color: var(--text-decoration-color)!important; /* Asegura que el color activo sea el correcto */
+    font-weight: bold;
+    position: relative;
+  }
+  #nav-list li a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: var(--text-decoration-color);
+    transform: scaleX(1);
+    transition: transform 0.3s ease;
   }
 
   .line_time {
@@ -1250,7 +1313,7 @@ footer p {
     align-self: center;
     text-align: center;
   }
-
+  
   .mini_nav h2 {
     height: 45px;
     margin-top: 10px;
@@ -1307,6 +1370,7 @@ footer p {
   }
   .proye{
     padding: 0;
+    margin: 10px 0;
   }
   .proye img{
     width: 80%;
@@ -1340,14 +1404,7 @@ footer p {
     width: 50%;
     align-self: center;
   }
-    .idioma_2_2 {
-    gap: 15px;
-    padding: 10px;
-  }
-
   .idioma {
-    margin: 0;
-    padding: 15px;
     gap: 5px;
   }
 }
@@ -1378,9 +1435,6 @@ footer p {
   .mini_nav h4 {
     height: 50px;
   }
-  .idioma_2_2 {
-    flex-direction: column;
-  }
 }
 
 @media screen and (max-width: 320px) {
@@ -1398,12 +1452,6 @@ footer p {
   }
   .welcome {
     padding: 0px;
-  }
-  .idioma_2_2 {
-    padding-top: 15px;
-  }
-  .idioma {
-    text-align: center;
   }
   .tech {
     width: 100%;

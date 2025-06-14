@@ -20,40 +20,48 @@ function handleScrollEffects() {
 // Actualizar sección activa en el menú
 function updateActiveSection() {
   const sections = document.querySelectorAll("section[id]");
-  const navLinks = document.querySelectorAll("nav ul li a");
-  let activeFound = false;
-  const scrollY = window.scrollY + 150; // Offset para activar antes
+  const navLinks = document.querySelectorAll("#nav-list li a");
+  let currentSection = "";
+  const offset = 150; // Ajusta este valor según necesites
 
+  // Verifica cada sección para ver cuál está activa
   sections.forEach(section => {
-    const { offsetTop: top, offsetHeight: height, id } = section;
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.offsetHeight;
     
-    if (scrollY >= top && scrollY < top + height) {
-      navLinks.forEach(link => {
-        link.classList.toggle("active", link.getAttribute("href").includes(id));
-      });
-      activeFound = true;
+    if (window.scrollY >= sectionTop - offset && 
+        window.scrollY < sectionTop + sectionHeight - offset) {
+      currentSection = section.id;
     }
   });
 
-  if (!activeFound) {
-    navLinks.forEach(link => link.classList.remove("active"));
-  }
+  // Actualiza las clases active en los enlaces
+  navLinks.forEach(link => {
+    link.classList.remove("active");
+    if (link.getAttribute("href") === `#${currentSection}`) {
+      link.classList.add("active");
+    }
+  });
+  console.log("Sección activa:", currentSection); // Depuración
+  navLinks.forEach(link => {
+    console.log(`Enlace: ${link.getAttribute('href')}, Coincide: ${link.getAttribute('href') === `#${currentSection}`}`);
+  });
 }
 
 // Optimización de eventos de scroll
 function setupScrollListener() {
-  let ticking = false;
+  let isScrolling;
   
-  window.addEventListener("scroll", () => {
-    if (!ticking) {
-      window.requestAnimationFrame(() => {
-        handleScrollEffects();
-        updateActiveSection();
-        ticking = false;
-      });
-      ticking = true;
-    }
-  });
+  window.addEventListener('scroll', () => {
+    // Cancela el timeout anterior
+    window.clearTimeout(isScrolling);
+    
+    // Configura un nuevo timeout
+    isScrolling = setTimeout(() => {
+      handleScrollEffects();
+      updateActiveSection();
+    }, 66); // ~15fps para mejor rendimiento
+  }, false);
 }
 
 // ==============================================
@@ -70,13 +78,13 @@ function setupMenuToggle() {
 
 // Efecto de explosión para botones
 function createExplodeEffect(btn) {
-  btn.style.transform = "scale(1.15)";
-  btn.style.boxShadow = "0 0 10px rgba(0, 0, 0, 0.3)";
+  btn.style.transform = "scale(1.12)";
+  btn.style.boxShadow = "0 4 8px var(--shadow-color)";
   
   setTimeout(() => {
     btn.style.transform = "";
     btn.style.boxShadow = "";
-  }, 300);
+  }, 250);
 }
 
 // Efecto ripple para botones
@@ -255,7 +263,7 @@ function setupProgressBars() {
       text: {
         value: `${Math.round(percentage * 100)}%`,
         style: {
-          color: "#272727",
+          color: "var(--text-color)",
           fontWeight: "bold",
           fontSize: "14px",
           position: "absolute",
@@ -299,7 +307,39 @@ function init() {
   setupThemeToggle();
   setupAnimations();
   setupProgressBars();
+  
+  // Verificar sección activa al cargar
+  updateActiveSection();
 }
-
 // Iniciar cuando el DOM esté listo
 document.addEventListener("DOMContentLoaded", init);
+
+
+//Opciones de lazy loading para imágenes
+// Observador para imágenes lazy
+const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+
+const imageObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const img = entry.target;
+      img.classList.add('loaded');
+      imageObserver.unobserve(img);
+    }
+  });
+});
+
+lazyImages.forEach(img => imageObserver.observe(img));
+
+// Registrar Service Worker para PWA sirve para cachear recursos y mejorar la carga
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/sw.js')
+      .then(registration => {
+        console.log('SW registrado:', registration.scope);
+      })
+      .catch(error => {
+        console.log('Error al registrar SW:', error);
+      });
+  });
+}
