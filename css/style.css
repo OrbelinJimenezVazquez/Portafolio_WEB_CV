@@ -512,6 +512,7 @@ section, header, footer, .i_am, .welcome, .skill, .school, .proye {
   margin: 20px 88px;
   padding: 24px 24px 45px; /* Espacio superior e inferior */
   display: flex;
+  justify-content: center;
   flex-direction: column;
   align-items: center; /* Centra el contenido */
   box-sizing: border-box; /* Asegura que el padding no sobresalga */
@@ -728,6 +729,7 @@ section, header, footer, .i_am, .welcome, .skill, .school, .proye {
 /*Estilo para proyectos*/
 .pro_3-3 {
   display: grid;
+  justify-content: center;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   padding: 20px 0;
   flex-wrap: wrap; /* Permite que los elementos se envuelvan */
@@ -749,7 +751,6 @@ section, header, footer, .i_am, .welcome, .skill, .school, .proye {
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   position: relative;
   overflow: hidden;
-  padding: 40px 20px 40px 20px;
 }
 .proye::after {
   content: "";
@@ -1006,7 +1007,7 @@ footer p {
   #lenguaje,
   #tech {
     margin: 20px;
-    padding: 0px 0px 45px; /* Espacio superior e inferior */
+    padding: 0px 0px 45px; /* Espacio superior e inferior */    
   }
 
   .skill_3-3 {
@@ -1015,7 +1016,7 @@ footer p {
   }
 
   .proye{
-    margin: 40px 20px 40px 20px;
+    margin: 40px 10px 40px 10px;
   }
     .idioma_2_2 {
     gap: 0;
@@ -1301,7 +1302,16 @@ footer p {
   .skill, .proye {
     width: 100%;
   }
-
+  .pro_3-3{
+    margin: 0;
+  }
+  .proye{
+    padding: 0;
+  }
+  .proye img{
+    width: 80%;
+    height: auto;
+  }
   .skill_3-3 .skill p {
     text-align: center; /* Centra el texto */
   }
