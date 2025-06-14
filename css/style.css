@@ -1,3 +1,20 @@
+
+@media (prefers-reduced-motion: no-preference) {
+  [data-aos] {
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  
+  .proye, .tech, .skill {
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+  }
+}
+@keyframes ripple-animation {
+  to {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
 /* Definir Variables Globales */
 :root {
   /* Colores base - Modo claro */
@@ -41,7 +58,7 @@
   --text-light-color: #94a3b8; /* Texto secundario */
   
   --text-decoration-color: #60a5fa; /* Azul más claro para mejor contraste */
-  --text-decoration-color-hover: #93c5fd;
+  --text-decoration-color-hover: #93c5fd; 
   --accent-color: #f8fafc;
   
   --line-color: #334155;
@@ -52,7 +69,7 @@
   --circles-color: rgba(96, 165, 250, 0.1);
 
   .proye img {
-    filter: brightness(0.85);
+    filter: brightness(0.85) contrast(1.1);
   }
   
   .line {
@@ -60,8 +77,12 @@
   }
   
   .work, .school, .skill, .proye {
-    border: 1px solid var(--border-color);
+    border: 2px solid var(--border-color);
   }
+  .work, .school {
+    border-left: 4px solid var(--accent-color);
+  }
+  
 }
 
 /* Estilos Generales */
@@ -120,7 +141,7 @@ header {
   max-width: 100%; /* Asegura que ocupe todo el ancho */
   z-index: 5; /* Asegura que el header quede encima del contenido */
   color: var(--text-color);
-  background-color: var(--background-color);
+  background-color: var(--background-color-m);
   padding: 15px 40px; /* Espaciado interno */
   display: flex; /* Usamos flexbox para distribuir los elementos */
   justify-content: space-between; /* Espacio entre logo y menú */
@@ -128,18 +149,15 @@ header {
   transition: box-shadow 0.25s ease-in-out; /* Transición suave para la sombra */
   filter: brightness(0.95);
 }
-
 /* Sin box-shadow cuando está en la parte superior */
 header.no-shadow {
   box-shadow: none;
 }
-
 /* Con box-shadow visible cuando se hace scroll */
 header.with-shadow {
   background-color: var(--background-color);
   box-shadow: 0 1px 5px var(--shadow-color); /* Sombra sutil */
 }
-
 /* Estilo para el logo */
 header .logo {
   padding-left: 60px;
@@ -149,7 +167,6 @@ header .logo {
 header .logo a {
   text-decoration: none;
 }
-
 header .logo p {
   font-size: clamp(1rem, -0.25rem + 8.333vw, 2.75rem);
   color: var(--text-color);
@@ -172,7 +189,6 @@ header .logo p:hover {
   display: flex;
   justify-content: center;
 }
-
 #nav-list li a {
   display: flex;
   align-items: center; /* Alinea el icono y el texto verticalmente */
@@ -194,7 +210,10 @@ header .logo p:hover {
 /* Menú hamburguesa oculto en pantallas grandes */
 .menu-toggle {
   display: none;
+  cursor: pointer;
+  z-index: 11;
 }
+
 /* Menú principal (pantallas grandes) */
 nav {
   display: flex;
@@ -221,7 +240,7 @@ nav ul.active {
   left: 0;
   width: 100%;
   padding: 20px;
-  background-color: var(--background-color);
+  background-color: var(--background-color-m);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 nav ul.active .fa-bars {
@@ -291,31 +310,41 @@ section, header, footer, .i_am, .welcome, .skill, .school, .proye {
 
 /*Estilos para la sección de mi cv */
 .i_am {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Montserrat", sans-serif;  
+  background: linear-gradient(
+    0deg, 
+    var(--background-color) 0%, 
+    var(--background-color-m) 100%
+  );
+  position: relative;
+  overflow: hidden;
   display: flex;
   justify-content: center;
-  padding: 50px 200px 75px; /* Espacio superior e inferior */
-  background-color: var(--background-color);
   align-items: center; /* Alinea verticalmente al centro */
   text-align: center; /* Centra el texto */
   line-height: 1.5; /* Espaciado entre líneas */
-  overflow: hidden;
-  position: relative;
   z-index: 2;
-  filter: brightness(0.95);
+  filter: brightness(0.95);  
+  padding: 50px 200px 75px; /* Espacio superior e inferior */
+  min-height: 91vh;
 }
-
-.i_am img {
-  width: 300px; /* Ancho de la imagen */
-  height: auto; /* Mantiene la proporción de la imagen */
+.i_am_img{
+  display: flex;
+  justify-content: center;
+  margin: 5px;;
+}
+.i_am_img img {
   border-radius: 15px; /* Hace que la imagen sea circular */
   margin-right: 50px; /* Espacio entre la imagen y el texto */
+  max-width: 250px;
+  border: 3px solid var(--border-color);
   box-shadow: 0 2px 5px var(--shadow-color); /* Sombra sutil */
   z-index: 1;
 }
-
-
-
+.i_am_img img:hover {
+  filter: brightness(1.05); /* Aumenta el brillo al pasar el mouse */
+  transform: translateY(-5px);
+}
 /* Estilo para el id "saludo" */
 .i_am .saludo {
   font-size: clamp(1.389rem, 0rem + 122.222vw, 1.667rem);
@@ -327,8 +356,10 @@ section, header, footer, .i_am, .welcome, .skill, .school, .proye {
 
 /* Estilo para el id "name" */
 .i_am .name {
-  font-size: clamp(1.389rem, 0rem + 122.222vw, 1.667rem);
+  font-size: clamp(1.389rem, 0rem + 122.222vw, 1.867rem);
   color: var(--text-decoration-color);
+  -webkit-background-clip: text;
+  background-clip: text;
   font-weight: bold;
   padding-left: 15px;
   text-align: left;
@@ -340,10 +371,12 @@ section, header, footer, .i_am, .welcome, .skill, .school, .proye {
 }
 
 .i_am_text {
-  justify-content: center; /* Centra verticalmente el texto */
-  align-items: flex-start; /* Alinea el texto a la izquierda */
-  padding: 50px 20px 0 20px ; /* Espacio superior e inferior */
-  width: 100%; /* Ocupa todo el ancho disponible */
+  justify-content: center; 
+  align-items: flex-start; 
+  padding: 50px 20px 0 20px ;
+  width: 100%;
+  position: relative; /* Permite posicionar elementos hijos */
+  z-index: 2;
 }
 /* Estilo para el id "description" */
 .i_am_text .description {
@@ -528,11 +561,12 @@ section, header, footer, .i_am, .welcome, .skill, .school, .proye {
   margin: 30px 0;
   width: 100%;
   display: flex;
+  position: relative;
 }
 
-.work, .skill, .school, .proye {
+.work, .skill, .school {
   background-color: var(--background-color-m2);
-  border: 1px solid var(--border-color);
+  border: 2px solid var(--border-color);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
@@ -565,20 +599,20 @@ section, header, footer, .i_am, .welcome, .skill, .school, .proye {
   margin: auto 40px;
   width: 4px;
   height: 240px;
-  background: linear-gradient(to bottom, var(--line-color), var(--background-color-d));
+  background: linear-gradient(to bottom,var(--line-color), var(--text-color), var(--line-color));
   border-radius: 15px;
 }
 
 .work:hover,
 .school:hover,.tech:hover {
   transform: scale(1.01); /* Hace que el contenedor se agrande un poco */
-  box-shadow: var(--shadow-color) 0 0 5px; 
+  border: 1px solid var(--line-color);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
   transition: all 0.2s ease-in-out;
 }
 
 /* Estilo para seccion de skills*/
-.skill_3-3,
-.pro_3-3 {
+.skill_3-3 {
   display: flex;
   justify-content: center;
   flex-direction: column * 3;
@@ -637,8 +671,18 @@ section, header, footer, .i_am, .welcome, .skill, .school, .proye {
   width: 120px;
   height: 160px;
   position: relative;
+  background: var(--background-color-m2);
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+  perspective: 1000px;
 }
-
+.tech-inner {
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
 
 .school h3,
 .school h2 {
@@ -682,14 +726,53 @@ section, header, footer, .i_am, .welcome, .skill, .school, .proye {
 }
 
 /*Estilo para proyectos*/
+.pro_3-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  padding: 20px 0;
+  flex-wrap: wrap; /* Permite que los elementos se envuelvan */
+  margin: 10px;
+  gap: 20px; /* Espacio entre los elementos */
+  width: 100%;
+  padding: 20px 0;
+}
 .proye {
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
   align-items: center;
+  height: 100%;
+  width: 100%;
+  background: var(--background-color-m);
+  border: 2px solid var(--background-color-m2);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  position: relative;
   overflow: hidden;
   padding: 40px 20px 40px 20px;
+}
+.proye::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--background-color-m),
+    var(--text-decoration-color),
+    var(--background-color-m)
+  );
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+.proye:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 14px 28px rgba(0,0,0,0.1), 0 10px 10px rgba(0,0,0,0.05);
+}
+.proye:hover::after {
+  transform: scaleX(1);
 }
 .proye img {
   width: 100%;
@@ -698,11 +781,13 @@ section, header, footer, .i_am, .welcome, .skill, .school, .proye {
   border-radius: 10px;
   margin-bottom: 15px;
   filter: brightness(0.95);
+  transition: transform 0.5s ease;
 }
 .proye img:hover {
   transition: all 0.2s ease-in-out; 
   box-shadow: var(--shadow-color) 0 0 5px; 
-  border: 1px solid var(--border-color); 
+  border: 2px solid var(--border-color);
+  transform: scale(1.03); 
   
 }
 .proye h3 {
@@ -746,10 +831,11 @@ section, header, footer, .i_am, .welcome, .skill, .school, .proye {
   margin: 0 10px;
   color: var(--text-decoration-color);
   font-size: 1.5rem;
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
 }
 .tech-used i:hover {
-  transform: scale(1.1);
+  color: var(--text-decoration-color-hover);
+  transform: scale(1.2);
 }
 
 /*Estilo para la sección de idiomas */
@@ -805,6 +891,7 @@ footer {
   position: sticky;
   bottom: 0;
   z-index: 1;
+  padding: 40px 20px;
   background-color: var(--background-color-d); /* Más coherente con tu esquema */
   color: var(--text-white);
   padding: 60px 20px;
@@ -818,14 +905,15 @@ footer p {
 }
 .footer-links {
   display: flex;
+  justify-content: center;
   gap: 20px;
   flex-wrap: wrap;
-  justify-content: center;
-  
+  margin-top: 20px;
 }
 .footer-links a {
   color: var(--accent-footer); /* Color amarillo para los enlaces */
   position: relative;
+  padding: 0 10px;
   cursor: pointer;
   font-weight: bold;
   text-decoration: none;
@@ -862,19 +950,10 @@ footer p {
   z-index: 3;
 }
 
-@keyframes ripple-animation {
-  to {
-    transform: scale(4);
-    opacity: 0;
-  }
-}
+
 
 @media (max-width: 1100px) {
 
-  .i_am img {
-    width: 30%;
-    height: auto;
-  }
     #nav-list li a i {
     display: none;
   }
@@ -883,7 +962,9 @@ footer p {
   #theme-toggle i {
     display: inline-block !important;
   }
-
+  .i_am .name{
+    height: 100px;
+  }
   .pro_3-3 {
     width: 100%;
     flex-direction: column;
@@ -915,9 +996,7 @@ footer p {
     flex-direction: column; /* Cambia a columna en pantallas pequeñas */
     padding: 0px 20px; /* Espacio superior e inferior */
   }
-  .i_am img {
-    width: 25%; /* Imagen ocupa el 100% del ancho */
-    height: auto; /* Mantiene la proporción de la imagen */
+  .i_am_img img {
     margin-right: 0; /* Elimina el margen derecho */
   }
   #experience,
@@ -951,9 +1030,13 @@ footer p {
 
   .i_am {
     padding: 30px 20px; /* Espacio superior e inferior */
+    text-align: center;
+  }
+  .i_am_img {
+    margin-bottom: 30px;
   }
   .i_am_text {
-    padding: 0 20px; /* Espacio superior e inferior */
+    padding: 0 10px; /* Espacio superior e inferior */
     margin: 0;
     text-align: center; /* Centra el texto */
   }
@@ -1089,6 +1172,22 @@ footer p {
     font-size: 16px; /* Tamaño de fuente más pequeño */
     line-height: 1.5;
   }
+    .the_work::before {
+    left: 20px;
+  }
+  .work {
+    margin-left: 40px;
+    border-left: none;
+    border-top: 4px solid var(--text-decoration-color);
+  }
+  .work::before {
+    top: -8px;
+    left: 16px;
+  }
+  .pro_3-3, .skill_3-3 {
+    grid-template-columns: 1fr;
+  }
+  
 }
 
 @media screen and (max-width: 501px) {
@@ -1097,7 +1196,7 @@ footer p {
     padding: 0px 20px; /* Espacio superior e inferior */
   }
 
-  .i_am img {
+  .i_am_img img {
     width: 35%; /* Imagen ocupa el 100% del ancho */
     height: auto; /* Mantiene la proporción de la imagen */
     margin-right: 0; /* Elimina el margen derecho */
