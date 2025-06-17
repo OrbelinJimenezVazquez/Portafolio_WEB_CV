@@ -34,6 +34,7 @@
   
   /* Textos */
   --text-color: #1e293b; /* Texto principal - azul oscuro */
+  --text_btn: #2563eb;
   --text-white: #ffffff; /* Texto blanco */
   --text-light-color: #64748b; /* Texto secundario - gris azulado */
   
@@ -79,6 +80,7 @@
   
   --line-color: #334155;
   --border-color: #475569;
+  --text_btn: white;
   
   --shadow-color: rgba(242, 242, 242, 0.3);
   
@@ -151,7 +153,6 @@ body.transitioning * {
 /* Ajuste del contenedor main */
 main {
   max-width: 100%;
-  padding: 20px;
   box-sizing: border-box; /* Asegura que el padding no sobresalga */
   overflow: hidden; /* Evita el scroll en el contenido principal */
   background-color: var(--background-color-m);
@@ -376,7 +377,7 @@ section, header, footer, .i_am, .welcome, .skill, .school, .proye {
   line-height: 1.5; /* Espaciado entre líneas */
   z-index: 2; 
   padding: 50px 200px 75px; /* Espacio superior e inferior */
-  min-height: 91vh;
+  min-height: 100vh;
 }
 .i_am_img{
   display: flex;
@@ -440,7 +441,7 @@ img[loading="lazy"].loaded {
 .i_am_text .description {
   font-size: clamp(0.8125rem, 0.4219rem + 1.25vw, 1.125rem);
   color: var(--text-light-color);
-  line-height: 1.6;
+  line-height: 1.5;
   margin-top: 25px;
   text-align: left;
 }
@@ -451,17 +452,18 @@ img[loading="lazy"].loaded {
   flex-direction: column;
   justify-content: center;
   align-items: center; /* Centra el contenido */
-  margin: 80px 20px 75px 20px;
-  padding: 20px 100px;
-  gap: 20px;
   text-align: center;
   line-height: 1.5; /* Espaciado entre líneas */
+
+  gap: 20px;
+  min-height: 62vh;
+  
+  
 }
 .welcome .welcome_text {
   display: flex;
   justify-content: center;
   align-items: center; /* Centra el contenido */
-  text-align: center; /* Centra el texto */
   line-height: 1.5; /* Espaciado entre líneas */
   width: 100%;
   height: 60px;
@@ -493,9 +495,22 @@ img[loading="lazy"].loaded {
   margin: 20px 0 10px;
   position: relative;
   z-index: 4;
+  gap: 20px;
 }
 .btn-container .btn {
   padding: 12px 24px;
+}
+.btn-container #btn_contact {
+  font-size: clamp(0.8125rem, 0.4219rem + 1.25vw, 1.125rem);
+  background: transparent;
+  color: var(--text_btn);
+  border-radius: 24px;
+  border: var(--accent-border) 2px solid;
+}
+.btn-container #btn_contact:hover {
+  background: var(--text-decoration-color-hover);
+  color: var(--text-white);
+  border: var(--text-decoration-color) 2px solid;
 }
 .btn, .btn-pro {
   font-family: var(--font-family);
@@ -523,8 +538,6 @@ img[loading="lazy"].loaded {
 }
 
 
-
-
 /*Estilos para la sección de experience */
 #experience,
 #skills,
@@ -534,6 +547,7 @@ img[loading="lazy"].loaded {
 #lenguaje {
   margin: 20px 88px;
   padding: 24px 24px 45px; /* Espacio superior e inferior */
+  gap: 40px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -560,9 +574,9 @@ img[loading="lazy"].loaded {
   align-items: center;
   text-align: center; /* Centra el texto */
   line-height: 1.5; /* Espaciado entre líneas */
-  width: 100%;
-  margin: 0 24px;
-  padding: 24px; /* Espacio superior e inferior */
+  max-width: 100vh;
+  min-height: 20vh;
+  gap: 15px;
 }
 
 .text-cont h1 {
@@ -577,12 +591,11 @@ img[loading="lazy"].loaded {
   width: 80px;
   background: linear-gradient(90deg, var(--accent-text-hover), var(--accent-text-hover ));
   border-radius: 2px;
-  margin: 15px auto 30px;
+
 }
 
 .the_work,
 .the_school {
-  margin: 30px 0;
   width: 100%;
   display: flex;
   position: relative;
@@ -639,18 +652,18 @@ img[loading="lazy"].loaded {
   }
 }
 /* Estilo para seccion de skills*/
-.skill_3-3{
+.skill_3-3, .pro_3-3 {
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  padding: 20px 0;
   flex-wrap: wrap; 
-  margin: 10px;
-  gap: 20px; 
   width: 90%;
+  gap: 15px;
 }
 .skill_3-3 .skill,
 .pro_3-3 .proye {
+  display: flex;
+  flex-direction: column;
   padding: 20px;
   box-shadow: var(--shadow-color) 0 0 2px;
   border-radius: 15px; /* Bordes redondeados */
@@ -666,7 +679,6 @@ img[loading="lazy"].loaded {
   }
 
 .skill_3-3 .skill p {
-    font-size: clamp(0.875rem, 0.7188rem + 0.5vw, 1rem); /* Tamaño de fuente más pequeño */
     line-height: 1.5;
     padding-top: 10px;
   }
@@ -684,7 +696,6 @@ img[loading="lazy"].loaded {
   justify-content: center;
   flex-wrap: wrap; /* Permite que los elementos se envuelvan */
   gap: 10px;
-  padding: 30px 0;
 }
 .tech {
   display: flex;
@@ -755,13 +766,10 @@ img[loading="lazy"].loaded {
 .pro_3-3 {
   display: grid;
   justify-content: center;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  padding: 20px 0;
+  grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
   flex-wrap: wrap; /* Permite que los elementos se envuelvan */
-  margin: 10px;
   gap: 20px; /* Espacio entre los elementos */
   width: 100%;
-  padding: 20px 0;
 }
 .proye {
   display: flex;
@@ -1086,6 +1094,8 @@ footer p {
   #edu,
   #lenguaje,
   #tech {
+    display: flex;
+    justify-content: center;
     margin: 20px;
     padding: 0px 0px 45px; /* Espacio superior e inferior */    
   }
@@ -1095,9 +1105,7 @@ footer p {
     margin: 0px 0px 45px; /* Espacio superior e inferior */
   }
 
-  .proye{
-    margin: 40px 10px 40px 10px;
-  }
+
     .idioma_2_2 {
     gap: 0;
   }
@@ -1120,15 +1128,6 @@ footer p {
     padding: 0 10px; /* Espacio superior e inferior */
     margin: 0;
     text-align: center; /* Centra el texto */
-  }
-  .i_am_text .description {
-    font-size: 1rem;
-    line-height: 1.6;
-  }
-
-  .welcome {
-    padding: 10px;
-    margin: 10px;
   }
   /* Ajuste de botones */
   .welcome .btn {
@@ -1324,9 +1323,6 @@ footer p {
     text-align: center; /* Centra el texto */
   }
   .i_am_text .description {
-    font-size: 13px; /* Tamaño de fuente más pequeño */
-    line-height: 1.6;
-    padding: 0 20px; /* Espacio interno */
     text-align: center; /* Centra el texto */
     margin-top: 20px; /* Espacio superior */
   }
@@ -1343,7 +1339,6 @@ footer p {
   .welcome .btn {
     width: 50%; /* Botón ocupa el 100% en pantallas más pequeñas */
     align-items: center;
-    margin: 20px 0 0 0;
   }
 
   .work,
@@ -1401,20 +1396,11 @@ footer p {
   }
   .skill_3-3, .pro_3-3 {
     width: 100%;
-    padding: 20px 0px 25px; /* Espacio superior e inferior */
     flex-wrap: wrap; /* Permite que los elementos se envuelvan */
-    justify-content: center;
-  }
-
-  .skill, .proye {
-    width: 100%;
+    justify-content: start;
   }
   .pro_3-3{
     margin: 0;
-  }
-  .proye{
-    padding: 0;
-    margin: 10px 0;
   }
   .proye img{
     width: 80%;
@@ -1461,17 +1447,9 @@ footer p {
 }
 }
 @media screen and (max-width: 376px) {
-  .i_am_text .description {
-    font-size: 13px;
-  }
   .i_am .name {
-    height: 60px;
-    margin-bottom: 35px;
-  }
-  .welcome {
-    padding: 0;
-    margin-top: 50px;
-  }
+    height: 15vh;
+  } 
   .work,
   .school {
     margin: 0 5px 0 5px;
@@ -1496,12 +1474,7 @@ footer p {
 }
 
 @media screen and (max-width: 320px) {
-  .i_am .name{
-    height: 80px;
-  }
-  .name {
-    height: 50px;
-  }
+
   .work li,
   .school li {
     font-size: 13px; /* Tamaño de fuente más pequeño */
