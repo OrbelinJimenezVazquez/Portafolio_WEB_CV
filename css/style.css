@@ -14,7 +14,16 @@
     opacity: 0;
   }
 }
+@keyframes shift {
 
+  0%, 100% {
+    clip-path: polygon(0% 47%, 10% 48%, 33% 54%, 54% 60%, 70% 61%, 84% 59%, 100% 52%, 100% 100%, 0% 100%);
+  }
+
+  50% {
+    clip-path: polygon(0% 60%, 15% 65%, 34% 66%, 51% 62%, 67% 50%, 84% 45%, 100% 46%, 100% 100%, 0% 100%);
+  }
+}
 /* Definir Variables Globales */
 :root {
   /* Colores base - Modo claro */   
@@ -33,13 +42,14 @@
   --text-decoration-color-hover: #2563eb; /* Azul más oscuro para hover */
   --accent-border: #3b82f6; /* Coherencia con los enlaces */
   --accent-text: #3b82f6;
-  --accent-text-hover: #3b82f6;
+  --accent-text-hover: #264d8c;
   --accent-footer: #f2c119;
   --accent-links: #ddb115;
   
   /* Bordes y líneas */
   --line-color: #8b9096; /* Gris  para linea separadores */
   --border-color: #e2e8f0; /* Bordes sutiles */
+  
   
   /* Sombras */
   --shadow-color: rgba(0, 0, 0, 0.1);
@@ -437,19 +447,39 @@ img[loading="lazy"].loaded {
 
 /*Estilo para la seccion de bienvenida */
 .welcome {
+  display: flex;
+  flex-direction: column;
   justify-content: center;
+  align-items: center; /* Centra el contenido */
   margin: 80px 20px 75px 20px;
   padding: 20px 100px;
+  gap: 20px;
   text-align: center;
   line-height: 1.5; /* Espaciado entre líneas */
 }
+.welcome .welcome_text {
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Centra el contenido */
+  text-align: center; /* Centra el texto */
+  line-height: 1.5; /* Espaciado entre líneas */
+  width: 100%;
+  height: 60px;
+  position: relative;
+}
 .welcome h1 {
   font-size: clamp(1.25rem, -0.6466rem + 9.4828vw, 4.6875rem);
-  font-weight: bold;
-  line-height: 1;
-  color: var(--text-decoration-color);
-  margin-bottom: 30px;
+  position: absolute;
 }
+.welcome .h1_border { 
+  color: var(--text-color); 
+
+}
+.welcome .h1_wave {
+  color: var(--text-decoration-color);
+  animation: shift 5s ease-in-out infinite; 
+}
+
 .welcome p {
   font-size: clamp(0.875rem, 0.7371rem + 0.6897vw, 1.125rem);
   color: var(--text-light-color);
@@ -491,6 +521,8 @@ img[loading="lazy"].loaded {
   box-shadow: 0 2px 8px var(--shadow-color);
   border: var(--text-decoration-color) 2px solid;
 }
+
+
 
 
 /*Estilos para la sección de experience */

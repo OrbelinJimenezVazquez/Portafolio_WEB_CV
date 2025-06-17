@@ -242,7 +242,7 @@ AOS.init({
 
 
   // Aplicar animaciones a elementos
-  sr.reveal(".text-cont h1, #i_am_social ul li, .social_icons, .welcome h1, #contacto .text-cont", commonReveal);
+  sr.reveal(".text-cont h1, #i_am_social ul li, .social_icons, .welcome_text, #contacto .text-cont", commonReveal);
   
   // Animaciones específicas
   sr.reveal(".skill", { ...commonReveal, origin: "right", interval: 150 });
