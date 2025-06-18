@@ -123,7 +123,7 @@ function handleCVDownload(e, btn) {
 
 // Configurar botones interactivos
 function setupInteractiveButtons() {
-  document.querySelectorAll("#btn-cv, #btn-proyectos, .btn-pro, #btn_contact, .btn").forEach(btn => {
+  document.querySelectorAll("#btn-cv, btn-proyectos, #btn_contact, .btn-pro, .btn ").forEach(btn => {
     // Efecto hover
     btn.addEventListener("mouseenter", () => createExplodeEffect(btn));
     
