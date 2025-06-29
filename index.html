@@ -125,7 +125,7 @@
           tus ideas.
         </p>
         <div class="btn-container">
-          <a href="#proyectos" class="btn" id="btn-proyectos">Ver Proyectos</a>
+          <a href="#proyectos" class="btn-pro">Ver Proyectos</a>
         </div>  
       </div>
       <section id="experience"> 
@@ -439,11 +439,62 @@
           <div class="line"></div>
           <p>¿Tienes un proyecto en mente? <h6>Escríbeme.</h6></p>
         </div>
-        <form class="formulario" action="https://formsubmit.co/tu-email@example.com" method="POST">
-          <input type="text" name="name" placeholder="Nombre" required>
-          <input type="email" name="email" placeholder="Email" required>
-          <textarea name="message" placeholder="Mensaje" required></textarea>
-          <button type="submit" class="btn">Enviar</button>
+        <form class="formulario" action="https://formsubmit.co/orbejmnz2001@gmail.com" method="POST">
+          <!-- Campo oculto para redirección después del envío -->
+          <input type="hidden" name="_next" value="https://tudominio.com/gracias.html">
+          <!-- Campo oculto para evitar spam -->
+          <input type="hidden" name="_captcha" value="false">
+          <!-- Plantilla personalizada -->
+          <input type="hidden" name="_template" value="box">
+          
+          <div class="form-group">
+            <input 
+              type="text" 
+              name="name" 
+              placeholder="Nombre completo" 
+              required
+              pattern="[A-Za-z ]{3,50}"
+              title="Mínimo 3 caracteres, solo letras"
+            >
+            <span class="focus-border"></span>
+          </div>
+          
+          <div class="form-group">
+            <input 
+              type="email" 
+              name="email" 
+              placeholder="Email" 
+              required
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
+            >
+            <span class="focus-border"></span>
+          </div>
+          
+          <div class="form-group">
+            <input 
+              type="text" 
+              name="subject" 
+              placeholder="Asunto"
+              maxlength="100"
+            >
+            <span class="focus-border"></span>
+          </div>
+          
+          <div class="form-group">
+            <textarea 
+              name="message" 
+              placeholder="Tu mensaje..." 
+              required
+              minlength="10"
+              maxlength="500"
+            ></textarea>
+            <span class="focus-border"></span>
+          </div>
+          
+          <button type="submit" class="btn">
+            <span class="btn-text">Enviar Mensaje </span>
+            <i class="fas fa-paper-plane btn-icon"></i>
+          </button>
         </form>
         <div class="social_icons">
           <ul>

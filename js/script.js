@@ -78,8 +78,8 @@ function setupMenuToggle() {
 
 // Efecto de explosión para botones
 function createExplodeEffect(btn) {
-  btn.style.transform = "scale(1.12)";
-  btn.style.boxShadow = "0 4 8px var(--shadow-color)";
+  btn.style.transform = "scale(1.1)";
+  btn.style.boxShadow = "0 4px 18px var(--shadow-color)";
   
   setTimeout(() => {
     btn.style.transform = "";
@@ -123,7 +123,7 @@ function handleCVDownload(e, btn) {
 
 // Configurar botones interactivos
 function setupInteractiveButtons() {
-  document.querySelectorAll("#btn-cv, btn-proyectos, #btn_contact, .btn-pro, .btn ").forEach(btn => {
+  document.querySelectorAll("#btn-cv, #btn_contact, .btn-pro, .btn ").forEach(btn => {
     // Efecto hover
     btn.addEventListener("mouseenter", () => createExplodeEffect(btn));
     
@@ -356,5 +356,57 @@ if ('serviceWorker' in navigator) {
       .catch(error => {
         console.log('Error al registrar SW:', error);
       });
+  });
+}
+
+
+//Fucionamiento del formulario
+
+// Manejo del formulario de contacto
+const contactForm = document.querySelector('.formulario');
+
+if (contactForm) {
+  contactForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    
+    try {
+      // Mostrar estado de carga
+      submitBtn.classList.add('loading');
+      submitBtn.disabled = true;
+      
+      // Simular envío (reemplaza con tu lógica real)
+      const formData = new FormData(contactForm);
+      const response = await fetch(contactForm.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      });
+      
+      if (response.ok) {
+        Swal.fire({
+          icon: 'success',
+          title: '¡Mensaje enviado!',
+          text: 'Gracias por contactarme. Te responderé lo antes posible.',
+          confirmButtonColor: '#3b82f6'
+        });
+        contactForm.reset();
+      } else {
+        throw new Error('Error en el envío');
+      }
+    } catch (error) {
+      Swal.fire({
+        icon: 'error',
+        title: 'Error',
+        text: 'Hubo un problema al enviar tu mensaje. Por favor, inténtalo de nuevo más tarde.',
+        confirmButtonColor: '#3b82f6'
+      });
+      console.error('Error:', error);
+    } finally {
+      submitBtn.classList.remove('loading');
+      submitBtn.disabled = false;
+    }
   });
 }
