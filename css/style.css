@@ -925,6 +925,10 @@ img[loading="lazy"].loaded {
   border: var(--border-color) 2px solid;
   transition: all 0.3s ease;
 }
+.formulario textarea:hover, .formulario input:hover {
+  border-color: var(--accent-footer);
+
+}
 .formulario input:focus,
 .formulario textarea:focus {
   outline: none;
