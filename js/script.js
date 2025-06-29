@@ -271,11 +271,11 @@ function setupProgressBars() {
     
     new ProgressBar.Circle(selector, {
       color: color,
-      strokeWidth: 6,
+      strokeWidth: 4,
       duration: 1100,
       easing: "easeInOut",
-      trailColor: "#eeee ",
-      trailWidth: 2,
+      trailColor: "#ffff ",
+      trailWidth: 1.5,
       text: {
         value: `${Math.round(percentage * 100)}%`,
         style: {

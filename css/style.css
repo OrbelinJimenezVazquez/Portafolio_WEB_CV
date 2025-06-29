@@ -859,6 +859,7 @@ img[loading="lazy"].loaded {
   border-radius: 15px; /* Bordes redondeados */
   height: auto;
   width: 50vh;
+  background-color: var(--background-color-m);
 }
 
 .idioma h2{
@@ -1105,7 +1106,7 @@ footer p {
 }
 
 
-/* SweetAlert2 Custom Styles - Coherente con tu diseño */
+/* SweetAlert2 Custom Styles - Coherente con mi diseño */
 .swal2-container {
   z-index: 10000 !important;
 }
