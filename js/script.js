@@ -109,6 +109,7 @@ function handleCVDownload(e, btn) {
     showCancelButton: true,
     confirmButtonText: "Sí, descargar",
     cancelButtonText: "Cancelar",
+    
   }).then((result) => {
     if (result.isConfirmed) {
       const link = document.createElement("a");
@@ -362,7 +363,7 @@ if ('serviceWorker' in navigator) {
 
 //Fucionamiento del formulario
 
-// Manejo del formulario de contacto
+// Reemplaza tu función actual de manejo del formulario con esta versión mejorada
 const contactForm = document.querySelector('.formulario');
 
 if (contactForm) {
@@ -377,6 +378,19 @@ if (contactForm) {
       
       // Simular envío (reemplaza con tu lógica real)
       const formData = new FormData(contactForm);
+      
+      // Mostrar alerta de carga
+      const loadingAlert = Swal.fire({
+        title: 'Enviando mensaje...',
+        allowOutsideClick: false,
+        didOpen: () => {
+          Swal.showLoading();
+        }
+      });
+      
+      // Simular retraso de red (eliminar en producción)
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
       const response = await fetch(contactForm.action, {
         method: 'POST',
         body: formData,
@@ -385,23 +399,36 @@ if (contactForm) {
         }
       });
       
+      await loadingAlert.close();
+      
       if (response.ok) {
-        Swal.fire({
+        await Swal.fire({
           icon: 'success',
           title: '¡Mensaje enviado!',
-          text: 'Gracias por contactarme. Te responderé lo antes posible.',
-          confirmButtonColor: '#3b82f6'
+          html: `
+            <p style="color: var(--text-light-color)">Gracias por contactarme.</p>
+            <p style="color: var(--text-light-color)">Te responderé lo antes posible.</p>
+          `,
+          showConfirmButton: true,
+          confirmButtonText: 'Entendido',
+          timer: 5000,
+          timerProgressBar: true,
+          willClose: () => {
+            contactForm.reset();
+          }
         });
-        contactForm.reset();
       } else {
         throw new Error('Error en el envío');
       }
     } catch (error) {
-      Swal.fire({
+      await Swal.fire({
         icon: 'error',
         title: 'Error',
-        text: 'Hubo un problema al enviar tu mensaje. Por favor, inténtalo de nuevo más tarde.',
-        confirmButtonColor: '#3b82f6'
+        html: `
+          <p style="color: var(--text-light-color)">Hubo un problema al enviar tu mensaje.</p>
+          <p style="color: var(--text-light-color)">Por favor, inténtalo de nuevo más tarde.</p>
+        `,
+        confirmButtonText: 'Entendido'
       });
       console.error('Error:', error);
     } finally {
@@ -410,3 +437,22 @@ if (contactForm) {
     }
   });
 }
+
+// Función para mostrar alertas temáticas
+function showThemedAlert(icon, title, html, confirmText = 'Entendido') {
+  const isDark = document.documentElement.hasAttribute('data-theme');
+  
+  return Swal.fire({
+    icon,
+    title,
+    html,
+    confirmButtonText: confirmText,
+    background: isDark ? 'var(--background-color-m)' : 'var(--background-color)',
+    color: isDark ? 'var(--text-white)' : 'var(--text-color)',
+    confirmButtonColor: 'var(--text-decoration-color)',
+    scrollbarPadding: false
+  });
+}
+
+// Ejemplo de uso en otros lugares de tu código:
+// showThemedAlert('success', 'Éxito', '<p style="color: var(--text-light-color)">Operación completada</p>');

@@ -1104,6 +1104,110 @@ footer p {
   z-index: 3;
 }
 
+
+/* SweetAlert2 Custom Styles - Coherente con tu diseño */
+.swal2-container {
+  z-index: 10000 !important;
+}
+
+.swal2-popup {
+  background: var(--background-color-m) !important;
+  border-radius: 15px !important;
+  border: 2px solid var(--border-color) !important;
+  box-shadow: 0 5px 20px var(--shadow-color) !important;
+  color: var(--text-color) !important;
+  font-family: var(--font-family) !important;
+  width: auto !important;
+  max-width: 90vw !important;
+  padding: 2rem !important;
+}
+
+.swal2-title {
+  color: var(--text-decoration-color) !important;
+  font-size: clamp(1.25rem, 0.1094rem + 2.25vw, 1.875rem) !important;
+  font-weight: bold !important;
+  margin-bottom: 1rem !important;
+}
+
+.swal2-content {
+  color: var(--text-light-color) !important;
+  font-size: clamp(0.875rem, 0.7371rem + 0.6897vw, 1.125rem) !important;
+  line-height: 1.6 !important;
+}
+
+.swal2-actions {
+  margin: 1.5rem auto 0 !important;
+}
+
+.swal2-confirm, 
+.swal2-cancel {
+  font-family: var(--font-family) !important;
+  font-weight: bold !important;
+  border-radius: 24px !important;
+  padding: 12px 24px !important;
+  transition: all 0.3s ease !important;
+  border: 2px solid transparent !important;
+}
+
+.swal2-confirm {
+  background-color: var(--text-decoration-color) !important;
+  color: var(--text-white) !important;
+}
+
+.swal2-confirm:hover {
+  background-color: var(--text-decoration-color-hover) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: 0 2px 10px var(--shadow-color) !important;
+}
+
+.swal2-cancel {
+  background-color: var(--background-color-m2) !important;
+  color: var(--text-color) !important;
+  border-color: var(--border-color) !important;
+}
+
+.swal2-cancel:hover {
+  background-color: var(--background-color) !important;
+  transform: translateY(-2px) !important;
+}
+
+.swal2-icon {
+  width: 4em !important;
+  height: 4em !important;
+  margin: 1.5em auto 1em !important;
+}
+
+.swal2-success [class^=swal2-success-line] {
+  background-color: var(--text-decoration-color) !important;
+}
+
+.swal2-error [class^=swal2-x-mark-line] {
+  background-color: var(--accent-footer) !important;
+}
+
+/* Modo oscuro */
+:root[data-theme="dark"] .swal2-popup {
+  background: var(--background-color-m) !important;
+  border-color: var(--border-color) !important;
+}
+
+:root[data-theme="dark"] .swal2-title {
+  color: var(--text-decoration-color) !important;
+}
+
+:root[data-theme="dark"] .swal2-content {
+  color: var(--text-light-color) !important;
+}
+
+:root[data-theme="dark"] .swal2-confirm {
+  background-color: var(--text-decoration-color) !important;
+}
+
+:root[data-theme="dark"] .swal2-cancel {
+  background-color: var(--background-color-m2) !important;
+  color: var(--text-white) !important;
+}
+
 @media (min-width: 768px) and (max-width: 1024px) {
   .pro_3-3 {
     grid-template-columns: repeat(2, 1fr);
