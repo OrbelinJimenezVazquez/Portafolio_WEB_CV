@@ -446,45 +446,45 @@
           <div class="form-group">
             <input 
               type="text" 
-              name="name" 
-              placeholder="Nombre completo" 
+              id="name" 
+              placeholder=" " 
               required
               pattern="[A-Za-z ]{3,50}"
               title="Mínimo 3 caracteres, solo letras"
             >
-            <span class="focus-border"></span>
+            <label for="name">Nombre completo</label>
           </div>
           
           <div class="form-group">
             <input 
               type="email" 
-              name="email" 
-              placeholder="Email" 
+              id="email" 
+              placeholder="" 
               required
               pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
             >
-            <span class="focus-border"></span>
+            <label for="email">Email </label>
           </div>
           
           <div class="form-group">
-            <input 
+            <input   
               type="text" 
-              name="subject" 
-              placeholder="Asunto"
+              id="subject" 
+              placeholder=" "
               maxlength="100"
             >
-            <span class="focus-border"></span>
+            <label for="subject">Asunto</label>
           </div>
           
           <div class="form-group">
             <textarea 
-              name="message" 
-              placeholder="Tu mensaje..." 
+              id="message" 
+              placeholder="" 
               required
               minlength="10"
               maxlength="500"
             ></textarea>
-            <span class="focus-border"></span>
+            <label for="message">Tu mensaje...</label>
           </div>
           
           <button type="submit" class="btn">
