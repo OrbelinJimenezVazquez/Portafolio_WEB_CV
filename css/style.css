@@ -24,6 +24,21 @@
     clip-path: polygon(0% 60%, 15% 65%, 34% 66%, 51% 62%, 67% 50%, 84% 45%, 100% 46%, 100% 100%, 0% 100%);
   }
 }
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
 /* Definir Variables Globales */
 :root {
   /* Colores base - Modo claro */   
@@ -106,7 +121,11 @@
 :root[data-theme="dark"] #nav-list li a.active::after {
   background-color: #60a5fa;
 }
-
+/* Mejorar el contraste en modo oscuro */
+:root[data-theme="dark"] .form-group label {
+  color: var(--text-light-color);
+  background-color: var(--background-color-m);
+}
 /* Estilos Generales */
 * {
   margin: 0; /* Elimina el margen por defecto */
@@ -819,6 +838,16 @@ img[loading="lazy"].loaded {
   color: var(--text-light-color);
   margin-bottom: 15px;
 }
+/* Efecto para móviles */
+.proye.hover-effect {
+  transform: scale(0.98);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
+  transition: all 0.3s ease;
+}
+/* Mejorar accesibilidad en focus */
+.proye:focus-within {
+  outline: 2px solid var(--text-decoration-color);
+}
 .tech h3 {
   color: var(--text-color);
   text-align: center;
@@ -913,7 +942,6 @@ img[loading="lazy"].loaded {
 }
 .form-group {
   position: relative;
-  gap: 10px;
 }
 .formulario textarea, .formulario input {
   width: 100%;
@@ -932,18 +960,23 @@ img[loading="lazy"].loaded {
 }
 .form-group textarea:hover, .form-group input:hover {
   border-color: var(--accent-footer);
-
+}
+.formulario input:focus-visible,
+.formulario textarea:focus-visible {
+  outline: 2px solid var(--text-decoration-color);
+  outline-offset: 2px;
 }
 .form-group label {
   position: absolute;
   top: 1.7rem;
-  left: 15px;
+  left: 1rem;
+  padding: 0 0.5rem;
   font-size: clamp(0.8125rem, 0.4219rem + 1.25vw, 1.125rem);
-  color: var(--text-color);
-  transition: all 0.3s ease;
+  background-color: var(--background-color-m);
+  color: var(--text-light-color);
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
   pointer-events: none;
-  background-color: transparent;
-  border-radius: 5px;
+  transform-origin: left center;
   opacity: 0.5;
 }
 .form-group  input:focus,
@@ -952,20 +985,16 @@ img[loading="lazy"].loaded {
   border-color: var(--text-decoration-color);
   box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
 }
-.form-group input:not(:placeholder-shown),
-.form-group textarea:not(:placeholder-shown) {
-  border-color: var(--accent-footer);
-}
 
 .form-group input:focus + label,
 .form-group input:not(:placeholder-shown) + label{
-  top: 0;
-  left: 10px;
+  transform: translateY(-1.7rem) scale(0.85);
   font-size: clamp(0.8125rem, 0.4219rem + 1.25vw, 1.125rem);
   color: var(--text-decoration-color);
   background-color: var(--background-color);
   padding: 0 5px;
   opacity: 1;
+  border-radius: 8px;
 }
 
 .form-group textarea:focus + label, 
@@ -977,6 +1006,22 @@ img[loading="lazy"].loaded {
   background-color: var(--background-color);
   padding: 0 5px;
   opacity: 1;
+  border-radius: 8px;
+}
+.form-group input:invalid:not(:placeholder-shown),
+.form-group textarea:invalid:not(:placeholder-shown)  {
+  border-color: #ff6b6b;
+  animation: shake 0.5s;
+}
+input:valid:not(:placeholder-shown),
+textarea:valid:not(:placeholder-shown) {
+  border-color: #51cf66;
+}
+.input-error {
+  color: #ff6b6b !important;
+  font-size: 0.8rem !important;
+  margin-top: 0.5rem !important;
+  animation: fadeIn 0.3s ease;
 }
 
 /* Estilo mejorado para el botón */
@@ -993,32 +1038,16 @@ img[loading="lazy"].loaded {
   position: relative;
   transition: all 0.3s ease;
 }
-
 .btn-icon {
   transition: transform 0.3s ease;
 }
-
 .btn[type="submit"]:hover .btn-icon {
   transform: translateX(5px);
 }
-
-/* Validación visual */
-input:invalid:not(:placeholder-shown),
-textarea:invalid:not(:placeholder-shown) {
-  border-color: #ff6b6b;
-}
-
-input:valid:not(:placeholder-shown),
-textarea:valid:not(:placeholder-shown) {
-  border-color: #51cf66;
-}
-
-/* Efecto de carga al enviar */
 .btn.loading .btn-text {
   visibility: hidden;
   opacity: 0;
 }
-
 .btn.loading::after {
   content: "";
   position: absolute;
@@ -1029,12 +1058,6 @@ textarea:valid:not(:placeholder-shown) {
   border-radius: 50%;
   animation: spin 1s linear infinite;
 }
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
 
 .social_icons {
   padding: 20px;

@@ -312,25 +312,6 @@ function setupProgressBars() {
   });
 }
 
-// ==============================================
-// ========== INICIALIZACIÓN GENERAL ============
-// ==============================================
-
-function init() {
-  setupScrollListener();
-  setupMenuToggle();
-  setupInteractiveButtons();
-  setupThemeToggle();
-  setupAnimations();
-  setupProgressBars();
-  
-  // Verificar sección activa al cargar
-  updateActiveSection();
-}
-// Iniciar cuando el DOM esté listo
-document.addEventListener("DOMContentLoaded", init);
-
-
 //Opciones de lazy loading para imágenes
 // Observador para imágenes lazy
 const lazyImages = document.querySelectorAll('img[loading="lazy"]');
@@ -359,100 +340,166 @@ if ('serviceWorker' in navigator) {
       });
   });
 }
+// ==============================================
+// ========== MANEJO DEL FORMULARIO =============
+// ==============================================
 
-
-//Fucionamiento del formulario
-
-// Reemplaza tu función actual de manejo del formulario con esta versión mejorada
 const contactForm = document.querySelector('.formulario');
 
-if (contactForm) {
-  contactForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const submitBtn = contactForm.querySelector('button[type="submit"]');
+function setupFormValidation() {
+  if (!contactForm) return;
+
+  // Validación en tiempo real para cada campo
+  contactForm.querySelectorAll('input, textarea').forEach(input => {
+    input.addEventListener('input', handleFieldValidation);
+    input.addEventListener('blur', handleFieldValidation);
+  });
+
+  // Manejo del envío del formulario
+  contactForm.addEventListener('submit', handleFormSubmit);
+}
+
+function handleFieldValidation(e) {
+  const field = e.target;
+  const fieldContainer = field.parentNode;
+  
+  // Limpiar estados anteriores
+  field.classList.remove('valid', 'invalid');
+  
+  // Validar solo si el campo no está vacío
+  if (field.value.trim() !== '') {
+    if (field.checkValidity()) {
+      field.classList.add('valid');
+    } else {
+      field.classList.add('invalid');
+    }
+  }
+}
+
+async function handleFormSubmit(e) {
+  e.preventDefault();
+  const submitBtn = contactForm.querySelector('button[type="submit"]');
+  
+  try {
+    // Mostrar estado de carga
+    submitBtn.classList.add('loading');
+    submitBtn.disabled = true;
     
-    try {
-      // Mostrar estado de carga
-      submitBtn.classList.add('loading');
-      submitBtn.disabled = true;
-      
-      // Simular envío (reemplaza con tu lógica real)
-      const formData = new FormData(contactForm);
-      
-      // Mostrar alerta de carga
-      const loadingAlert = Swal.fire({
-        title: 'Enviando mensaje...',
-        allowOutsideClick: false,
-        didOpen: () => {
-          Swal.showLoading();
-        }
-      });
-      
-      // Simular retraso de red (eliminar en producción)
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      
-      const response = await fetch(contactForm.action, {
-        method: 'POST',
-        body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
-      });
-      
-      await loadingAlert.close();
-      
-      if (response.ok) {
-        await Swal.fire({
-          icon: 'success',
-          title: '¡Mensaje enviado!',
-          html: `
-            <p style="color: var(--text-light-color)">Gracias por contactarme.</p>
-            <p style="color: var(--text-light-color)">Te responderé lo antes posible.</p>
-          `,
-          showConfirmButton: true,
-          confirmButtonText: 'Entendido',
-          timer: 5000,
-          timerProgressBar: true,
-          willClose: () => {
-            contactForm.reset();
-          }
-        });
-      } else {
-        throw new Error('Error en el envío');
+    // Validar todos los campos antes de enviar
+    let isFormValid = true;
+    contactForm.querySelectorAll('[required]').forEach(field => {
+      if (!field.checkValidity()) {
+        field.classList.add('invalid');
+        isFormValid = false;
       }
-    } catch (error) {
+    });
+    
+    if (!isFormValid) {
+      throw new Error('Por favor completa todos los campos requeridos correctamente');
+    }
+    if ('vibrate' in navigator) {
+      navigator.vibrate(50); // Vibración corta al enviar
+    }
+    // Mostrar alerta de carga
+    const loadingAlert = Swal.fire({
+      title: 'Enviando mensaje...',
+      allowOutsideClick: false,
+      didOpen: () => Swal.showLoading()
+    });
+    
+    // Enviar datos del formulario (usando FormSubmit.co)
+    const formData = new FormData(contactForm);
+    const response = await fetch(contactForm.action, {
+      method: 'POST',
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    });
+    
+    await loadingAlert.close();
+    
+    if (response.ok) {
       await Swal.fire({
-        icon: 'error',
-        title: 'Error',
-        html: `
-          <p style="color: var(--text-light-color)">Hubo un problema al enviar tu mensaje.</p>
-          <p style="color: var(--text-light-color)">Por favor, inténtalo de nuevo más tarde.</p>
-        `,
+        icon: 'success',
+        title: '¡Mensaje enviado!',
+        text: 'Gracias por contactarme. Te responderé lo antes posible.',
         confirmButtonText: 'Entendido'
       });
-      console.error('Error:', error);
-    } finally {
-      submitBtn.classList.remove('loading');
-      submitBtn.disabled = false;
+      
+      // Resetear formulario
+      contactForm.reset();
+      contactForm.querySelectorAll('input, textarea').forEach(field => {
+        field.classList.remove('valid');
+      });
+    } else {
+      throw new Error('Error al enviar el mensaje');
     }
-  });
+  } catch (error) {
+    Swal.fire({
+      icon: 'error',
+      title: 'Error',
+      text: error.message || 'Hubo un problema al enviar tu mensaje. Por favor inténtalo de nuevo.',
+      confirmButtonText: 'Entendido'
+    });
+    console.error('Error:', error);
+  } finally {
+    submitBtn.classList.remove('loading');
+    submitBtn.disabled = false;
+  }
 }
-
-// Función para mostrar alertas temáticas
-function showThemedAlert(icon, title, html, confirmText = 'Entendido') {
-  const isDark = document.documentElement.hasAttribute('data-theme');
+// Mejorar la validación de campos mientras el usuario escribe
+function setupLiveValidation() {
+  const fields = contactForm.querySelectorAll('input, textarea');
   
-  return Swal.fire({
-    icon,
-    title,
-    html,
-    confirmButtonText: confirmText,
-    background: isDark ? 'var(--background-color-m)' : 'var(--background-color)',
-    color: isDark ? 'var(--text-white)' : 'var(--text-color)',
-    confirmButtonColor: 'var(--text-decoration-color)',
-    scrollbarPadding: false
+  fields.forEach(field => {
+    field.addEventListener('input', () => {
+      if (field.value.trim() !== '') {
+        if (field.checkValidity()) {
+          field.style.borderColor = '#51cf66'; // Verde para válido
+        } else {
+          field.style.borderColor = '#ff6b6b'; // Rojo para inválido
+        }
+      } else {
+        field.style.borderColor = ''; // Resetear si está vacío
+      }
+    });
   });
 }
 
-// Ejemplo de uso en otros lugares de tu código:
-// showThemedAlert('success', 'Éxito', '<p style="color: var(--text-light-color)">Operación completada</p>');
+// Efecto "hover" táctil para dispositivos móviles
+function setupProjectHover() {
+  const proyectos = document.querySelectorAll('.proye');
+  
+  proyectos.forEach(proyecto => {
+    proyecto.addEventListener('touchstart', () => {
+      proyecto.classList.add('hover-effect');
+    });
+    
+    proyecto.addEventListener('touchend', () => {
+      setTimeout(() => {
+        proyecto.classList.remove('hover-effect');
+      }, 300);
+    });
+  });
+}
+
+
+
+// ==============================================
+// ========== INICIALIZACIÓN GENERAL ============
+// ==============================================
+
+function init() {
+  setupScrollListener();
+  setupMenuToggle();
+  setupInteractiveButtons();
+  setupThemeToggle();
+  setupAnimations();
+  setupProgressBars();
+  setupFormValidation();
+  updateActiveSection();
+  setupLiveValidation();
+}
+// Iniciar cuando el DOM esté listo
+document.addEventListener("DOMContentLoaded", init);
