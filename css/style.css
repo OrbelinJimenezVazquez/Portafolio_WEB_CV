@@ -394,18 +394,17 @@ section, header, footer, .i_am, .welcome, .skill, .school, .proye {
 .i_am_img{
   display: flex;
   justify-content: center;
-  margin: 5px;;
+  margin-bottom: 5rem;
 }
 .i_am_img img {
-  border-radius: 15px; /* Hace que la imagen sea circular */
   margin-right: 50px; /* Espacio entre la imagen y el texto */
-  max-width: 250px;
-  border: 3px solid var(--border-color);
-  box-shadow: 0 2px 5px var(--shadow-color); /* Sombra sutil */
+  max-width: 350px;
+  height: 350px;
   z-index: 1;
+  mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
 }
 .i_am_img img:hover {
-  filter: brightness(1.05); /* Aumenta el brillo al pasar el mouse */
   transform: translateY(-5px);
 }
 img[loading="lazy"] {
@@ -1538,7 +1537,7 @@ footer p {
   }
 
   .i_am_img img {
-    width: 35%; /* Imagen ocupa el 100% del ancho */
+    width: 70%; /* Imagen ocupa el 100% del ancho */
     height: auto; /* Mantiene la proporción de la imagen */
     margin-right: 0; /* Elimina el margen derecho */
   }
@@ -1693,7 +1692,12 @@ footer p {
   .mini_nav h4 {
     height: 50px;
   }
-
+  .i_am_img{
+    margin-bottom: 15px;
+  }
+  .saludo{
+    margin: 0;
+  }
 }
 
 @media screen and (max-width: 320px) {
