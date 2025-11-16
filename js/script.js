@@ -207,7 +207,7 @@ AOS.init({
 
   // Animación de escritura del nombre
   new Typed(".name", {
-    strings: ["", "", "Orbelin Jimenez Vazquez."],
+    strings: ["", "Orbelin Jimenez Vazquez."],
     typeSpeed: 100,
     backSpeed: 100,
     loop: false,
