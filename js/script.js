@@ -208,8 +208,8 @@ AOS.init({
   // Animación de escritura del nombre
   new Typed(".name", {
     strings: ["", "", "Orbelin Jimenez Vazquez."],
-    typeSpeed: 100,
-    backSpeed: 100,
+    typeSpeed: 80,
+    backSpeed: 20,
     loop: false,
   });
 
