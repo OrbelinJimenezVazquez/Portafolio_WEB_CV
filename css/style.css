@@ -395,13 +395,13 @@ section, header, footer, .i_am, .welcome, .skill, .school, .proye {
   display: flex;
   justify-content: center;
   margin-bottom: 5rem;
-  z-index: 1000;
+  z-index: 5;
 }
 .i_am_img img {
   margin-right: 50px; /* Espacio entre la imagen y el texto */
   max-width: 350px;
   height: 350px;
-  z-index: 1000;
+  z-index: 5;
   mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
   -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
   transition: transform 0.3s ease;
@@ -458,7 +458,14 @@ img[loading="lazy"].loaded {
   margin-top: 25px;
   text-align: left;
 }
-
+.i_am #iam-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* Lo más bajo posible */
+}
 /*Estilo para la seccion de bienvenida */
 .welcome {
   display: flex;
