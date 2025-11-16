@@ -617,6 +617,7 @@ img[loading="lazy"].loaded {
   background-color: var(--background-color-m2);
   border: 2px solid var(--border-color);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
 }
 
 .work,
@@ -1072,6 +1073,7 @@ textarea:valid:not(:placeholder-shown) {
   display: flex;
   justify-content: center; /* Centra los íconos horizontalmente */
   gap: 20px; /* Espacio entre los íconos */
+  z-index: 5;
 }
 .social_icons ul {
   display: flex;

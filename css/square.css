@@ -93,68 +93,6 @@
   animation-duration: 11s;
 }
 
-.circles li:nth-child(11) {
-  left: 90%;
-  width: 40px;
-  height: 40px;
-  animation-delay: 4s;
-}
-.circles li:nth-child(12) {
-  left: 5%;
-  width: 20px;
-  height: 20px;
-  animation-delay: 0.5s;
-}
-.circles li:nth-child(13) {
-  left: 15%;
-  width: 20px;
-  height: 20px;
-  animation-delay: 2.5s;
-}
-.circles li:nth-child(14) {
-  left: 25%;
-  width: 80px;
-  height: 80px;
-  animation-delay: 6s;
-}
-.circles li:nth-child(15) {
-  left: 10%;
-  width: 20px;
-  height: 20px;
-  animation-delay: 2s;
-  animation-duration: 12s;
-}
-.circles li:nth-child(16) {
-  left: 70%;
-  width: 20px;
-  height: 20px;
-  animation-delay: 4s;
-}
-.circles li:nth-child(17) {
-  left: 40%;
-  width: 60px;
-  height: 60px;
-  animation-delay: 0s;
-  animation-duration: 18s;
-}
-.circles li:nth-child(18) {
-  left: 65%;
-  width: 20px;
-  height: 20px;
-  animation-delay: 1s;
-}
-.circles li:nth-child(19) {
-  left: 75%;
-  width: 110px;
-  height: 110px;
-  animation-delay: 3s;
-}
-.circles li:nth-child(20) {
-  left: 35%;
-  width: 40px;
-  height: 40px;
-  animation-delay: 7s;
-}
 @keyframes animate {
   0% {
     transform: translateY(0) rotate(0deg);

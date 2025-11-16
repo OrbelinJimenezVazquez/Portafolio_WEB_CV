@@ -42,7 +42,7 @@
             <li><a href="#experience">Experiencia</a></li>
             <li><a href="#proyectos">Proyectos</a></li>
             <li><a href="#contacto">Contacto</a></li>
-            <li><button id="theme-toggle" aria-label="Cambiar tema"><i class="fa-solid fa-moon"></i></button></li>
+            <li><button id="theme-toggle" aria-label="Cambiar tema" role="button"><i class="fa-solid fa-moon"></i></button></li>
         </ul>
     </nav>
 </header>
@@ -52,16 +52,6 @@
         <img src="images/Mifoto1.png" loading="lazy" alt="Foto de perfil">
       </div>
       <ul class="circles" id="iam-particles">
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
         <li></li>
         <li></li>
         <li></li>
@@ -434,7 +424,7 @@
             <input   
               type="text" 
               id="subject" 
-              placeholder=" "
+              name="subject" placeholder=" "
               minlength="7"
               maxlength="100"
             >
@@ -487,10 +477,10 @@
         </div>
       </section>
     </main>
-  <footer id="footer">
+  <footer id="footer" aria-label="Pie de página y enlaces de navegación">
     <div id="footer-particles"></div>
     <div class="footer-content">
-      <p>&copy; 2025 Orbelin Jiménez. Todos los derechos reservados.</p>
+      <p>&copy; <span id="current-year">2025</span> Orbelin Jiménez. Todos los derechos reservados.</p>
       <div class="footer-links">
         <a href="#">Inicio</a>
         <a href="#proyectos">Proyectos</a>

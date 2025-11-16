@@ -512,7 +512,19 @@ function setupProjectHover() {
   });
 }
 
+// ==============================================
+// ========== FUNCIÓN DE FECHA AUTOMÁTICA =======
+// ==============================================
 
+function updateCopyrightYear() {
+  const yearElement = document.getElementById('current-year');
+  if (yearElement) {
+    // Obtiene el año actual del sistema
+    const currentYear = new Date().getFullYear();
+    // Actualiza el texto con el año actual
+    yearElement.textContent = currentYear; 
+  }
+}
 
 // ==============================================
 // ========== INICIALIZACIÓN GENERAL ============
