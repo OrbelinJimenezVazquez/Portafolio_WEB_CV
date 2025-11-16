@@ -1460,44 +1460,50 @@ footer p {
   /* Estilo del menú desplegable */
   #nav-list {
     display: flex;
-    justify-content: center;
-    position: absolute;
+    justify-content: flex-start; /* Alinea los ítems a la izquierda */
+    position: fixed; /* Fija la posición del menú en el viewport */
     flex-direction: column;
-    align-items: center;
-    top: 35px;
-    left: 0;
+    align-items: flex-start; /* Alinea el contenido a la izquierda */
+    top: 0;
+    left: 0; /* POSICIÓN INICIAL: Pegado a la izquierda */
     gap: 0;
-    width: 100%;
-    height: auto;
+    width: 70%; /* Define el ancho del menú desplegado (ej: 70% de la pantalla) */
+    height: 100vh; /* Ocupa toda la altura del viewport */
     background: linear-gradient(
-      0deg, 
-      var(--background-color) 0%, 
-      var(--background-color-m) 100%
+      90deg, /* Cambiado a 90deg para un gradiente horizontal sutil */
+      var(--background-color-m) 0%, 
+      var(--background-color) 100%
     );
-    padding: 20px 0 20px 0;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    z-index: 11;
+    padding: 80px 20px 20px 20px; /* Padding superior para dejar espacio al header */
+    box-shadow: 2px 0 6px rgba(0, 0, 0, 0.2); /* Sombra hacia la derecha */
+    z-index: 10;
     letter-spacing: .06rem;
-    /* Oculto con animación */
+    
+    /* Oculto con animación: Moverlo completamente fuera de la pantalla a la izquierda */
     opacity: 0;
     visibility: hidden;
-    transform: translateY(-20px);
-    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+    transform: translateX(-100%); /* Desplazado 100% a la izquierda para ocultarlo */
+    transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s ease;
   }
 
-  /* Activación del menú */
+  /* Activación del menú (Originalmente líneas ~833-837) */
   #nav-list.visible {
-    opacity: 10;
+    opacity: 1;
     visibility: visible;
-    transform: translateY(0);
+    transform: translateX(0); /* Vuelve a la posición visible (0) */
   }
+
   #nav-list li {
-    margin: 10px 0;
+    width: 100%; /* Para que los ítems ocupen todo el ancho y sea fácil tocar */
+    padding: 10px 0;
+    margin: 5px 0;
+    border-bottom: 1px solid var(--border-color); /* Separador visual */
   }
+
   #nav-list li a {
     font-size: 18px;
-    position: relative;
-    transition: all 0.3s ease;
+    padding: 8px 0;
+    display: block; /* Para que el área de clic sea más grande */
   }
   #nav-list li a:hover {
     color: var(--text-decoration-color-hover);

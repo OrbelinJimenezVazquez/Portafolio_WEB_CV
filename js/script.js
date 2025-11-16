@@ -7,6 +7,8 @@ const navList = document.getElementById("nav-list");
 const themeToggle = document.getElementById("theme-toggle");
 const themeIcon = themeToggle.querySelector("i");
 const root = document.documentElement;
+// Nuevo selector para los enlaces de navegación
+const navLinks = document.querySelectorAll("#nav-list li a");
 
 // ==============================================
 // =========== FUNCIONES DE SCROLL ==============
@@ -20,7 +22,7 @@ function handleScrollEffects() {
 // Actualizar sección activa en el menú
 function updateActiveSection() {
   const sections = document.querySelectorAll("section[id]");
-  const navLinks = document.querySelectorAll("#nav-list li a");
+  // Usamos el selector global 'navLinks'
   let currentSection = "";
   const offset = 150; // Ajusta este valor según necesites
 
@@ -38,13 +40,12 @@ function updateActiveSection() {
   // Actualiza las clases active en los enlaces
   navLinks.forEach(link => {
     link.classList.remove("active");
-    if (link.getAttribute("href") === `#${currentSection}`) {
+    // Asegura que el enlace "Inicio" esté activo si no hay otra sección
+    const linkHref = link.getAttribute("href");
+    if (linkHref === `#${currentSection}` || 
+        (window.scrollY === 0 && linkHref === "#")) {
       link.classList.add("active");
     }
-  });
-  console.log("Sección activa:", currentSection); // Depuración
-  navLinks.forEach(link => {
-    console.log(`Enlace: ${link.getAttribute('href')}, Coincide: ${link.getAttribute('href') === `#${currentSection}`}`);
   });
 }
 
@@ -74,6 +75,19 @@ function setupMenuToggle() {
     menuToggle.classList.toggle("active");
     navList.classList.toggle("visible");
   });
+
+  // NUEVA MEJORA: Cierra el menú al hacer clic en un enlace (UX móvil)
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      // Usamos setTimeout para que la transición de cierre sea suave
+      setTimeout(() => {
+        if (menuToggle.classList.contains("active")) {
+          menuToggle.classList.remove("active");
+          navList.classList.remove("visible");
+        }
+      }, 300); 
+    });
+  });
 }
 
 // Efecto de explosión para botones
@@ -91,8 +105,13 @@ function createExplodeEffect(btn) {
 function createRippleEffect(e, btn) {
   const ripple = document.createElement("span");
   ripple.className = "ripple";
-  ripple.style.left = `${e.offsetX}px`;
-  ripple.style.top = `${e.offsetY}px`;
+  // Usa pageX/Y si offsetX/Y no está disponible (compatibilidad táctil)
+  const rect = btn.getBoundingClientRect();
+  const x = e.clientX ? e.clientX - rect.left : e.offsetX;
+  const y = e.clientY ? e.clientY - rect.top : e.offsetY;
+  
+  ripple.style.left = `${x}px`;
+  ripple.style.top = `${y}px`;
   btn.appendChild(ripple);
   
   setTimeout(() => ripple.remove(), 600);
@@ -114,7 +133,7 @@ function handleCVDownload(e, btn) {
     if (result.isConfirmed) {
       const link = document.createElement("a");
       link.href = btn.href;
-      link.download = "";
+      link.download = "CV_Orbelin_Jimenez.pdf"; // Nombre de archivo claro
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -125,8 +144,10 @@ function handleCVDownload(e, btn) {
 // Configurar botones interactivos
 function setupInteractiveButtons() {
   document.querySelectorAll("#btn-cv, #btn_contact, .btn-pro, .btn ").forEach(btn => {
-    // Efecto hover
-    btn.addEventListener("mouseenter", () => createExplodeEffect(btn));
+    // Efecto hover (solo en dispositivos no táctiles)
+    if (!('ontouchstart' in window)) {
+      btn.addEventListener("mouseenter", () => createExplodeEffect(btn));
+    }
     
     // Efecto click
     btn.addEventListener("click", (e) => {
@@ -198,45 +219,46 @@ function setupAnimations() {
   // Inicializar AOS (Animate On Scroll)
 AOS.init({
   duration: 800,
-  once: true, // No reiniciar animaciones al hacer scroll 
-  offset: 120, // Desplazamiento para activar animaciones
-  easing: 'ease-out-quad', //
+  once: true, 
+  offset: 120, 
+  easing: 'ease-out-quad', 
   disable: window.innerWidth < 768 ,
-  loop: false, // Desactivar bucle para animaciones
+  loop: false, 
 });
 
   // Animación de escritura del nombre
   new Typed(".name", {
-    strings: ["", "", "Orbelin Jimenez Vazquez."],
+    // Usamos "" para eliminar el texto de fallback si se agregó al HTML
+    strings: ["", "", "Orbelin Jimenez Vazquez."], 
     typeSpeed: 80,
-    backSpeed: 20,
+    backSpeed: 30,
     loop: false,
   });
 
   // Configurar ScrollReveal
   const sr = ScrollReveal({
   reset: false,
-  viewFactor: 0.2, // Factor de visibilidad para activar la animación
-  origin: 'bottom', // Dirección de la animación
-  distance: '100px', // Distancia de desplazamiento
-  interval: 100, // Intervalo entre animaciones
-  easing: 'ease-in', // Efecto de aceleración
+  viewFactor: 0.2, 
+  origin: 'bottom', 
+  distance: '100px', 
+  interval: 100, 
+  easing: 'ease-in', 
   duration: 1000,
   delay: 200,
   mobile: true
 });
   
   // Animaciones comunes
-  const commonReveal = { // Configuración común para todas las animaciones
-    viewFactor: 0.2, // Factor de visibilidad para activar la animación
-    origin: "bottom", // Dirección de la animación
-    distance: "60px", // Distancia de desplazamiento
-    interval: 100, // Intervalo entre animaciones
-    reset: false, // No reiniciar animaciones al hacer scroll 
-    duration: 1000, // Duración de la animación
-    delay: 100, // Retraso antes de iniciar la animación
-    easing: "ease-in-out", // Efecto de aceleración
-    mobile: true // Habilitar animaciones en dispositivos móviles
+  const commonReveal = { 
+    viewFactor: 0.2, 
+    origin: "bottom", 
+    distance: "60px", 
+    interval: 100, 
+    reset: false, 
+    duration: 1000, 
+    delay: 100, 
+    easing: "ease-in-out", 
+    mobile: true 
 
   };
 
@@ -274,7 +296,7 @@ function setupProgressBars() {
       strokeWidth: 4,
       duration: 1100,
       easing: "easeInOut",
-      trailColor: "#ffff ",
+      trailColor: "var(--background-color-m2)", // Usar variable CSS para el trail
       trailWidth: 1.5,
       text: {
         value: `${Math.round(percentage * 100)}%`,
@@ -333,6 +355,9 @@ if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/sw.js')
       .then(registration => {
+        // NOTA IMPORTANTE: Revisa tu archivo sw.js y asegúrate de que 
+        // la ruta de tu imagen de perfil principal sea correcta:
+        // ['/images/Mi_foto.jpg'] debe ser ['/images/Mifoto1.png'] si ese es el archivo usado.
         console.log('SW registrado:', registration.scope);
       })
       .catch(error => {
@@ -398,7 +423,7 @@ async function handleFormSubmit(e) {
       throw new Error('Por favor completa todos los campos requeridos correctamente');
     }
     if ('vibrate' in navigator) {
-      navigator.vibrate(50); // Vibración corta al enviar
+      navigator.vibrate(50); // Vibración corta al enviar (UX móvil)
     }
     // Mostrar alerta de carga
     const loadingAlert = Swal.fire({
@@ -455,10 +480,13 @@ function setupLiveValidation() {
   fields.forEach(field => {
     field.addEventListener('input', () => {
       if (field.value.trim() !== '') {
+        // La validación en CSS hace el trabajo pesado, esto solo añade feedback visual sutil
         if (field.checkValidity()) {
-          field.style.borderColor = '#51cf66'; // Verde para válido
+          // Si es válido, se usa el color por defecto (verde ya está en CSS)
+          field.style.borderColor = ''; 
         } else {
-          field.style.borderColor = '#ff6b6b'; // Rojo para inválido
+          // Si es inválido, se usa el color de error
+          field.style.borderColor = '#ff6b6b'; 
         }
       } else {
         field.style.borderColor = ''; // Resetear si está vacío
@@ -500,6 +528,7 @@ function init() {
   setupFormValidation();
   updateActiveSection();
   setupLiveValidation();
+  setupProjectHover(); // Asegura que el efecto táctil de proyectos esté activo
 }
 // Iniciar cuando el DOM esté listo
 document.addEventListener("DOMContentLoaded", init);
