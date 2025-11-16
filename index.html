@@ -27,33 +27,33 @@
   </head>
   <body>
   <header>
-  <div class="logo" data-aos="slide-down" >
-    <a href="#"  ><p>Orbe</p></a>
-  </div>
-  <nav data-aos="slide-down">
-    <!-- Icono de menú hamburguesa -->
-    <div class="menu-toggle" id="menu-toggle">
-      <span></span>
-      <span></span>
-      <span></span>
+    <div class="logo"> 
+        <a href="#"  ><p>Orbe</p></a>
     </div>
-    <!-- Menú de navegación -->
-    <ul id="nav-list"  data-aos="slide-down">
-      <li><a href="#experience"><i class="fa-solid fa-briefcase"></i> Experiencia</a></li>
-      <li><a href="#skills"><i class="fa-solid fa-code"></i> Habilidades</a></li>
-      <li><a href="#tech"><i class="fa-solid fa-microchip"></i> Tecnologías</a></li>
-      <li><a href="#edu"><i class="fa-solid fa-user-graduate"></i> Educación</a></li>
-      <li><a href="#proyectos"><i class="fa-solid fa-folder"></i> Proyectos</a></li>
-      <li><a href="#lenguaje"><i class="fa-solid fa-language"></i> Idiomas</a></li>
-      <li><button id="theme-toggle" aria-label="Cambiar tema"><i class="fa-solid fa-moon"></i></button></li>
-    </ul>
-  </nav>
+    <nav> 
+        <div class="menu-toggle" id="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <ul id="nav-list"> 
+            <li><a href="#i_am" class="active">Inicio</a></li>
+            <li><a href="#about_me">Acerca de mí</a></li>
+            <li><a href="#experience">Experiencia</a></li>
+            <li><a href="#proyectos">Proyectos</a></li>
+            <li><a href="#contacto">Contacto</a></li>
+            <li>
+                <div class="theme-toggle" id="theme-toggle" aria-label="Toggle theme">
+                    <i class="fas fa-moon"></i>
+                </div>
+            </li>
+        </ul>
+    </nav>
 </header>
   <main>
     <div class="i_am">
-      <div id="iam-particles"></div>
       <div class="i_am_img">
-        <img src="images/Mifoto1.png" loading="lazy" alt="Foto de perfil" data-aos="fade-right">
+        <img src="images/Mifoto1.png" loading="lazy" alt="Foto de perfil">
       </div>
       <ul class="circles" id="iam-particles">
         <li></li>
@@ -77,9 +77,9 @@
         <li></li>
         <li></li>
       </ul>
-      <div class="i_am_text" data-aos="zoom-in">
+      <div class="i_am_text">
         <p class="saludo"><b>Hola,</b> soy</p>
-        <div class="name">Orbelin Jiménez Vázquez</div>
+        <div class="name"></div>
         <p class="description">
           Estudiante de Ingeniería en Datos e Inteligencia Organizacional con
           experiencia práctica en desarrollo web frontend y soporte informático.
@@ -518,7 +518,7 @@
     const particlesConfig = {
       particles: {
         number: {
-          value: 100,
+          value: 70,
           density: {
             enable: true,
             value_area: 800
@@ -531,7 +531,7 @@
           type: "circle"
         },
         opacity: {
-          value: 1, // Más transparente para no interferir con el contenido
+          value: .4, // Más transparente para no interferir con el contenido
           random: true
         },
         size: {

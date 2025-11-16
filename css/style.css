@@ -395,14 +395,16 @@ section, header, footer, .i_am, .welcome, .skill, .school, .proye {
   display: flex;
   justify-content: center;
   margin-bottom: 5rem;
+  z-index: 1000;
 }
 .i_am_img img {
   margin-right: 50px; /* Espacio entre la imagen y el texto */
   max-width: 350px;
   height: 350px;
-  z-index: 1;
+  z-index: 1000;
   mask-image: linear-gradient(to bottom, black 40%, transparent 100%);
   -webkit-mask-image: linear-gradient(to bottom, black 80%, transparent 100%);
+  transition: transform 0.3s ease;
 }
 .i_am_img img:hover {
   transform: translateY(-5px);
