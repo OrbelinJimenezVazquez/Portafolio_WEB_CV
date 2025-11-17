@@ -5,7 +5,8 @@ const ASSETS_TO_CACHE = [
   '/css/style.css', 
   '/js/script.js',
   '/images/Mifoto1.png',
-  '/images/congreso.png'
+  '/images/congreso.png',
+  '/images/geojuego1.png'
 ];
 
 self.addEventListener('install', (e) => {
