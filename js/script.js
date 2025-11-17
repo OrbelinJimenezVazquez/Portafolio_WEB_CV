@@ -216,6 +216,7 @@ function setupThemeToggle() {
 // ==============================================
 
 function setupAnimations() {
+  
   // Inicializar AOS (Animate On Scroll)
 AOS.init({
   duration: 800,
@@ -268,9 +269,12 @@ AOS.init({
   sr.reveal(".text-cont h1, #i_am_social ul li, .social_icons, .welcome_text, #contacto .text-cont", commonReveal);
   
   // Animaciones específicas
-  sr.reveal(".skill", { ...commonReveal, origin: "right", interval: 150 });
-  sr.reveal(".proye:nth-child(odd)", { ...commonReveal, origin: "left" });
-  sr.reveal(".proye:nth-child(even)", { ...commonReveal, origin: "right" });
+  sr.reveal(".skill", { ...commonReveal, origin: "right", interval: 150 });sr.reveal(".proye", { 
+  ...commonReveal, 
+  origin: "bottom",
+  interval: 150,
+  viewFactor: 0.1
+});
   sr.reveal(".idioma:nth-child(odd)", { ...commonReveal, origin: "left", distance: "180px",reset:false });
   sr.reveal(".idioma:nth-child(even)", { ...commonReveal, origin: "right", distance: "180px", reset:false});
   sr.reveal("#tech .tech", { ...commonReveal, origin: "bottom", distance: "85px" });
@@ -512,19 +516,7 @@ function setupProjectHover() {
   });
 }
 
-// ==============================================
-// ========== FUNCIÓN DE FECHA AUTOMÁTICA =======
-// ==============================================
 
-function updateCopyrightYear() {
-  const yearElement = document.getElementById('current-year');
-  if (yearElement) {
-    // Obtiene el año actual del sistema
-    const currentYear = new Date().getFullYear();
-    // Actualiza el texto con el año actual
-    yearElement.textContent = currentYear; 
-  }
-}
 
 // ==============================================
 // ========== INICIALIZACIÓN GENERAL ============
@@ -534,8 +526,8 @@ function init() {
   setupScrollListener();
   setupMenuToggle();
   setupInteractiveButtons();
-  setupThemeToggle();
-  setupAnimations();
+  setupThemeToggle();/*
+  setupAnimations();*/
   setupProgressBars();
   setupFormValidation();
   updateActiveSection();

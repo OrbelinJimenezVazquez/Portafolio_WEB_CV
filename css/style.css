@@ -673,13 +673,14 @@ img[loading="lazy"].loaded {
   width: 90%;
   gap: 15px;
 }
+
 .skill_3-3 .skill,
 .pro_3-3 .proye {
   display: flex;
   flex-direction: column;
   padding: 20px;
   box-shadow: var(--shadow-color) 0 0 2px;
-  border-radius: 15px; /* Bordes redondeados */
+  border-radius: 15px; 
   border: 2px solid var(--background-color-m2) ;
 }
 
@@ -697,7 +698,7 @@ img[loading="lazy"].loaded {
   }
 
   .skill_3-3 .skill h2 {
-    font-size: 20px; /* Tamaño de fuente más pequeño */
+    font-size: 20px; 
     line-height: 1.1;
     width: 100%;
     height: 50px;
@@ -707,9 +708,10 @@ img[loading="lazy"].loaded {
 .tech-bars {
   display: flex;
   justify-content: center;
-  flex-wrap: wrap; /* Permite que los elementos se envuelvan */
+  flex-wrap: wrap; 
   gap: 20px;
 }
+
 .tech {
   display: flex;
   justify-content: center;
@@ -726,10 +728,12 @@ img[loading="lazy"].loaded {
   transition: all 0.3s ease;
   perspective: 1000px;
 }
+
 .tech:hover{
   transform: translateY(-5px);
   transform: scaleX(1.5);
 }
+
 .tech-inner {
   transition: transform 0.6s;
   transform-style: preserve-3d;
@@ -857,6 +861,7 @@ img[loading="lazy"].loaded {
 .proye:focus-within {
   outline: 2px solid var(--text-decoration-color);
 }
+
 .tech h3 {
   color: var(--text-color);
   text-align: center;
